@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "asciinema-sphinx"
+version = "0.1.0"
+description = ""
+authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+asciinema = "^2.1.0"
+Sphinx = "^4.4.0"
+
+[tool.poetry.dev-dependencies]
+rich = "^11.2.0"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+asciinema_hello = "asciinema_sphinx:cli_hello"
