@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "asciinema-sphinx"
+name = "sphinx-auto-asciinema"
 version = "0.1.0"
 description = ""
 authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
@@ -12,6 +12,8 @@ Sphinx = "^4.4.0"
 [tool.poetry.dev-dependencies]
 rich = "^11.2.0"
 jupyter = "^1.0.0"
+livereload = "^2.6.3"
+nodeenv = "^1.6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
