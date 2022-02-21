@@ -64,11 +64,9 @@ def visit_asciinema_node(self: HTML5Translator, node: nodes.Element):
     # id given by anchor tag
     self.body.append(self.starttag(node, "div", CLASS="asciinema"))
     self.body.append("</div>\n")
-    # TODO: Fix the issue where the local data cannot be fetched
-    # Maybe the inline the data as in the other extension
     template = (
         "<script>"
-        "AsciinemaPlayer.create('test.rec', document.getElementById('asciinema-0'));"
+        "AsciinemaPlayer.create('/_static/test.rec', document.getElementById('asciinema-0'));"
         "</script>"
     )
     self.body.append(template)

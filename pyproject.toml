@@ -6,7 +6,8 @@ authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-asciinema = "^2.1.0"
+# asciinema = "^2.1.0"
+asciinema = { git = "https://github.com/asciinema/asciinema", branch = "develop"}
 Sphinx = "^4.4.0"
 
 [tool.poetry.dev-dependencies]
