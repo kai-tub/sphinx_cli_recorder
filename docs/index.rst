@@ -10,4 +10,5 @@ Welcome to asciinema-sphinx's documentation!
 Text
 
 .. asciinema::
-   Body.
+
+   python -m rich.panel

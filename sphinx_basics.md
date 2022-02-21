@@ -40,3 +40,14 @@ The build phases:
 - `ensure_tempdir`: https://github.com/sphinx-doc/sphinx/blob/d82d37073920ce0e2940dccbd25f719cc92a3352/sphinx/ext/imgmath.py
   - For seeing how Sphinx works with temporary files
   - If build finished:  `app.connect('build-finished', cleanup_tempdir)`
+
+## Transforms
+> A transformer object is attached to every new document tree.
+> Transforms change the document tree from one form to another, add to the tree, or prune it.
+
+Under the section "Writers", the following can be found:
+> Writers produce the final output (HTML, XML, TeX, etc.).
+> Writers translate the internal document tree structure into the final data format,
+> possibly running Writer-specific transforms first.
+
+From [pep-0258](https://docutils.sourceforge.io/docs/peps/pep-0258.html#transformer)

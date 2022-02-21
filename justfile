@@ -16,7 +16,7 @@ copy-assets:
 
 build: copy-assets
     rm -rf {{justfile_directory()}}/docs/_build
-    sphinx-build {{justfile_directory()}}/docs {{justfile_directory()}}/docs/_build/
+    {{env-cmd}} sphinx-build {{justfile_directory()}}/docs {{justfile_directory()}}/docs/_build/
 
 serve: build
     {{env-cmd}} python {{justfile_directory()}}/serve.py
