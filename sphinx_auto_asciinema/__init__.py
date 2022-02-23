@@ -128,6 +128,10 @@ class AsciinemaDirective(SphinxDirective):
         return [target_node, asciinema_node]
 
 
+def _cli_hello():
+    print("Testing cli functionality")
+
+
 def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_node(
         asciinema,
