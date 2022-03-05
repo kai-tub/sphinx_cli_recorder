@@ -9,6 +9,19 @@ Welcome to asciinema-sphinx's documentation!
 
 Text
 
-.. asciinema::
+.. asciinema_run_cmd:: python -m rich.panel
+   :autoPlay: true
 
-   python -m rich.panel
+
+.. asciinema_timed_cmd_interaction:: python -m sphinx_auto_asciinema.test
+   :autoPlay: true
+
+   - n
+
+.. asciinema_scripted_cmd_interaction:: python -m sphinx_auto_asciinema.test
+
+   - [":", "y"]
+   - [":", "apple"]
+
+.. asciinema_run_cmd:: python -m rich.panel
+   :autoPlay: false
