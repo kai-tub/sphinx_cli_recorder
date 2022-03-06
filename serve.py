@@ -5,6 +5,7 @@ run_cmd = shell("just build")
 for watch_dir in [
     "docs/*.py",
     "docs/*.rst",
+    "docs/*.md",
     "docs/*.py",
     "sphinx_auto_asciinema/*.py",
     "sphinx_auto_asciinema/_static/*",

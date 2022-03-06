@@ -28,7 +28,30 @@ author = "Kai Norman Clasen"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinx_auto_asciinema"]
+extensions = [
+    "sphinx_auto_asciinema",
+    "myst_parser",
+    "sphinx_external_toc",
+    "sphinx_inline_tabs",
+    "sphinx.ext.intersphinx",
+]
+external_toc_path = "_toc.yml"
+
+myst_enable_extensions = [
+    # "amsmath",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    # "html_admonition",
+    # "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    # "strikethrough",
+    "substitution",
+    "tasklist",
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -38,6 +61,15 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+# target, inventory
+intersphinx_mapping = {
+    "pexpect": ("https://pexpect.readthedocs.io/en/stable/", None),
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
+myst_url_schemes = [
+    "http",
+    "https",
+]
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -47,6 +79,8 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # html_theme = "furo"
 # pygments_light_style = "monokai"
 # pygments_dark_style = "monokai"
+
+sphinx_auto_asciinema_player_settings = {"rows": 20}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
