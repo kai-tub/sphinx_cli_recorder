@@ -24,8 +24,8 @@ async def scripted_asciicast_runner(
     expects: Optional[Sequence[str]],
     sends: Optional[Sequence[str]],
     output_fp: Path,
-    sleep_time: SleepTimes,
-    recorder_settings: AsciinemaRecorderSettings,
+    sleep_time: SleepTimes = SleepTimes(),
+    recorder_settings: AsciinemaRecorderSettings = AsciinemaRecorderSettings(),
 ):
     with tempfile.NamedTemporaryFile() as tmpfile:
         spawn_template = "asciinema rec --stdin --command='{cmd}' --rows={rows} --cols={cols} --idle-time-limit={idletimelimit} --quiet --overwrite {fp}"

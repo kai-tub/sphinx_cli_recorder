@@ -13,14 +13,14 @@ PEXPECT_TYPE = pexpect.pty_spawn.spawn
 
 @pytest.fixture
 def simple_prompt_proc() -> PEXPECT_TYPE:
-    return pexpect.spawn("python -m sphinx_auto_asciinema.test", timeout=1)
+    return pexpect.spawn("python -m sphinx_auto_asciinema.testing.prompt", timeout=1)
 
 
 @pytest.fixture
 def simple_prompt_proc_with_echo() -> PEXPECT_TYPE:
     # Doesn't work as expected
     return pexpect.spawn(
-        "python -m sphinx_auto_asciinema.test",
+        "python -m sphinx_auto_asciinema.testing.prompt",
         logfile=sys.stdout,
         encoding="utf-8",
         timeout=1,
@@ -39,8 +39,8 @@ async def test_scripted_cmd_interaction_no_path(simple_prompt_proc: PEXPECT_TYPE
 
 @pytest.mark.asyncio
 async def test_scripted_cmd_interaction_yes_path(simple_prompt_proc: PEXPECT_TYPE):
-    expects = [":", ":"]
-    sends = ["y", "Apple"]
+    expects = [":", ":", ":"]
+    sends = ["y", "2", "husky"]
     await scripted_cmd_interaction(simple_prompt_proc, expects, sends)
     # test if command has executed
     await simple_prompt_proc.expect(pexpect.EOF, timeout=1, async_=True)
@@ -82,7 +82,7 @@ async def test_timed_cmd_interaction_no_path(simple_prompt_proc: PEXPECT_TYPE):
 
 @pytest.mark.asyncio
 async def test_timed_cmd_interaction_yes_path(simple_prompt_proc: PEXPECT_TYPE):
-    sends = ["y", "Apple"]
+    sends = ["y", "2", "husky"]
     await timed_cmd_interaction(simple_prompt_proc, sends)
     # test if command has executed
     await simple_prompt_proc.expect(pexpect.EOF, timeout=1, async_=True)
