@@ -10,7 +10,8 @@ Welcome to asciinema-sphinx's documentation!
 Text
 
 .. asciinema_run_cmd:: python -m rich.panel
-   :autoPlay: true
+   :autoPlay: false
+   :rows: 10
 
 
 .. asciinema_timed_cmd_interaction:: python -m sphinx_auto_asciinema.test
@@ -25,3 +26,9 @@ Text
 
 .. asciinema_run_cmd:: python -m rich.panel
    :autoPlay: false
+
+.. asciinema_scripted_cmd_interaction:: python -m sphinx_auto_asciinema.test
+   :between_character:  .01
+
+   - [":", "y"]
+   - [":", "apple"]

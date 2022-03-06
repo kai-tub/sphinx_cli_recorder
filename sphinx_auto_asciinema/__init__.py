@@ -2,14 +2,14 @@ from __future__ import annotations
 
 
 __version__ = "0.1.0"
+import itertools
 
 from enum import Enum, auto
-import json
 import asyncer
 from docutils import nodes
 
 from docutils.parsers.rst import directives
-from pydantic import BaseSettings, BaseModel, PositiveFloat, PositiveInt
+from pydantic import BaseModel
 from sphinx.util.docutils import SphinxDirective
 from typing import List, Dict, Any, Optional, Union
 from sphinx.application import Sphinx
@@ -26,15 +26,17 @@ from sphinx.util import logging
 import sphinx_auto_asciinema
 from functools import partial
 
-# from asciinema.recorder import record
 from sphinx_auto_asciinema.scripted_asciicast_runner import (
-    scripted_asciicast_runner,
     scripted_asciicasts_runner,
 )
 from sphinx.util.nodes import NodeMatcher
 from sphinx_auto_asciinema.asciinema_block_parser import (
     scripted_cmd_interaction_parser,
     timed_cmd_interaction_parser,
+)
+from sphinx_auto_asciinema.asciinema_player_settings import (
+    AsciinemaPlayerSettings,
+    AsciinemaRecorderSettings,
 )
 
 from sphinx_auto_asciinema.scripted_cmds import SleepTimes
@@ -53,37 +55,12 @@ class InteractionMode(Enum):
 
 class SphinxAutoAsciinemaSettingNames(BaseModel):
     player_settings = "sphinx_auto_asciinema_player_settings"
+    sleep_times_settings = "sphinx_auto_asciinema_sleep_times_settings"
     cmd_runner_settings = "sphinx_auto_asciinema_cmd_runner_settings"
-
-
-# does not include rows/cols:
-# According to documentation this should be set to the values of
-# of the file; in other words, these values should be overwritten
-# from the recorder settings
-# rows could be changed to fine-tune the output...
-# The options will be converted to lower in the Directive options class
-# To keep it consistent I will also use the same style.
-# I don't know why, but the options javascript <script> tag from asciinema
-# doesn't care if it is lower/upper case
-class AsciinemaPlayerSettings(BaseModel):
-    autoplay: bool = False
-    rows: PositiveInt = 24
-    cols: PositiveInt = 80
-    preload: bool = False
-    loop: bool = False
-    # create correct validator
-    startat: Union[str, int] = 0
-    # could also be int
-    speed: PositiveFloat = 1.0
-
-
-# class ExpectSendsGroup(BaseModel):
 
 
 # TODO: Always purge directory; should be configurable if desired to only update if document has changed
 # TODO: Add options to player and recorder
-
-
 def copy_resources(app: Sphinx, exception, resources: Optional[List[str]] = None):
     """
     Copy the local `resources` from the Python package to the
@@ -124,37 +101,30 @@ class CommandRunner(Transform):
     def env(self):
         return self.document.settings.env
 
-    def apply(self, **kwargs):
+    def apply(self, **_kwargs):
         matcher = NodeMatcher(asciinema)
-        # FUTURE: Execute the command asynchroneously or in parallel
         outdir = Path(self.app.outdir) / "_recs"
         outdir.mkdir(exist_ok=True)
-        # parse the nodes to a list that can be passed to scripted asciicast runner
-        commands = []
-        output_fps = []
-        expect_groups = []
-        send_groups = []
-        # Could run multiple node matches before calling async code
-        #
+
         with tempfile.TemporaryDirectory(prefix="sphinx-asciinema") as tmpdirname:
-            for node in self.document.traverse(matcher):
-                # TODO: Add sleeptimes options!
-                output_name = node["fname"]
-                output_fp = Path(tmpdirname) / f"{output_name}"
-                command = node["command"]
-                # TODO: Merge this to a single list-comprehension
-                # And then use zip to build correct inputs
-                commands.append(command)
-                output_fps.append(output_fp)
-                expect_groups.append(node["expects"])
-                send_groups.append(node["sends"])
+            tmpdir_p = Path(tmpdirname)
+            matching_nodes = [node for node in self.document.traverse(matcher)]
+            commands = [node["command"] for node in matching_nodes]
+            output_fps = [tmpdir_p / str(node["fname"]) for node in matching_nodes]
+            expect_groups = [node["expects"] for node in matching_nodes]
+            send_groups = [node["sends"] for node in matching_nodes]
+            sleep_times_groups = [node["sleep_times"] for node in matching_nodes]
+            recorder_settings_list = [
+                node["recorder_settings"] for node in matching_nodes
+            ]
 
             asyncer.syncify(scripted_asciicasts_runner, raise_sync_error=False)(
                 cmds=commands,
                 expect_groups=expect_groups,
                 send_groups=send_groups,
                 output_fps=output_fps,
-                sleep_time=SleepTimes(),
+                sleep_times_groups=sleep_times_groups,
+                recorder_settings_list=recorder_settings_list,
             )
 
             for output_fp in output_fps:
@@ -181,10 +151,14 @@ def depart_asciinema_node(self: HTML5Translator, node: nodes.Element):
 class AsciinemaBaseDirective(SphinxDirective):
     has_content: bool = True
     # postpone validation; will use pydantic to validate
+    # the option spec must still define all available options
     option_spec = {
-        "cols": directives.unchanged,
-        "rows": directives.unchanged,
-        "autoplay": directives.unchanged,
+        k: directives.unchanged
+        for k in itertools.chain(
+            AsciinemaPlayerSettings.__fields__,
+            SleepTimes.__fields__,
+            AsciinemaRecorderSettings.__fields__,
+        )
     }  # options will be converted to lower!
     setting_names = SphinxAutoAsciinemaSettingNames()
     required_arguments: int = 1
@@ -211,9 +185,31 @@ class AsciinemaBaseDirective(SphinxDirective):
             sends = [p.send for p in wait_for_send_pairs]
             expects = [p.wait_for for p in wait_for_send_pairs]
 
-        player_options = self.env.config[self.setting_names.player_settings]
-        player_options = {**self.options, **player_options}
+        conf_player_options = self.env.config[self.setting_names.player_settings]
+        # self.options may contain more keys than only those of player_options
+        local_player_options = {
+            k: v
+            for k, v in self.options.items()
+            if k in AsciinemaPlayerSettings.__fields__
+        }
+        player_options = {**conf_player_options, **local_player_options}
         validated_player_options = AsciinemaPlayerSettings(**player_options)
+
+        conf_sleep_times_options = self.env.config[
+            self.setting_names.sleep_times_settings
+        ]
+        local_sleep_times_options = {
+            k: v for k, v in self.options.items() if k in SleepTimes.__fields__
+        }
+        sleep_times = {**conf_sleep_times_options, **local_sleep_times_options}
+        validated_sleep_times = SleepTimes(**sleep_times)
+
+        recorder_settings = {
+            k: v
+            for k, v in self.options.items()
+            if k in AsciinemaRecorderSettings.__fields__
+        }
+        validated_recorder_settings = AsciinemaRecorderSettings(**recorder_settings)
 
         id_ = self.state.document.settings.env.new_serialno("asciinema")
         target_id = f"asciinema-{id_}"
@@ -226,9 +222,11 @@ class AsciinemaBaseDirective(SphinxDirective):
             fname=f"{target_id}.rec",
             sends=sends,
             expects=expects,
+            recorder_settings=validated_recorder_settings,
             data="\n".join(self.content),
             command=self.arguments[0],
             player_options=validated_player_options,
+            sleep_times=validated_sleep_times,
             id=target_id,
         )
         return [target_node, asciinema_node]
@@ -255,7 +253,10 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         copy_resources, resources=[JS_RESOURCE, CSS_RESOURCE]
     )
     player_settings = SphinxAutoAsciinemaSettingNames().player_settings
+    sleep_times_settings = SphinxAutoAsciinemaSettingNames().sleep_times_settings
     app.add_config_value(player_settings, {}, rebuild="html")
+    app.add_config_value(sleep_times_settings, {}, rebuild="html")
+
     app.connect("build-finished", copy_local_resources)
     app.add_transform(CommandRunner)
     # FUTURE: Only add js/css resources if Directive in page is found

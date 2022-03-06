@@ -26,7 +26,6 @@ class SleepTimes(BaseSettings):
 
 @validate_arguments(config=Config)
 async def _send_to_proc(proc: PEXPECT_TYPE, send: str, sleep_times: SleepTimes):
-    ic()
     await asyncio.sleep(sleep_times.between_commands)
     for char in send:
         proc.send(char)
@@ -41,7 +40,6 @@ async def scripted_cmd_interaction(
     sends: Sequence[str],
     sleep_times: SleepTimes = SleepTimes(),
 ):
-    ic()
     for expect, send in zip(expects, sends):
         await proc.expect_exact(expect, async_=True)
         await _send_to_proc(proc, send, sleep_times)
@@ -53,6 +51,5 @@ async def timed_cmd_interaction(
     sends: Sequence[str],
     sleep_times: SleepTimes = SleepTimes(),
 ):
-    ic()
     for send in sends:
         await _send_to_proc(proc, send, sleep_times)
