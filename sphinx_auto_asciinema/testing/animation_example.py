@@ -65,10 +65,11 @@ def progress_example():
 
 def main():
     # name = Prompt.ask("Do you want to see a cool prompt? [y/n]:")
-    if Confirm.ask("Do you want to see a cool prompt?"):
-        progress_example()
-    else:
-        print(Panel("Ok... :pleading_face:\n\n\nBye :hand:", expand=False))
+    progress_example()
+    # if Confirm.ask("Do you want to see a cool prompt?"):
+    #     progress_example()
+    # else:
+    #     print(Panel("Ok... :pleading_face:\n\n\nBye :hand:", expand=False))
 
 
 if __name__ == "__main__":
