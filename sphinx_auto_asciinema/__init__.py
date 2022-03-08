@@ -60,7 +60,11 @@ class SphinxAutoAsciinemaSettingNames(BaseModel):
 
 
 # TODO: Always purge directory; should be configurable if desired to only update if document has changed
-# TODO: Add options to player and recorder
+# No purge necessary, because I do not have a global cache... I think
+# I think the recs should be cleared every-time, except for when the
+# configuration says that it is not necessary
+
+
 def copy_resources(app: Sphinx, exception, resources: Optional[List[str]] = None):
     """
     Copy the local `resources` from the Python package to the
@@ -101,10 +105,21 @@ class CommandRunner(Transform):
     def env(self):
         return self.document.settings.env
 
+    # Will be called for every document
+    # Which makes it extremely inefficient...
+    # This should not be a transform
     def apply(self, **_kwargs):
+        ic()
         matcher = NodeMatcher(asciinema)
         outdir = Path(self.app.outdir) / "_recs"
+        # FUTURE: Allow to skip files if they already exist
+        # would require the setting an :cache: option to the directive
+        # which would require me to create a unique-hash for the command
+        # input, because it must be re-run if any other options changes
         outdir.mkdir(exist_ok=True)
+        for old_rec in outdir.glob("*.rec"):
+            if old_rec.is_file():
+                old_rec.unlink()
 
         with tempfile.TemporaryDirectory(prefix="sphinx-asciinema") as tmpdirname:
             tmpdir_p = Path(tmpdirname)
@@ -136,9 +151,15 @@ class asciinema(nodes.container):
 
 
 def visit_asciinema_node(self: HTML5Translator, node: nodes.Element):
-    js_player_options = node["player_options"].json()
     self.body.append(self.starttag(node, "div", CLASS="asciinema"))
     self.body.append("</div>\n")
+    js_player_options = node["player_options"].json()
+    # add_js_file always uses _static
+    # https://github.com/sphinx-doc/sphinx/blob/f38bd8e9529d50e5cceffe3ca55be4b758529ff7/sphinx/builders/html/__init__.py#L332
+    # FUTURE: Figure out how to lazy load the JS file at the end of body
+    # But still only run the AsciinemaPlayer code once the script has been loaded
+    js_script_loader = f"<script src=_static/{JS_RESOURCE}></script>"
+    self.body.append(js_script_loader)
     template = "<script>\nAsciinemaPlayer.create('/_recs/{fname}', document.getElementById('{id}'), {options});\n</script>"
     tag = template.format(id=node["id"], fname=node["fname"], options=js_player_options)
     self.body.append(tag)
@@ -260,7 +281,6 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.connect("build-finished", copy_local_resources)
     app.add_transform(CommandRunner)
     # FUTURE: Only add js/css resources if Directive in page is found
-    app.add_js_file(JS_RESOURCE)
     app.add_css_file(CSS_RESOURCE)
     # FUTURE: maybe think about re-naming asciinema to "record" prefix
     # for the directives because the user doesn't "need" to know that it
@@ -272,4 +292,9 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_directive(
         "asciinema_timed_cmd_interaction", AsciinemaTimedCmdInteractionDirective
     )
-    return {}
+    return {
+        "version": __version__,
+        # FUTURE: Make some tests
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }
