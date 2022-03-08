@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from venv import EnvBuilder
 
 __version__ = "0.1.0"
 import itertools
@@ -11,7 +11,7 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from pydantic import BaseModel
 from sphinx.util.docutils import SphinxDirective
-from typing import List, Dict, Any, Optional, Union
+from typing import List, Dict, Any, Optional, Set, Union
 from sphinx.application import Sphinx
 from sphinx.writers.html5 import HTML5Translator
 from icecream import ic
@@ -19,27 +19,29 @@ import tempfile
 from sphinx.util.fileutil import copy_asset
 from pathlib import Path
 from sphinx.application import Sphinx
+from sphinx.environment import BuildEnvironment
 import importlib
 from docutils.transforms import Transform
 
 from sphinx.util import logging
-import sphinx_auto_asciinema
+import sphinx_cli_recorder
 from functools import partial
 
-from sphinx_auto_asciinema.scripted_asciicast_runner import (
-    scripted_asciicasts_runner,
+from sphinx_cli_recorder.scripted_asciinema_runner import (
+    scripted_asciinema_runners,
 )
 from sphinx.util.nodes import NodeMatcher
-from sphinx_auto_asciinema.asciinema_block_parser import (
+from sphinx_cli_recorder.asciinema_block_parser import (
     scripted_cmd_interaction_parser,
     timed_cmd_interaction_parser,
 )
-from sphinx_auto_asciinema.asciinema_player_settings import (
+from sphinx_cli_recorder.asciinema_player_settings import (
     AsciinemaPlayerSettings,
     AsciinemaRecorderSettings,
 )
 
-from sphinx_auto_asciinema.scripted_cmds import SleepTimes
+from sphinx_cli_recorder.scripted_cmds import SleepTimes
+import urllib.parse
 
 logger = logging.getLogger(__name__)
 
@@ -54,15 +56,24 @@ class InteractionMode(Enum):
 
 
 class SphinxAutoAsciinemaSettingNames(BaseModel):
-    player_settings = "sphinx_auto_asciinema_player_settings"
-    sleep_times_settings = "sphinx_auto_asciinema_sleep_times_settings"
-    cmd_runner_settings = "sphinx_auto_asciinema_cmd_runner_settings"
+    player_settings = "sphinx_cli_recorder_player_settings"
+    sleep_times_settings = "sphinx_cli_recorder_sleep_times_settings"
+    cmd_runner_settings = "sphinx_cli_recorder_cmd_runner_settings"
 
 
 # TODO: Always purge directory; should be configurable if desired to only update if document has changed
 # No purge necessary, because I do not have a global cache... I think
 # I think the recs should be cleared every-time, except for when the
 # configuration says that it is not necessary
+def purge_commands(app: Sphinx, env: BuildEnvironment, docname: str):
+    ic()
+    if not hasattr(env, "sphinx_cli_recorder_commands"):
+        return
+    env.sphinx_cli_recorder_commands = [
+        asciinema_command
+        for asciinema_command in env.sphinx_cli_recorder_commands
+        if asciinema_command["docname"] != docname
+    ]
 
 
 def copy_resources(app: Sphinx, exception, resources: Optional[List[str]] = None):
@@ -86,64 +97,58 @@ def copy_resources(app: Sphinx, exception, resources: Optional[List[str]] = None
         return
 
     for resource in resources:
-        if not importlib.resources.is_resource(sphinx_auto_asciinema, resource):
+        if not importlib.resources.is_resource(sphinx_cli_recorder, resource):
             raise ValueError(f"{JS_RESOURCE} is an unknown resource!")
-        with importlib.resources.path(sphinx_auto_asciinema, resource) as resource_path:
+        with importlib.resources.path(sphinx_cli_recorder, resource) as resource_path:
             outdir = Path(app.outdir) / "_static"
             if exception is None:
                 copy_asset(str(resource_path), str(outdir))
 
 
-class CommandRunner(Transform):
-    default_priority = 600
+def run_cmds(app: Sphinx, env: EnvBuilder):
+    """
+    Function that access the extension-cache from within `env`.
+    The function will execute all commands in an asynchronous loop.
 
-    @property
-    def app(self) -> Sphinx:
-        return self.env.app
+    Currently, this is also the spot where the directory is cleaned
+    from all the previous output recordings.
+    """
+    outdir = Path(app.outdir) / "_recs"
+    # FUTURE: Allow to skip files if they already exist
+    # would require the setting an :cache: option to the directive
+    # which would require me to create a unique-hash for the command
+    # input, because it must be re-run if any other options changes
+    # FUTURE: Delete files when name changed for example
+    outdir.mkdir(exist_ok=True)
+    for old_rec in outdir.glob("*.rec"):
+        if old_rec.is_file():
+            old_rec.unlink()
+    if not hasattr(env, "sphinx_cli_recorder_commands"):
+        return
 
-    @property
-    def env(self):
-        return self.document.settings.env
+    with tempfile.TemporaryDirectory(prefix="sphinx-asciinema") as tmpdirname:
+        tmpdir_p = Path(tmpdirname)
+        asciinema_nodes = [entry["node"] for entry in env.sphinx_cli_recorder_commands]
+        commands = [node["command"] for node in asciinema_nodes]
+        expect_groups = [node["expects"] for node in asciinema_nodes]
+        output_fps = [tmpdir_p / node["fname"] for node in asciinema_nodes]
+        send_groups = [node["sends"] for node in asciinema_nodes]
+        sleep_times_groups = [node["sleep_times"] for node in asciinema_nodes]
+        recorder_settings_list = [node["recorder_settings"] for node in asciinema_nodes]
+        ic(commands)
+        ic(output_fps)
 
-    # Will be called for every document
-    # Which makes it extremely inefficient...
-    # This should not be a transform
-    def apply(self, **_kwargs):
-        ic()
-        matcher = NodeMatcher(asciinema)
-        outdir = Path(self.app.outdir) / "_recs"
-        # FUTURE: Allow to skip files if they already exist
-        # would require the setting an :cache: option to the directive
-        # which would require me to create a unique-hash for the command
-        # input, because it must be re-run if any other options changes
-        outdir.mkdir(exist_ok=True)
-        for old_rec in outdir.glob("*.rec"):
-            if old_rec.is_file():
-                old_rec.unlink()
+        asyncer.syncify(scripted_asciinema_runners, raise_sync_error=False)(
+            cmds=commands,
+            expect_groups=expect_groups,
+            send_groups=send_groups,
+            output_fps=output_fps,
+            sleep_times_groups=sleep_times_groups,
+            recorder_settings_list=recorder_settings_list,
+        )
 
-        with tempfile.TemporaryDirectory(prefix="sphinx-asciinema") as tmpdirname:
-            tmpdir_p = Path(tmpdirname)
-            matching_nodes = [node for node in self.document.traverse(matcher)]
-            commands = [node["command"] for node in matching_nodes]
-            output_fps = [tmpdir_p / str(node["fname"]) for node in matching_nodes]
-            expect_groups = [node["expects"] for node in matching_nodes]
-            send_groups = [node["sends"] for node in matching_nodes]
-            sleep_times_groups = [node["sleep_times"] for node in matching_nodes]
-            recorder_settings_list = [
-                node["recorder_settings"] for node in matching_nodes
-            ]
-
-            asyncer.syncify(scripted_asciicasts_runner, raise_sync_error=False)(
-                cmds=commands,
-                expect_groups=expect_groups,
-                send_groups=send_groups,
-                output_fps=output_fps,
-                sleep_times_groups=sleep_times_groups,
-                recorder_settings_list=recorder_settings_list,
-            )
-
-            for output_fp in output_fps:
-                copy_asset(str(output_fp), str(outdir))
+        for output_fp in output_fps:
+            copy_asset(str(output_fp), str(outdir))
 
 
 class asciinema(nodes.container):
@@ -169,7 +174,21 @@ def depart_asciinema_node(self: HTML5Translator, node: nodes.Element):
     pass
 
 
-class AsciinemaBaseDirective(SphinxDirective):
+def merge_cmds(
+    _app: Sphinx, env: BuildEnvironment, docnames: Set[str], other: BuildEnvironment
+):
+    """
+    Merge the extension-cache of sphinx_cli_recorder.
+    This is only run when parallel-write is enabled.
+    """
+    ic()
+    if not hasattr(env, "sphinx_cli_recorder_commands"):
+        env.sphinx_cli_recorder_commands = []
+    if hasattr(other, "sphinx_cli_recorder_commands"):
+        env.sphinx_cli_recorder_commands.extend(other.sphinx_cli_recorder_commands)
+
+
+class RecordCliBaseDirective(SphinxDirective):
     has_content: bool = True
     # postpone validation; will use pydantic to validate
     # the option spec must still define all available options
@@ -189,8 +208,9 @@ class AsciinemaBaseDirective(SphinxDirective):
     # FUTURE: figure out how to cleanly refactor this
     # branchy code
     def run(self) -> List[nodes.Node]:
+        ic("running directive")
         if self.interaction_mode is None:
-            raise NotImplementedError("Do not call AsciinemaBaseDirective directly!")
+            raise NotImplementedError("Do not call RecordCliBaseDirective directly!")
         if self.interaction_mode == InteractionMode.DirectExecution:
             sends = None
             expects = None
@@ -207,7 +227,6 @@ class AsciinemaBaseDirective(SphinxDirective):
             expects = [p.wait_for for p in wait_for_send_pairs]
 
         conf_player_options = self.env.config[self.setting_names.player_settings]
-        # self.options may contain more keys than only those of player_options
         local_player_options = {
             k: v
             for k, v in self.options.items()
@@ -235,12 +254,12 @@ class AsciinemaBaseDirective(SphinxDirective):
         id_ = self.state.document.settings.env.new_serialno("asciinema")
         target_id = f"asciinema-{id_}"
         # in HTML the target_id is the class id value!
-        # Future: Understand if/how to not repeat target_id and use it in two different parts
-        # IndexDirective does it the same way
         target_node = nodes.target(rawsource="", text="", ids=[target_id])
-        # if direct mode
+
+        # this _should_ be globally unique!
+        fname = f"{self.env.docname}-{target_id}.rec"
         asciinema_node = asciinema(
-            fname=f"{target_id}.rec",
+            fname=urllib.parse.quote(fname, safe=""),
             sends=sends,
             expects=expects,
             recorder_settings=validated_recorder_settings,
@@ -250,18 +269,29 @@ class AsciinemaBaseDirective(SphinxDirective):
             sleep_times=validated_sleep_times,
             id=target_id,
         )
+
+        if not hasattr(self.env, "sphinx_cli_recorder_commands"):
+            self.env.sphinx_cli_recorder_commands = []
+
+        self.env.sphinx_cli_recorder_commands.append(
+            {
+                "node": asciinema_node.deepcopy(),
+                "docname": self.env.docname,
+            }
+        )
+
         return [target_node, asciinema_node]
 
 
-class AsciinemaRunDirective(AsciinemaBaseDirective):
+class RecordCliCmdDirective(RecordCliBaseDirective):
     interaction_mode: InteractionMode = InteractionMode.DirectExecution
 
 
-class AsciinemaScriptedCmdInteractionDirective(AsciinemaBaseDirective):
+class RecordScriptedCliInteractionDirective(RecordCliBaseDirective):
     interaction_mode: InteractionMode = InteractionMode.Scripted
 
 
-class AsciinemaTimedCmdInteractionDirective(AsciinemaBaseDirective):
+class RecordTimedCliInteractionDirective(RecordCliBaseDirective):
     interaction_mode: InteractionMode = InteractionMode.Timed
 
 
@@ -279,18 +309,16 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value(sleep_times_settings, {}, rebuild="html")
 
     app.connect("build-finished", copy_local_resources)
-    app.add_transform(CommandRunner)
-    # FUTURE: Only add js/css resources if Directive in page is found
+    app.connect("env-updated", run_cmds)
+    app.connect("env-merge-info", merge_cmds)
+    app.connect("env-purge-doc", purge_commands)
     app.add_css_file(CSS_RESOURCE)
-    # FUTURE: maybe think about re-naming asciinema to "record" prefix
-    # for the directives because the user doesn't "need" to know that it
-    # is using asciinema in the background
-    app.add_directive("asciinema_run_cmd", AsciinemaRunDirective)
+    app.add_directive("record_cli_cmd", RecordCliCmdDirective)
     app.add_directive(
-        "asciinema_scripted_cmd_interaction", AsciinemaScriptedCmdInteractionDirective
+        "record_scripted_cli_interaction", RecordScriptedCliInteractionDirective
     )
     app.add_directive(
-        "asciinema_timed_cmd_interaction", AsciinemaTimedCmdInteractionDirective
+        "record_timed_cli_interaction", RecordTimedCliInteractionDirective
     )
     return {
         "version": __version__,

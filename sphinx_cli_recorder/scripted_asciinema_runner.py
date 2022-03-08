@@ -7,11 +7,10 @@ from typing import List, Optional, Sequence
 import asyncer
 import pexpect
 import pexpect.replwrap
-from icecream import ic
 from pydantic import validate_arguments
-from sphinx_auto_asciinema.asciinema_player_settings import AsciinemaRecorderSettings
+from sphinx_cli_recorder.asciinema_player_settings import AsciinemaRecorderSettings
 
-from sphinx_auto_asciinema.scripted_cmds import (
+from sphinx_cli_recorder.scripted_cmds import (
     SleepTimes,
     scripted_cmd_interaction,
     timed_cmd_interaction,
@@ -19,7 +18,7 @@ from sphinx_auto_asciinema.scripted_cmds import (
 
 
 @validate_arguments()
-async def scripted_asciicast_runner(
+async def scripted_asciinema_runner(
     cmd: str,
     expects: Optional[Sequence[str]],
     sends: Optional[Sequence[str]],
@@ -51,7 +50,7 @@ async def scripted_asciicast_runner(
 
 
 @validate_arguments
-async def scripted_asciicasts_runner(
+async def scripted_asciinema_runners(
     cmds: List[str],
     expect_groups: Sequence[Optional[Sequence[str]]],
     send_groups: Sequence[Optional[Sequence[str]]],
@@ -68,6 +67,6 @@ async def scripted_asciicasts_runner(
             sleep_times_groups,
             recorder_settings_list,
         ):
-            task_group.soonify(scripted_asciicast_runner)(
+            task_group.soonify(scripted_asciinema_runner)(
                 cmd, expects, sends, output_fp, sleep_times, recorder_settings
             )

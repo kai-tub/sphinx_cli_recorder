@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath("./asciinema_sphinx"))
 
 # -- Project information -----------------------------------------------------
 
-project = "asciinema-sphinx"
+project = "sphinx-cli-recorder"
 copyright = "2022, Kai Norman Clasen"
 author = "Kai Norman Clasen"
 
@@ -29,12 +29,13 @@ author = "Kai Norman Clasen"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx_auto_asciinema",
+    "sphinx_cli_recorder",
     "myst_parser",
     "sphinx_external_toc",
     "sphinx_inline_tabs",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.mermaid",
+    "sphinx_design",
 ]
 external_toc_path = "_toc.yml"
 
@@ -65,6 +66,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # target, inventory
 intersphinx_mapping = {
     "pexpect": ("https://pexpect.readthedocs.io/en/stable/", None),
+    "rich": ("https://rich.readthedocs.io/en/stable/", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
 }
 myst_url_schemes = [
@@ -82,7 +84,7 @@ html_theme = "furo"
 # pygments_dark_style = "monokai"
 
 # TODO: Fix the ignored load!
-sphinx_auto_asciinema_player_settings = {"rows": 20}
+sphinx_cli_recorder_player_settings = {"rows": 20}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

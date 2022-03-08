@@ -45,9 +45,17 @@ The build phases:
 > A transformer object is attached to every new document tree.
 > Transforms change the document tree from one form to another, add to the tree, or prune it.
 
-Under the section "Writers", the following can be found:
+Under the section "Writers," the following paragraph can be found:
 > Writers produce the final output (HTML, XML, TeX, etc.).
 > Writers translate the internal document tree structure into the final data format,
 > possibly running Writer-specific transforms first.
 
 From [pep-0258](https://docutils.sourceforge.io/docs/peps/pep-0258.html#transformer)
+
+Transformers are applied after parsing every document!
+This is **not** the place to apply global/parallel code!
+
+## Environment
+State -> Is stored on disk
+
+Needs to be purged if it contains cache from extensions.

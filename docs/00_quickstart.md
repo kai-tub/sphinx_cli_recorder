@@ -11,56 +11,72 @@ The best way to understand what the extension is capable of and if it is useful 
 <!-- Future: Ensure that correct command is always run -->
 
 
-::::{tab} reST
+
+:::::{tab-set}
+::::{tab-item} reST
+:sync: reST
+
 :::{code-block} reST
-.. asciinema_run_cmd:: python -m sphinx_auto_asciinema.testing.animation_example
+.. record_cli_cmd:: python -m sphinx_cli_recorder.testing.animation_example
 :::
 
 ::::
 
-::::{tab} md
+::::{tab-item} md
+:sync: md
+
 :::{code-block} md
-```{asciinema_run_cmd} python -m sphinx_auto_asciinema.testing.animation_example
+```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
 ::::
+:::::
 
 <!-- Doesn't make the option in lower! -->
-```{asciinema_run_cmd} python -m sphinx_auto_asciinema.testing.animation_example
+```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
 
 
 The extension embeds a _recording_ of a command, here:
 ```bash
-python -m sphinx_auto_asciinema.testing.animation_example
+python -m sphinx_cli_recorder.testing.animation_example
 ```
 
 Showcasing an example output of a specific command is especially helpful for tools similar to  [rich](rich:introduction) that provide amazing formatting/highlighting options for the command line.
 The directive can be used to automatically generate a nice-looking and always up-to-date help page for a CLI tool in development.
 
-::::{tab} reST
+:::::{tab-set}
+::::{tab-item} reST
+:sync: reST
+
 :::{code-block} reST
-.. asciinema_run_cmd:: rich --help
+.. record_cli_cmd:: rich --help
 :::
 
 ::::
 
-::::{tab} md
+::::{tab-item} md
+:sync: md
+
 :::{code-block} md
-```{asciinema_run_cmd} rich --help
+```{record_cli_cmd} rich --help
 ```
 ::::
+:::::
 
 <!-- Doesn't make the option in lower! -->
-```{asciinema_run_cmd} rich --help
-:rows: 66
+```{record_cli_cmd} rich --help
+:rows: 67
 :autoplay: "True"
 ```
 But the extension is not limited to executing commands!
 It is also possible to walk through command-prompts and to script the interaction. 🤯
 
-::::{tab} reST
+:::::{tab-set}
+::::{tab-item} reST
+:sync: reST
+
 :::{code-block} reST
-.. asciinema_timed_cmd_interaction:: python -m sphinx_auto_asciinema.testing.prompt
+.. record_timed_cli_interaction:: python -m sphinx_cli_recorder.testing.prompt
 
     - "y"
     - "5"
@@ -71,9 +87,11 @@ It is also possible to walk through command-prompts and to script the interactio
 
 ::::
 
-::::{tab} md
+::::{tab-item} md
+:sync: md
+
 :::{code-block} md
-```{asciinema_timed_cmd_interaction} python -m sphinx_auto_asciinema.testing.prompt
+```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
     - "y"
     - "5"
@@ -82,9 +100,10 @@ It is also possible to walk through command-prompts and to script the interactio
     - "husky"
 ```
 ::::
+:::::
 
 <!-- Doesn't make the option in lower! -->
-```{asciinema_timed_cmd_interaction} python -m sphinx_auto_asciinema.testing.prompt
+```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
     - "y"
     - "5"
@@ -99,14 +118,14 @@ The interactive functionality targets library authors of CLI tools and command p
 ## Installation
 Install the package:
 ```
-pip install XXX
+pip install sphinx-cli-recorder
 ```
 
-Then add the extension to your [sphinx config (config.py)](sphinx:confval-extensions)
+Then add the extension to your [sphinx config (config.py)](sphinx:extensions)
 
 ```python
 extensions = [
-    "XXX"
+    "sphinx-cli-recorder"
 ]
 ```
 

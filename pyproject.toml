@@ -1,12 +1,11 @@
 [tool.poetry]
-name = "sphinx-auto-asciinema"
+name = "sphinx-cli-recorder"
 version = "0.1.0"
 description = ""
 authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-# asciinema = "^2.1.0"
 asciinema = { git = "https://github.com/asciinema/asciinema", branch = "develop"}
 Sphinx = "^4.4.0"
 pexpect = "^4.8.0"
@@ -17,6 +16,7 @@ antidote = "^1.0.1"
 pydantic = "^1.9.0"
 PyYAML = "^6.0"
 yamale = "^4.0.3"
+autodoc-pydantic = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 rich = "^11.2.0"
@@ -31,13 +31,12 @@ myst-parser = {extras = ["linkify"], version = "^0.17.0"}
 sphinx-external-toc = "^0.2.4"
 sphinx-inline-tabs = "^2022.1.2-beta.11"
 sphinxcontrib-mermaid = "^0.7.1"
+sphinx-design = "^0.0.13"
+rich-cli = "^1.5.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-cli_hello = "sphinx_auto_asciinema:_cli_hello"
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"

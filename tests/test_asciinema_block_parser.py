@@ -1,5 +1,5 @@
 import pytest
-from sphinx_auto_asciinema.asciinema_block_parser import *
+from sphinx_cli_recorder.asciinema_block_parser import *
 
 
 # Future: Let Hypthesis loose on the content input!

@@ -1,7 +1,7 @@
 from pydantic import ValidationError
 import pytest
 import pexpect
-from sphinx_auto_asciinema.scripted_cmds import (
+from sphinx_cli_recorder.scripted_cmds import (
     SleepTimes,
     scripted_cmd_interaction,
     timed_cmd_interaction,
@@ -13,14 +13,14 @@ PEXPECT_TYPE = pexpect.pty_spawn.spawn
 
 @pytest.fixture
 def simple_prompt_proc() -> PEXPECT_TYPE:
-    return pexpect.spawn("python -m sphinx_auto_asciinema.testing.prompt", timeout=1)
+    return pexpect.spawn("python -m sphinx_cli_recorder.testing.prompt", timeout=1)
 
 
 @pytest.fixture
 def simple_prompt_proc_with_echo() -> PEXPECT_TYPE:
     # Doesn't work as expected
     return pexpect.spawn(
-        "python -m sphinx_auto_asciinema.testing.prompt",
+        "python -m sphinx_cli_recorder.testing.prompt",
         logfile=sys.stdout,
         encoding="utf-8",
         timeout=1,

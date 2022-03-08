@@ -16,19 +16,12 @@ from rich.console import Console
 
 def progress_example():
     syntax = Syntax(
-        '''def loop_last(values: Iterable[T]) -> Iterable[Tuple[bool, T]]:
-    """Iterate and generate a tuple with a flag for last value."""
-    iter_values = iter(values)
-    try:
-        previous_value = next(iter_values)
-    except StopIteration:
-        return
-    for value in iter_values:
-        yield False, previous_value
-        previous_value = value
-    yield True, previous_value''',
+        '''def hello_potential_user():
+    """Say hello to a potential user 💜"""
+    # this is comment
+    s = "Do you want to use a cool extension?"
+    print(s)''',
         "python",
-        line_numbers=True,
     )
 
     table = Table("rich", "is", "awesome")

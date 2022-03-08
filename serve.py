@@ -7,8 +7,8 @@ for watch_dir in [
     "docs/*.rst",
     "docs/*.md",
     "docs/*.py",
-    "sphinx_auto_asciinema/*.py",
-    "sphinx_auto_asciinema/_static/*",
+    "sphinx_cli_recorder/*.py",
+    "sphinx_cli_recorder/_static/*",
 ]:
     server.watch(watch_dir, run_cmd)
 

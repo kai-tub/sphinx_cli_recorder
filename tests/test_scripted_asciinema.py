@@ -8,11 +8,10 @@
 
 import pytest
 import tempfile
-from sphinx_auto_asciinema.scripted_asciicast_runner import (
-    scripted_asciicast_runner,
-    scripted_asciicasts_runner,
+from sphinx_cli_recorder.scripted_asciinema_runner import (
+    scripted_asciinema_runner,
 )
-from sphinx_auto_asciinema.scripted_cmds import SleepTimes
+from sphinx_cli_recorder.scripted_cmds import SleepTimes
 from pathlib import Path
 
 
@@ -22,5 +21,5 @@ async def test_single_cmd():
     expects = None
     sends = None
     with tempfile.NamedTemporaryFile() as tmpfile:
-        await scripted_asciicast_runner(cmd, expects, sends, tmpfile.name, SleepTimes())
+        await scripted_asciinema_runner(cmd, expects, sends, tmpfile.name, SleepTimes())
         assert Path(tmpfile.name).stat().st_size > 0

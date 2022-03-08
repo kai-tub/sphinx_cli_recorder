@@ -22,7 +22,7 @@ It might not be worth it to go down this path in the early stages of this librar
 A possible work-around would be to investigate how to use the `poster` option of asciinema to display the command-to-run before.
 
 Also on the _nice-to-have-but-might-never-happen-list_:
-- [ ] whitelist option
 - [ ] mixed await and time specification
 - [ ] add better error-messages
 - [ ] add aliases to the validators for the mixedCase option-inputs
+- [ ] whitelist option
