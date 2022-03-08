@@ -38,7 +38,7 @@ class AsciinemaPlayerSettings(AsciinemaRecorderSettings):
     startat: Union[str, PositiveInt] = 0
     # could also be int
     speed: PositiveFloat = 1.0
-    theme: AsciinemaTheme = AsciinemaTheme.monokai
+    theme: AsciinemaTheme = AsciinemaTheme.asciinema
     # FUTURE: could use poster to show what command
     # was run/will be run
     poster: Optional[str] = None
