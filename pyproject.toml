@@ -30,6 +30,7 @@ furo = "^2022.3.4"
 myst-parser = {extras = ["linkify"], version = "^0.17.0"}
 sphinx-external-toc = "^0.2.4"
 sphinx-inline-tabs = "^2022.1.2-beta.11"
+sphinxcontrib-mermaid = "^0.7.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

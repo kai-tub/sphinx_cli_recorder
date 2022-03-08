@@ -34,6 +34,7 @@ extensions = [
     "sphinx_external_toc",
     "sphinx_inline_tabs",
     "sphinx.ext.intersphinx",
+    "sphinxcontrib.mermaid",
 ]
 external_toc_path = "_toc.yml"
 
@@ -76,10 +77,11 @@ myst_url_schemes = [
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-# html_theme = "furo"
+html_theme = "furo"
 # pygments_light_style = "monokai"
 # pygments_dark_style = "monokai"
 
+# TODO: Fix the ignored load!
 sphinx_auto_asciinema_player_settings = {"rows": 20}
 
 # Add any paths that contain custom static files (such as style sheets) here,
