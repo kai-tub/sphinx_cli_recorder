@@ -1,25 +1,25 @@
 
-# Customization
+# Configuration
 
 <!-- FUTURE: use autopydantic_model -->
 <!-- Or something similar to automatically generate the documentation from code -->
 
-:::{note}
-In the dropdown the last few columns are cut-off.
-This seems to be due to a CSS issue regarding the `border` option.
-If the `border` css is disabled in the `class=asciinema-terminal` the
-issue is _fixed_, as in the end of span/line is visible but now there is no border...
+:::{warning}
+In the dropdown menus, the last few columns are cut-off.
+The issue seems to be due to a CSS conflict regarding the dropdown's alignment/width/margin properties.
+If the `border` CSS is disabled in the `class=asciinema-terminal`, the issue is _fixed_, in that the end of span/line is visible, but now there is no border...
 
 Frontend development in Sphinx makes me cry 😭
 :::
 
-## Columns
+## Player-Configuration
+### Columns
     :cols: PositiveNumber
 
 Define the number of columns the terminal should have.
 The extension will ensure that the same number of columns is used for the recording and playback.
-If the number of rows is columns is too low, output could be wrapped weirdly.
-The text will also be _zoomed-in_ to fill the width.
+If the number of columns is too low, the output could be wrapped weirdly.
+The text will also be _zoomed-in_ to fit the width of the container.
 
 ::::{dropdown} :cols: 20
 :animate: fade-in-slide-down
@@ -37,7 +37,7 @@ The text will also be _zoomed-in_ to fill the width.
 :::
 ::::
 
-## Rows
+### Rows
     :rows: PositiveNumber
 
 Define the number of rows the terminal should have.
@@ -61,7 +61,7 @@ Similar to how a _real_ terminal behaves.
 :::
 ::::
 
-## Auto-Play
+### Auto-Play
     :autoplay: "true"/"false"
 
 Set if the playback should start automatically.
@@ -88,19 +88,19 @@ Another reason is to start an eye-catching animation at the top of the page.
 :::
 ::::
 
-## Preload
+### Preload
 
-## Loop
+### Loop
 
-## Start-At
+### Start-At
 
-## Speed
+### Speed
 
-## Idle Time Limit
+### Idle Time Limit
 
-## Fit
+### Fit
 
-## Poster
+### Poster
 ::::{dropdown} :poster: "data:text/plain,rich --help"
 :animate: fade-in-slide-down
 
@@ -121,7 +121,7 @@ Another reason is to start an eye-catching animation at the top of the page.
 :::
 ::::
 
-## Theme
+### Theme
 Define the style of the background and color-palette of the terminal.
 
 ::::{dropdown} :theme: "asciinema"
