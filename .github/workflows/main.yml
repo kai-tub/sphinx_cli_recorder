@@ -52,7 +52,7 @@ jobs:
       - name: Build documentation
         run: |
           source $VENV
-          sphinx-build /docs /docs/_build
+          sphinx-build docs docs/_build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
