@@ -5,7 +5,7 @@ description = ""
 authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 asciinema = { git = "https://github.com/asciinema/asciinema", branch = "develop"}
 Sphinx = "^4.4.0"
 pexpect = "^4.8.0"
