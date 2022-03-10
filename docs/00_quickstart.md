@@ -63,7 +63,7 @@ The directive can be used to automatically generate a nice-looking and always up
 ::::
 :::::
 
-<!-- Doesn't make the option in lower! -->
+<!-- Doesn't make the option in lower -->
 ```{record_cli_cmd} rich --help
 :rows: 67
 :autoplay: "True"

@@ -165,7 +165,7 @@ def visit_asciinema_node(self: HTML5Translator, node: nodes.Element):
     # But still only run the AsciinemaPlayer code once the script has been loaded
     js_script_loader = f"<script src=_static/{JS_RESOURCE}></script>"
     self.body.append(js_script_loader)
-    template = "<script>\nAsciinemaPlayer.create('/_recs/{fname}', document.getElementById('{id}'), {options});\n</script>"
+    template = "<script>\nAsciinemaPlayer.create('_recs/{fname}', document.getElementById('{id}'), {options});\n</script>"
     tag = template.format(id=node["id"], fname=node["fname"], options=js_player_options)
     self.body.append(tag)
 
