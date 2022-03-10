@@ -29,7 +29,7 @@ jobs:
         run: poetry install --no-interaction
       - name: Run tests
         run: |
-          source .venv/bin/activate
+          source $VENV
           pytest "tests/"
   build-documentation:
     name: Build documentation
@@ -47,7 +47,7 @@ jobs:
           installer-parallel: true
       - name: Build documentation
         run: |
-          source .venv/bin/activate
+          source $VENV
           sphinx-build /docs /docs/_build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
