@@ -1,3 +1,3 @@
-{"version": 2, "width": 20, "height": 24, "timestamp": 1646914354, "idle_time_limit": 5.0, "env": {"SHELL": null, "TERM": null}}
-[0.536883, "o", "\r\n"]
-[0.550919, "o", "\u001b[37;44m╔═\u001b[0m\u001b[37;44m══ rich.Panel ══\u001b[0m\u001b[37;44m═╗\u001b[0m\r\n\u001b[37;44m║\u001b[0m\u001b[37;44m                  \u001b[0m\u001b[37;44m║\u001b[0m\r\n\u001b[37;44m║\u001b[0m\u001b[37;44m \u001b[0m\u001b[37;44mHello, World!\u001b[0m\u001b[37;44m   \u001b[0m\u001b[37;44m \u001b[0m\u001b[37;44m║\u001b[0m\r\n\u001b[37;44m║\u001b[0m\u001b[37;44m                  \u001b[0m\u001b[37;44m║\u001b[0m\r\n\u001b[37;44m╚══════════════════╝\u001b[0m\r\n"]
+{"version": 2, "width": 20, "height": 24, "timestamp": 1646914924, "idle_time_limit": 5.0, "env": {"SHELL": null, "TERM": null}}
+[0.583921, "o", "\r\n"]
+[0.603864, "o", "\u001b[37;44m╔═\u001b[0m\u001b[37;44m══ rich.Panel ══\u001b[0m\u001b[37;44m═╗\u001b[0m\r\n\u001b[37;44m║\u001b[0m\u001b[37;44m                  \u001b[0m\u001b[37;44m║\u001b[0m\r\n\u001b[37;44m║\u001b[0m\u001b[37;44m \u001b[0m\u001b[37;44mHello, World!\u001b[0m\u001b[37;44m   \u001b[0m\u001b[37;44m \u001b[0m\u001b[37;44m║\u001b[0m\r\n\u001b[37;44m║\u001b[0m\u001b[37;44m                  \u001b[0m\u001b[37;44m║\u001b[0m\r\n\u001b[37;44m╚══════════════════╝\u001b[0m\r\n"]
