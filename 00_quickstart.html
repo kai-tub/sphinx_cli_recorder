@@ -1,0 +1,424 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Limitations" href="02_limitation.html" /><link rel="prev" title="Welcome to the Sphinx-CLI-Recorder documentation!" href="intro.html" />
+
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+        <title>Quickstart - sphinx-cli-recorder documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="intro.html"><div class="brand">sphinx-cli-recorder  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="intro.html">
+  
+  
+  <span class="sidebar-brand-text">sphinx-cli-recorder  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_limitation.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30_internals.html">Internals</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section class="tex2jax_ignore mathjax_ignore" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h1>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Explain with mermaid the three different execution modes</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Show minimal example to run a single command</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Show a minimal example to run through a timed-prompt</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Show a minimal example to run through a scripted wait-run prompt</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Point out the major difference</p></li>
+</ul>
+<p>The best way to understand what the extension is capable of and if it is useful for you, is to simply look at an example:</p>
+<!-- Future: Ensure that correct command is always run -->
+<div class="sd-tab-set docutils">
+<input checked="checked" id="09efd429-7d9d-44fc-9478-c6183faac2b4" name="fc633b0f-01e3-4a7c-8590-9e43ed719277" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="09efd429-7d9d-44fc-9478-c6183faac2b4">
+reST</label><div class="sd-tab-content docutils">
+<div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.animation_example
+</pre></div>
+</div>
+</div>
+<input id="9ab2eb1e-6267-49b9-89ee-51cfef0bf467" name="fc633b0f-01e3-4a7c-8590-9e43ed719277" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="9ab2eb1e-6267-49b9-89ee-51cfef0bf467">
+md</label><div class="sd-tab-content docutils">
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
+```
+</pre></div>
+</div>
+</div>
+</div>
+<!-- Doesn't make the option in lower! -->
+<div class="asciinema" id="asciinema-0">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('/_recs/00_quickstart-asciinema-0.rec', document.getElementById('asciinema-0'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+</script><p>The extension embeds a <em>recording</em> of a command, here:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m sphinx_cli_recorder.testing.animation_example
+</pre></div>
+</div>
+<p>Showcasing an example output of a specific command is especially helpful for tools similar to  <a class="reference external" href="https://rich.readthedocs.io/en/stable/introduction.html#introduction" title="(in Rich)"><span class="xref myst">rich</span></a> that provide amazing formatting/highlighting options for the command line.
+The directive can be used to automatically generate a nice-looking and always up-to-date help page for a CLI tool in development.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="2c4ea93b-342b-4a01-9f98-254a7b48ec57" name="f59a08f8-eca8-4598-9046-80d397cb1318" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="2c4ea93b-342b-4a01-9f98-254a7b48ec57">
+reST</label><div class="sd-tab-content docutils">
+<div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> rich --help
+</pre></div>
+</div>
+</div>
+<input id="cc85a945-eadf-454e-ba74-4453ffbe460b" name="f59a08f8-eca8-4598-9046-80d397cb1318" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="cc85a945-eadf-454e-ba74-4453ffbe460b">
+md</label><div class="sd-tab-content docutils">
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} rich --help
+```
+</pre></div>
+</div>
+</div>
+</div>
+<!-- Doesn't make the option in lower! -->
+<div class="asciinema" id="asciinema-1">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('/_recs/00_quickstart-asciinema-1.rec', document.getElementById('asciinema-1'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+</script><p>But the extension is not limited to executing commands!
+It is also possible to walk through command-prompts and to script the interaction. 🤯</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="7b6c7f06-6bd5-4fae-ba3d-fc3907ca10ce" name="0abfc12a-148b-4ef8-9418-c1d74385fe4e" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="7b6c7f06-6bd5-4fae-ba3d-fc3907ca10ce">
+reST</label><div class="sd-tab-content docutils">
+<div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
+
+    <span class="m">-</span> "y"
+    <span class="m">-</span> "5"
+    <span class="m">-</span> "2"
+    <span class="m">-</span> "poodle"
+    <span class="m">-</span> "husky"
+</pre></div>
+</div>
+</div>
+<input id="1cb9cc21-2137-410e-9c71-8d8d027ee8ff" name="0abfc12a-148b-4ef8-9418-c1d74385fe4e" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="1cb9cc21-2137-410e-9c71-8d8d027ee8ff">
+md</label><div class="sd-tab-content docutils">
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
+
+    <span class="k">-</span> "y"
+    <span class="k">-</span> "5"
+    <span class="k">-</span> "2"
+    <span class="k">-</span> "poodle"
+    <span class="k">-</span> "husky"
+```
+</pre></div>
+</div>
+</div>
+</div>
+<!-- Doesn't make the option in lower! -->
+<div class="asciinema" id="asciinema-2">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('/_recs/00_quickstart-asciinema-2.rec', document.getElementById('asciinema-2'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+</script><p>The interactive functionality targets library authors of CLI tools and command prompt authors.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>Install the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">recorder</span>
+</pre></div>
+</div>
+<p>Then add the extension to your <span class="xref myst">sphinx config (config.py)</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"sphinx-cli-recorder"</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="runner-directives">
+<h2>Runner directives<a class="headerlink" href="#runner-directives" title="Permalink to this headline">#</a></h2>
+<p>This sphinx extension provides three directives to animate a CLI interaction.
+To decide which directive you should use, you may use the following flow-chart.</p>
+<div class="mermaid">
+                flowchart TD
+        Command --&gt; B{Interaction\nRequired?}
+        B -- No --&gt; C[Use cmd_runner]
+        B -- Yes --&gt; D[Use timed/scripted_cmd_runner]
+        </div></section>
+<section id="command-runner">
+<h2>Command runner<a class="headerlink" href="#command-runner" title="Permalink to this headline">#</a></h2>
+<p>The command runner will simply execute the input <code class="docutils literal notranslate"><span class="pre">command</span></code> as a new process.
+The command must terminate without any input.</p>
+</section>
+<section id="timed-command-runner">
+<h2>Timed command runner<a class="headerlink" href="#timed-command-runner" title="Permalink to this headline">#</a></h2>
+<p>Has a list of strings that will be send to the terminal.
+The <code class="docutils literal notranslate"><span class="pre">send</span></code> string will be terminated by appending a newline, or from a users viewpoint, by <em>hitting enter</em>.
+Between all <code class="docutils literal notranslate"><span class="pre">sends</span></code> (and before the first) the <code class="docutils literal notranslate"><span class="pre">between_commands</span></code> time in seconds
+is waited.
+To create more <em>realistic</em> command inputs, the characters of the <code class="docutils literal notranslate"><span class="pre">send</span></code> strings will be send
+with a delay.
+After each character, the sending is paused for <code class="docutils literal notranslate"><span class="pre">between_character</span></code> seconds.</p>
+</section>
+<section id="scripted-command-runner">
+<h2>Scripted command runner<a class="headerlink" href="#scripted-command-runner" title="Permalink to this headline">#</a></h2>
+<p>For more details on the directives and on how to configure the options, please
+see the following section.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="02_limitation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Limitations</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="intro.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Kai Norman Clasen
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Quickstart</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#runner-directives">Runner directives</a></li>
+<li><a class="reference internal" href="#command-runner">Command runner</a></li>
+<li><a class="reference internal" href="#timed-command-runner">Timed command runner</a></li>
+<li><a class="reference internal" href="#scripted-command-runner">Scripted command runner</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/tabs.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    </body>
+</html>
