@@ -66,7 +66,6 @@ class SphinxAutoAsciinemaSettingNames(BaseModel):
 # I think the recs should be cleared every-time, except for when the
 # configuration says that it is not necessary
 def purge_commands(app: Sphinx, env: BuildEnvironment, docname: str):
-    ic()
     if not hasattr(env, "sphinx_cli_recorder_commands"):
         return
     env.sphinx_cli_recorder_commands = [
@@ -135,8 +134,7 @@ def run_cmds(app: Sphinx, env: EnvBuilder):
         send_groups = [node["sends"] for node in asciinema_nodes]
         sleep_times_groups = [node["sleep_times"] for node in asciinema_nodes]
         recorder_settings_list = [node["recorder_settings"] for node in asciinema_nodes]
-        ic(commands)
-        ic(output_fps)
+        ic("Executing:", commands)
 
         asyncer.syncify(scripted_asciinema_runners, raise_sync_error=False)(
             cmds=commands,
