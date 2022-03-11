@@ -196,21 +196,36 @@
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-sphinx-cli-recorder-documentation">
 <h1>Welcome to the Sphinx-CLI-Recorder documentation!<a class="headerlink" href="#welcome-to-the-sphinx-cli-recorder-documentation" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>No need to manually record a terminal session</p></li>
-</ul>
-<p>Why better than GIF’s</p>
-<ul class="simple">
-<li><p>Allows directly copying from a terminal session</p></li>
-<li><p>Configurable play-back</p></li>
-<li><p>Smaller file sizes without losing resolution</p></li>
-<li><p>No binary dependency</p></li>
-</ul>
+<p>This Sphinx extension is tool to allow you to easily automate terminal/CLI recording session (without you having to leave the documentation document 🤯)</p>
+<p>If you are developing a neat CLI application, possibly with <a class="reference external" href="https://rich.readthedocs.io/en/stable/introduction.html#introduction" title="(in Rich)"><span class="xref myst">rich</span></a> (get it?) visual output, you put blood, sweat and tears into the development part but do you really want to put the same amount of effort into the documentation?
+If you record a terminal session to show-case how to interact with your CLI application, you need to ensure that the recording is kept up-to-date and that it doesn’t break with future updates.
+Then you need to know how to upload the file and embed it into your documentation.
+And all you want to do is to show something cool like:</p>
 <div class="asciinema" id="asciinema-0">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
 AsciinemaPlayer.create('_recs/intro-asciinema-0.rec', document.getElementById('asciinema-0'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
-</script><div class="toctree-wrapper compound">
+</script><p>Or give the user an example on how to navigate your CLI application:</p>
+<div class="asciinema" id="asciinema-1">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('_recs/intro-asciinema-1.rec', document.getElementById('asciinema-1'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+</script><p>Or you are looking for a simple way to always include the most recent help text of a tool you are developing.</p>
+<div class="asciinema" id="asciinema-2">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('_recs/intro-asciinema-2.rec', document.getElementById('asciinema-2'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+</script><p>In all cases, it is probably easier to let the <em>Sphinx-CLI-Recorder</em> handle it for you.
+It uses <span class="xref myst">asciinema</span>, a text-based terminal recorder under the hood.
+Utilizing a text-based terminal player has the following advantages:</p>
+<ul class="simple">
+<li><p>✅ The output is <em>lossless</em>; no more pixelated videos/images with compression artefacts</p></li>
+<li><p>✅ No need to wait for huge-video files to be downloaded</p></li>
+<li><p>✅ The terminal’s content can be copied to the clip-board, no need to manually re-type the commands that are shown in a GIF/video</p></li>
+</ul>
+<p>The extension helps you to automate the recording session, keeps the files up-to-date, and includes the recordings into your documentation.
+The recordings will be done in parallel to minimize the documentation build time and will ensure that provided commands work, before the documentation pipeline succesffully finishes.</p>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
