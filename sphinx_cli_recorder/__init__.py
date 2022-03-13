@@ -11,17 +11,15 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from pydantic import BaseModel
 from sphinx.util.docutils import SphinxDirective
-from typing import List, Dict, Any, Optional, Set, Union
+from typing import List, Dict, Any, Optional, Set
 from sphinx.application import Sphinx
 from sphinx.writers.html5 import HTML5Translator
-from icecream import ic
 import tempfile
 from sphinx.util.fileutil import copy_asset
 from pathlib import Path
 from sphinx.application import Sphinx
 from sphinx.environment import BuildEnvironment
 import importlib
-from docutils.transforms import Transform
 
 from sphinx.util import logging
 import sphinx_cli_recorder
@@ -30,7 +28,6 @@ from functools import partial
 from sphinx_cli_recorder.scripted_asciinema_runner import (
     scripted_asciinema_runners,
 )
-from sphinx.util.nodes import NodeMatcher
 from sphinx_cli_recorder.asciinema_block_parser import (
     scripted_cmd_interaction_parser,
     timed_cmd_interaction_parser,
@@ -61,10 +58,6 @@ class SphinxAutoAsciinemaSettingNames(BaseModel):
     cmd_runner_settings = "sphinx_cli_recorder_cmd_runner_settings"
 
 
-# TODO: Always purge directory; should be configurable if desired to only update if document has changed
-# No purge necessary, because I do not have a global cache... I think
-# I think the recs should be cleared every-time, except for when the
-# configuration says that it is not necessary
 def purge_commands(app: Sphinx, env: BuildEnvironment, docname: str):
     if not hasattr(env, "sphinx_cli_recorder_commands"):
         return
@@ -134,7 +127,6 @@ def run_cmds(app: Sphinx, env: EnvBuilder):
         send_groups = [node["sends"] for node in asciinema_nodes]
         sleep_times_groups = [node["sleep_times"] for node in asciinema_nodes]
         recorder_settings_list = [node["recorder_settings"] for node in asciinema_nodes]
-        ic("Executing:", commands)
 
         asyncer.syncify(scripted_asciinema_runners, raise_sync_error=False)(
             cmds=commands,
@@ -179,7 +171,6 @@ def merge_cmds(
     Merge the extension-cache of sphinx_cli_recorder.
     This is only run when parallel-write is enabled.
     """
-    ic()
     if not hasattr(env, "sphinx_cli_recorder_commands"):
         env.sphinx_cli_recorder_commands = []
     if hasattr(other, "sphinx_cli_recorder_commands"):
@@ -206,7 +197,6 @@ class RecordCliBaseDirective(SphinxDirective):
     # FUTURE: figure out how to cleanly refactor this
     # branchy code
     def run(self) -> List[nodes.Node]:
-        ic("running directive")
         if self.interaction_mode is None:
             raise NotImplementedError("Do not call RecordCliBaseDirective directly!")
         if self.interaction_mode == InteractionMode.DirectExecution:

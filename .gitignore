@@ -1,5 +1,7 @@
 .nodeenv
 node_modules
+links
+tweet.txt
 
 
 # Byte-compiled / optimized / DLL files

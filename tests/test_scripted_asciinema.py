@@ -1,5 +1,4 @@
 # TODO:
-
 # validate asciinema recording file by inspecting it with asciinema
 # and ensuring that more than 1 frame is present
 

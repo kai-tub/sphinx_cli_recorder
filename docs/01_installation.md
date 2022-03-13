@@ -5,7 +5,7 @@ python -m pip install sphinx-cli-recorder
 ```
 
 
-Then enable the extension in your [sphinx config (config.py)](sphinx-docs:extensions)
+Then enable the extension in your [sphinx config (config.py)](sphinx:extensions)
 
 ```python
 extensions = [
