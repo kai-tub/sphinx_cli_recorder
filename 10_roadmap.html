@@ -157,7 +157,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_quickstart.html">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_limitation.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_limitation.html">Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_configuration.html">Configuration</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
@@ -195,7 +197,7 @@
         </div>
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="roadmap">
-<h1>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">#</a></h1>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Increase test coverage</p>
 <ul class="contains-task-list">
@@ -204,7 +206,7 @@
 </ul>
 </li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Try to convince other maintainers to use this extension</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Add more details to the documentation</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Complete the <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> documentation</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Allow caching of the recordings to reduce the wait-time</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Allow reducing the number of subprocesses</p>
 <ul class="contains-task-list">
@@ -219,16 +221,15 @@
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> add better error-messages</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> add aliases to the validators for the <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> option-inputs</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> re-use recording if command with <em>identical</em> settings was already run</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> whitelist option (see security)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> whitelist option (see <a class="reference internal" href="20_security.html#security"><span class="std std-ref">Security concerns</span></a>)</p></li>
 </ul>
 <section id="if-i-had-unlimited-time">
 <h2>If-I-Had-Unlimited-Time<a class="headerlink" href="#if-i-had-unlimited-time" title="Permalink to this headline">#</a></h2>
-<p>I would like to have an interactive shell session, such that the command that is <em>typed</em> into a shell to make it clear how what command was run and how.
-As there could be a difference between the command within the directive and the explanation around the directive.
-But this is not at all trivial:</p>
+<p>I would like to have an interactive shell session, such that the command that is <em>typed</em> into a shell to make it clear what command was run and how.
+<em>But</em> shell-support is not at all trivial:</p>
 <ol class="arabic simple">
 <li><p>It introduces a dependency to an external shell which may produce different visual results depending on the configuration</p></li>
-<li><p>Waiting for the shell prompt is hard because one may not be able to tell how the prompt is configured</p></li>
+<li><p>Waiting for the shell prompt is <em>tricky</em> because one may not be able to tell how the prompt is configured</p></li>
 <li><p>It is hard to tell when the <em>relevant</em> command is done with execution.</p>
 <ol class="arabic simple">
 <li><p>The shell prompt characters could easily be included in the interactive command loop</p></li>
@@ -237,7 +238,8 @@ But this is not at all trivial:</p>
 </ol>
 <p>A possible direction would be to look back at the <code class="docutils literal notranslate"><span class="pre">pyexpect.reprloop</span></code> and see if it is possible to check for return codes.</p>
 <p>It might not be worth it to go down this path in the early stages of this library.
-A possible work-around would be to investigate how to use the <code class="docutils literal notranslate"><span class="pre">poster</span></code> option of <code class="docutils literal notranslate"><span class="pre">asciinema</span></code> to display the command-to-run before.</p>
+A possible work-around would be to use the <code class="docutils literal notranslate"><span class="pre">poster</span></code> option of <code class="docutils literal notranslate"><span class="pre">asciinema</span></code> to display the command-to-run before <em>showing</em> the output.</p>
+<p>I could design the default behavior of <code class="docutils literal notranslate"><span class="pre">poster</span></code> to treat the input as text to make the option more user-friendly.</p>
 </section>
 </section>
 
@@ -317,6 +319,7 @@ A possible work-around would be to investigate how to use the <code class="docut
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>

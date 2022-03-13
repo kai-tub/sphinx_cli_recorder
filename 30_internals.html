@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -157,7 +157,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_quickstart.html">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_limitation.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_limitation.html">Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
@@ -188,7 +190,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -196,42 +198,15 @@
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="internals">
 <h1>Internals<a class="headerlink" href="#internals" title="Permalink to this headline">#</a></h1>
-<p>This library builds on the sholders of two giants.</p>
+<p>This library builds on the shoulders of two giants.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/asciinema/asciinema">asciinema</a></p></li>
 <li><p><a class="reference external" href="https://pexpect.readthedocs.io/en/stable/index.html" title="(in Pexpect v4.8)"><span class="xref myst">pexpect</span></a></p></li>
 </ul>
-<section id="asciinema">
-<h2>Asciinema<a class="headerlink" href="#asciinema" title="Permalink to this headline">#</a></h2>
-<p>Currently, the Sphinx extension is a wrapper around the awesome terminal recorder asciinema.</p>
-<section id="recorder">
-<h3>Recorder<a class="headerlink" href="#recorder" title="Permalink to this headline">#</a></h3>
-<p>A couple of words on the recorder</p>
-</section>
-<section id="player">
-<h3>Player<a class="headerlink" href="#player" title="Permalink to this headline">#</a></h3>
-<p>A couple of words on the player</p>
-</section>
-</section>
-<section id="pexpect">
-<h2>Pexpect<a class="headerlink" href="#pexpect" title="Permalink to this headline">#</a></h2>
-<p>To automate the interaction with asciinema, <code class="docutils literal notranslate"><span class="pre">pexpect</span></code> is used.</p>
-<ul class="simple">
-<li><p>Why no windows</p></li>
-<li><p>What other limitations</p></li>
-</ul>
-</section>
-<section id="architecture">
-<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The project is in a <em>very</em> early stage, the way the extension works <em>will</em> change in the future.</p>
+<div class="admonition-todo admonition">
+<p class="admonition-title">TODO</p>
+<p>Add more details on the internals once I am happy with the internals.</p>
 </div>
-<ul class="simple">
-<li><p>Directive/node parsing</p></li>
-<li><p>Async loop</p></li>
-</ul>
-</section>
 </section>
 
         </article>
@@ -271,33 +246,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Internals</a><ul>
-<li><a class="reference internal" href="#asciinema">Asciinema</a><ul>
-<li><a class="reference internal" href="#recorder">Recorder</a></li>
-<li><a class="reference internal" href="#player">Player</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pexpect">Pexpect</a></li>
-<li><a class="reference internal" href="#architecture">Architecture</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -308,6 +258,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>

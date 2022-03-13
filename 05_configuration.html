@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Roadmap" href="10_roadmap.html" /><link rel="prev" title="Limitations" href="02_limitation.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Roadmap" href="10_roadmap.html" /><link rel="prev" title="Limitations" href="04_limitation.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
         <title>Configuration - sphinx-cli-recorder documentation</title>
@@ -157,7 +157,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_quickstart.html">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_limitation.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_limitation.html">Limitations</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
@@ -195,7 +197,7 @@
         </div>
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="configuration">
-<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h1>
 <!-- FUTURE: use autopydantic_model -->
 <!-- Or something similar to automatically generate the documentation from code -->
 <div class="admonition warning">
@@ -205,8 +207,15 @@ The issue seems to be due to a CSS conflict regarding the dropdown’s alignment
 If the <code class="docutils literal notranslate"><span class="pre">border</span></code> CSS is disabled in the <code class="docutils literal notranslate"><span class="pre">class=asciinema-terminal</span></code>, the issue is <em>fixed</em>, in that the end of span/line is visible, but now there is no border…</p>
 <p>Frontend development in Sphinx makes me cry 😭</p>
 </div>
+<div class="admonition-todo admonition">
+<p class="admonition-title">TODO</p>
+<p>Finalize the examples</p>
+</div>
+<section id="recorder-configuration">
+<h2>Recorder Configuration<a class="headerlink" href="#recorder-configuration" title="Permalink to this headline">#</a></h2>
+</section>
 <section id="player-configuration">
-<h2>Player-Configuration<a class="headerlink" href="#player-configuration" title="Permalink to this headline">#</a></h2>
+<h2>Player Configuration<a class="headerlink" href="#player-configuration" title="Permalink to this headline">#</a></h2>
 <section id="columns">
 <h3>Columns<a class="headerlink" href="#columns" title="Permalink to this headline">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>:cols: PositiveNumber
@@ -356,7 +365,7 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-7.rec', document.getEle
 </details></section>
 <section id="theme">
 <h3>Theme<a class="headerlink" href="#theme" title="Permalink to this headline">#</a></h3>
-<p>Define the style of the background and color-palette of the terminal.</p>
+<p>Define the style of the background and color palette of the terminal.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
 :theme: “asciinema”<div class="sd-summary-down docutils">
@@ -435,7 +444,7 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-12.rec', document.getEl
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="02_limitation.html">
+          <a class="prev-page" href="04_limitation.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
@@ -479,7 +488,8 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-12.rec', document.getEl
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Configuration</a><ul>
-<li><a class="reference internal" href="#player-configuration">Player-Configuration</a><ul>
+<li><a class="reference internal" href="#recorder-configuration">Recorder Configuration</a></li>
+<li><a class="reference internal" href="#player-configuration">Player Configuration</a><ul>
 <li><a class="reference internal" href="#columns">Columns</a></li>
 <li><a class="reference internal" href="#rows">Rows</a></li>
 <li><a class="reference internal" href="#auto-play">Auto-Play</a></li>
@@ -510,6 +520,7 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-12.rec', document.getEl
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>

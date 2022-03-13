@@ -1,4 +1,4 @@
-
+(Configuration)=
 # Configuration
 
 <!-- FUTURE: use autopydantic_model -->
@@ -12,7 +12,15 @@ If the `border` CSS is disabled in the `class=asciinema-terminal`, the issue is 
 Frontend development in Sphinx makes me cry 😭
 :::
 
-## Player-Configuration
+```{admonition} TODO
+:class: admonition-todo
+
+Finalize the examples
+```
+
+## Recorder Configuration
+
+## Player Configuration
 ### Columns
     :cols: PositiveNumber
 
@@ -122,7 +130,7 @@ Another reason is to start an eye-catching animation at the top of the page.
 ::::
 
 ### Theme
-Define the style of the background and color-palette of the terminal.
+Define the style of the background and color palette of the terminal.
 
 ::::{dropdown} :theme: "asciinema"
 :animate: fade-in-slide-down

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Configuration" href="05_configuration.html" /><link rel="prev" title="Quickstart" href="00_quickstart.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Configuration" href="05_configuration.html" /><link rel="prev" title="Usage" href="02_usage.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
         <title>Limitations - sphinx-cli-recorder documentation</title>
@@ -157,6 +157,8 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_usage.html">Usage</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
@@ -195,11 +197,12 @@
         </div>
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="limitations">
-<h1>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>❌ <em>No</em> Windows support</p>
+<li><p>❌ <em>No</em> 🪟 Windows support</p>
 <ul>
 <li><p>The underlying library that <em>records</em> the terminal session does not support Windows terminals</p></li>
+<li><p>As an alternative, you <em>could</em> try to build your documentation from within your CI pipeline via <a class="reference external" href="https://github.com/features/actions">GitHub Actions</a> or to use the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a></p></li>
 <li><p>Only tested on Linux</p>
 <ul>
 <li><p><em>Should</em> work on other UNIX systems and macOS</p></li>
@@ -209,12 +212,12 @@
 </li>
 <li><p>🐌 Currently, all commands are always re-run since there is no way of knowing that an underlying command has been updated or not</p>
 <ul>
-<li><p>A future version will support caching the result (see roadmap)</p></li>
+<li><p>A future version will support caching the result (see <a class="reference internal" href="10_roadmap.html#roadmap"><span class="std std-ref">Roadmap</span></a>)</p></li>
 </ul>
 </li>
 <li><p>💣 To minimize the wait-time, all commands are executed in parallel in the background. The parallel execution may lead to a very high CPU/memory usage.</p>
 <ul>
-<li><p>A future version could limit the number of subprocesses (see roadmap)</p></li>
+<li><p>A future version could limit the number of subprocesses (see <a class="reference internal" href="10_roadmap.html#roadmap"><span class="std std-ref">Roadmap</span></a>)</p></li>
 </ul>
 </li>
 <li><p>🐌 The first page-load will require synchronously downloading the JS script for the video-player</p>
@@ -224,7 +227,7 @@
 </li>
 <li><p>Although the generated recordings are <em>a lot smaller</em> than videos, the file size of many animation-heavy recordings could become relatively large</p>
 <ul>
-<li><p>One idea is to re-use recordings across the entire web page if available (see roadmap)</p></li>
+<li><p>One idea is to re-use recordings across the entire web page if available (see <a class="reference internal" href="10_roadmap.html#roadmap"><span class="std std-ref">Roadmap</span></a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -244,14 +247,14 @@
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="00_quickstart.html">
+          <a class="prev-page" href="02_usage.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Quickstart</div>
+                <div class="title">Usage</div>
                 
               </div>
             </a>
@@ -287,6 +290,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>

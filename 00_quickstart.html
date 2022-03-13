@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Limitations" href="02_limitation.html" /><link rel="prev" title="Welcome to the Sphinx-CLI-Recorder documentation!" href="intro.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="01_installation.html" /><link rel="prev" title="Welcome to the Sphinx-CLI-Recorder documentation!" href="intro.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
         <title>Quickstart - sphinx-cli-recorder documentation</title>
@@ -157,7 +157,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_limitation.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_limitation.html">Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
@@ -196,25 +198,18 @@
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h1>
-<ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Explain with mermaid the three different execution modes</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Show minimal example to run a single command</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Show a minimal example to run through a timed-prompt</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Show a minimal example to run through a scripted wait-run prompt</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Point out the major difference</p></li>
-</ul>
-<p>The best way to understand what the extension is capable of and if it is useful for you, is to simply look at an example:</p>
+<p>The best way to understand what the extension is capable of and if it is helpful for you, is to simply look at an example:</p>
 <!-- Future: Ensure that correct command is always run -->
 <div class="sd-tab-set docutils">
-<input checked="checked" id="06a02e2a-9a8e-477c-a29f-0c4c4cd8944c" name="2f0d45d7-8b31-49a6-bbf5-290d0c0a05ee" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="06a02e2a-9a8e-477c-a29f-0c4c4cd8944c">
+<input checked="checked" id="025107fe-6187-4591-88f4-105f45dabcf9" name="2ec01830-4977-474e-9665-073998f4b16d" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="025107fe-6187-4591-88f4-105f45dabcf9">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.animation_example
 </pre></div>
 </div>
 </div>
-<input id="93f90d7e-1a33-4f81-87fa-d46b22ca5ffb" name="2f0d45d7-8b31-49a6-bbf5-290d0c0a05ee" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="93f90d7e-1a33-4f81-87fa-d46b22ca5ffb">
+<input id="6613ff46-b011-4388-8a7b-11ca8c24cadf" name="2ec01830-4977-474e-9665-073998f4b16d" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="6613ff46-b011-4388-8a7b-11ca8c24cadf">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
@@ -227,22 +222,22 @@ md</label><div class="sd-tab-content docutils">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
 AsciinemaPlayer.create('_recs/00_quickstart-asciinema-0.rec', document.getElementById('asciinema-0'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
-</script><p>The extension embeds a <em>recording</em> of a command, here:</p>
+</script><p>The extension embeds a <em>recording</em> of the provided command into your documentation:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m sphinx_cli_recorder.testing.animation_example
 </pre></div>
 </div>
-<p>Showcasing an example output of a specific command is especially helpful for tools similar to  <a class="reference external" href="https://rich.readthedocs.io/en/stable/introduction.html#introduction" title="(in Rich)"><span class="xref myst">rich</span></a> that provide amazing formatting/highlighting options for the command line.
-The directive can be used to automatically generate a nice-looking and always up-to-date help page for a CLI tool in development.</p>
+<p>Showcasing an example output of a specific command is especially helpful for tools similar to  <a class="reference external" href="https://rich.readthedocs.io/en/stable/introduction.html#introduction" title="(in Rich)"><span class="xref myst">rich</span></a> that provide fantastic formatting/highlighting options for the command line.
+The directive can automatically generate a nice-looking and always up-to-date help page for a CLI tool in development.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="63eb5869-5fe3-4566-8032-8b6ed27d1fc9" name="319f0594-14f4-4661-bb80-f89f44795952" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="63eb5869-5fe3-4566-8032-8b6ed27d1fc9">
+<input checked="checked" id="a1da6f85-b661-43fe-8cd4-e2b40c15fc44" name="b5d07a9d-3e11-46c8-b39e-b710c600211f" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="a1da6f85-b661-43fe-8cd4-e2b40c15fc44">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> rich --help
 </pre></div>
 </div>
 </div>
-<input id="13cf620f-7864-418c-91fb-d1c5b06f51f9" name="319f0594-14f4-4661-bb80-f89f44795952" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="13cf620f-7864-418c-91fb-d1c5b06f51f9">
+<input id="7858b608-85ac-4d85-a491-a71523e02247" name="b5d07a9d-3e11-46c8-b39e-b710c600211f" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="7858b608-85ac-4d85-a491-a71523e02247">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} rich --help
 ```
@@ -250,16 +245,15 @@ md</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<!-- Doesn't make the option in lower -->
 <div class="asciinema" id="asciinema-1">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
 AsciinemaPlayer.create('_recs/00_quickstart-asciinema-1.rec', document.getElementById('asciinema-1'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><p>But the extension is not limited to executing commands!
-It is also possible to walk through command-prompts and to script the interaction. 🤯</p>
+It is also possible to walk through command prompts and script the interaction. 🤯</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="691e00e3-a884-4a3f-b7b5-cd62fb31c4ea" name="453d3c0a-8088-4f25-9cbc-12a5ec69ec41" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="691e00e3-a884-4a3f-b7b5-cd62fb31c4ea">
+<input checked="checked" id="94b6a9b8-c8e6-42c0-a4d2-6519337e84d5" name="def0e182-50e0-4b74-b4b5-625823ab0b45" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="94b6a9b8-c8e6-42c0-a4d2-6519337e84d5">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
@@ -271,8 +265,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="1dfa079b-b7a2-4b7a-9c15-7452dfde1ff9" name="453d3c0a-8088-4f25-9cbc-12a5ec69ec41" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="1dfa079b-b7a2-4b7a-9c15-7452dfde1ff9">
+<input id="bc0d8eda-c189-4ca4-a390-8d6d9a7e4d4b" name="def0e182-50e0-4b74-b4b5-625823ab0b45" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="bc0d8eda-c189-4ca4-a390-8d6d9a7e4d4b">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
@@ -291,49 +285,55 @@ md</label><div class="sd-tab-content docutils">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
 AsciinemaPlayer.create('_recs/00_quickstart-asciinema-2.rec', document.getElementById('asciinema-2'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
-</script><p>The interactive functionality targets library authors of CLI tools and command prompt authors.</p>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
-<p>Install the package:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">recorder</span>
+</script><p>The interactive functionality targets library authors of CLI tools and command prompt authors.
+The previous method, <code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code>, relies on <em>waiting</em> before sending input strings to the terminal.
+A different method, <code class="docutils literal notranslate"><span class="pre">record_scripted_cli_interaction</span></code>, is to <em>wait</em> until a specific character or sequences of characters have been received from the terminal to send the <em>input</em>:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="465d20f1-ade9-47ec-b6fa-1863d63fb5a0" name="de8e8dd2-98a6-40b4-b2df-7bbe3419de4b" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="465d20f1-ade9-47ec-b6fa-1863d63fb5a0">
+reST</label><div class="sd-tab-content docutils">
+<div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
+
+    <span class="m">-</span> [":", "y"]
+    <span class="m">-</span> [":", "5"]
+    <span class="m">-</span> [":", "2"]
+    <span class="m">-</span> [":", "poodle"]
+    <span class="m">-</span> [":", "husky"]
 </pre></div>
 </div>
-<p>Then add the extension to your <span class="xref myst">sphinx config (config.py)</span></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"sphinx-cli-recorder"</span>
-<span class="p">]</span>
+</div>
+<input id="5e8ce334-954f-4e20-9574-7e92aa7e5905" name="de8e8dd2-98a6-40b4-b2df-7bbe3419de4b" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="5e8ce334-954f-4e20-9574-7e92aa7e5905">
+md</label><div class="sd-tab-content docutils">
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_scripted_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
+
+    <span class="k">-</span> [":", "y"]
+    <span class="k">-</span> [":", "5"]
+    <span class="k">-</span> [":", "2"]
+    <span class="k">-</span> [":", "poodle"]
+    <span class="k">-</span> [":", "husky"]
+```
 </pre></div>
 </div>
-</section>
-<section id="runner-directives">
+</div>
+</div>
+<!-- Doesn't make the option in lower! -->
+<div class="asciinema" id="asciinema-3">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('_recs/00_quickstart-asciinema-3.rec', document.getElementById('asciinema-3'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+</script><section id="runner-directives">
 <h2>Runner directives<a class="headerlink" href="#runner-directives" title="Permalink to this headline">#</a></h2>
-<p>This sphinx extension provides three directives to animate a CLI interaction.
-To decide which directive you should use, you may use the following flow-chart.</p>
+<p>This sphinx extension provides three directives to record the execution of, or the interaction with, a CLI application.
+You may use the following flowchart to decide which directive you should use.</p>
 <div class="mermaid">
-                flowchart TD
-        Command --&gt; B{Interaction\nRequired?}
-        B -- No --&gt; C[Use cmd_runner]
-        B -- Yes --&gt; D[Use timed/scripted_cmd_runner]
-        </div></section>
-<section id="command-runner">
-<h2>Command runner<a class="headerlink" href="#command-runner" title="Permalink to this headline">#</a></h2>
-<p>The command runner will simply execute the input <code class="docutils literal notranslate"><span class="pre">command</span></code> as a new process.
-The command must terminate without any input.</p>
-</section>
-<section id="timed-command-runner">
-<h2>Timed command runner<a class="headerlink" href="#timed-command-runner" title="Permalink to this headline">#</a></h2>
-<p>Has a list of strings that will be send to the terminal.
-The <code class="docutils literal notranslate"><span class="pre">send</span></code> string will be terminated by appending a newline, or from a users viewpoint, by <em>hitting enter</em>.
-Between all <code class="docutils literal notranslate"><span class="pre">sends</span></code> (and before the first) the <code class="docutils literal notranslate"><span class="pre">between_commands</span></code> time in seconds
-is waited.
-To create more <em>realistic</em> command inputs, the characters of the <code class="docutils literal notranslate"><span class="pre">send</span></code> strings will be send
-with a delay.
-After each character, the sending is paused for <code class="docutils literal notranslate"><span class="pre">between_character</span></code> seconds.</p>
-</section>
-<section id="scripted-command-runner">
-<h2>Scripted command runner<a class="headerlink" href="#scripted-command-runner" title="Permalink to this headline">#</a></h2>
-<p>For more details on the directives and on how to configure the options, please
-see the following section.</p>
+            
+flowchart TD
+    Input[Command\nto record] --&gt; B{Interaction\nRequired?}
+    B -- No --&gt; C[Use record_cli_command]
+    B -- Yes --&gt; D[Use record_timed/scripted_cli_interaction]
+
+        </div><p>Please take a look at the <a class="reference internal" href="02_usage.html#usage"><span class="std std-ref">Usage</span></a> section for more details (otherwise this shouldn’t be called a <em>Quickstart</em> section, I guess 🤔)</p>
 </section>
 </section>
 
@@ -342,12 +342,12 @@ see the following section.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="02_limitation.html">
+          <a class="next-page" href="01_installation.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Limitations</div>
+                <div class="title">Installation</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -395,11 +395,7 @@ see the following section.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Quickstart</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#runner-directives">Runner directives</a></li>
-<li><a class="reference internal" href="#command-runner">Command runner</a></li>
-<li><a class="reference internal" href="#timed-command-runner">Timed command runner</a></li>
-<li><a class="reference internal" href="#scripted-command-runner">Scripted command runner</a></li>
 </ul>
 </li>
 </ul>
@@ -417,6 +413,7 @@ see the following section.</p>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>

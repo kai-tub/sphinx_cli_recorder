@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Internals" href="30_internals.html" /><link rel="prev" title="Roadmap" href="10_roadmap.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Usage" href="02_usage.html" /><link rel="prev" title="Quickstart" href="00_quickstart.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>Security concerns - sphinx-cli-recorder documentation</title>
+        <title>Installation - sphinx-cli-recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player.css" />
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -157,12 +157,12 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_quickstart.html">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_installation.html">Installation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_limitation.html">Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Security concerns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30_internals.html">Internals</a></li>
 </ul>
 
@@ -190,47 +190,29 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section class="tex2jax_ignore mathjax_ignore" id="security-concerns">
-<span id="security"></span><h1>Security concerns<a class="headerlink" href="#security-concerns" title="Permalink to this headline">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>TL;DR</p>
-<ul class="simple">
-<li><p>The directive will execute arbitrary code</p></li>
-<li><p>Pull-request/changes to the documentation may not be reviewed as much in-depth as code changes</p>
-<ul>
-<li><p>Could lead to issues if used in large/complex code-bases that want to show-case <em>dangerous</em> operations</p></li>
-</ul>
-</li>
-<li><p>Possible solution would be to add <em>whitelist</em> support</p></li>
-</ul>
+          <section class="tex2jax_ignore mathjax_ignore" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
+<p>Install the package with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">recorder</span>
+</pre></div>
 </div>
-<p>Please be aware of potential security issues this library may introduce.
-The command within the directive will be run as a subprocess.
-If the command includes malicious code, it will be executed!
-There is no command <em>validation</em>.
-You should always think twice about using commands like <code class="docutils literal notranslate"><span class="pre">rm</span></code> within the documentation!</p>
-<p>To put the security issues that may be caused by this extension in relation to other scenarios:
-Calling a CLI command could also run malicious code <em>behind</em> the scenes and <em>could</em> be merged into a project by not closely inspecting the changes to the code.
-Installing a Python package may also execute arbitrary code.</p>
-<p>I am trying to raise awareness of potential attacks because I believe that code is checked in more detail in contrast to changes to the documentation.
-I <em>assume</em> that a code reviewer will most probably catch a <em>malicious</em> <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> command within the code but may not double-check changes to these directives.</p>
-<section id="solution">
-<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h2>
-<p><em>A</em> possible solution could be to only execute commands that are whitelisted.
-The idea is to provide a CLI tool that can be used to generate the whitelist file dynamically.
-A potential reviewer only has to inspect a single file to check what commands could be executed.</p>
-<p>Theoretically, one could extend the CI to check if the whitelist file is up-to-date and fail if this is not the case.
-But I think a single whitelist file that can be automatically updated is a good middle-ground that would help reviewers avoid missing potentially dangerous code from within the documentation.</p>
-<p>A global configuration file that lives <strong>outside</strong> of the directory could be used to configure arbitrary code execution.
-This would allow developers that create new documentation or are updating the documentation to not <em>think</em> about the whitelist file and only generate it at the end, possible with a <code class="docutils literal notranslate"><span class="pre">precommit</span></code> hook.</p>
-</section>
+<p>Then enable the extension in your <span class="xref myst">sphinx config (config.py)</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"sphinx-cli-recorder"</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There will be <strong>no</strong> 🪟 Windows support in the foreseeable future.
+See the <a class="reference internal" href="04_limitation.html#limitations"><span class="std std-ref">limitations</span></a> section for more details and possible workarounds.</p>
+</div>
 </section>
 
         </article>
@@ -238,23 +220,23 @@ This would allow developers that create new documentation or are updating the do
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="30_internals.html">
+          <a class="next-page" href="02_usage.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Internals</div>
+                <div class="title">Usage</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="10_roadmap.html">
+          <a class="prev-page" href="00_quickstart.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Roadmap</div>
+                <div class="title">Quickstart</div>
                 
               </div>
             </a>
@@ -278,27 +260,8 @@ This would allow developers that create new documentation or are updating the do
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Security concerns</a><ul>
-<li><a class="reference internal" href="#solution">Solution</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
