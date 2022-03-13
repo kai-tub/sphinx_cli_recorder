@@ -10,6 +10,9 @@
 - [ ] Allow reducing the number of subprocesses
   - [ ] Ideally allow the user to manually set what commands can be run together to separate _resource-heavy_ commands
 - [ ] Add detailed validators for the directive options
+- [ ] Remove the generated CSS/JS files from git, automatically build and include them during packaging stage
+- [ ] Fix the `conf.py` variable issue, where the local changes do not have any effect
+- [ ]
 
 The _long-term roadmap_:
 - [ ] mixed await and time specification
