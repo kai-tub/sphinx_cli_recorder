@@ -1,0 +1,5 @@
+
+flowchart TD
+    Input[Command\nto record] --> B{Interaction\nRequired?}
+    B -- No --> C[Use record_cli_command]
+    B -- Yes --> D[Use record_timed/scripted_cli_interaction]

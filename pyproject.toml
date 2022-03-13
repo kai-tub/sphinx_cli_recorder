@@ -33,6 +33,7 @@ sphinx-inline-tabs = "^2022.1.2-beta.11"
 sphinxcontrib-mermaid = "^0.7.1"
 sphinx-design = "^0.0.13"
 rich-cli = "^1.5.1"
+sphinx-comments = "^0.0.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

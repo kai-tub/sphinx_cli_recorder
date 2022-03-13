@@ -33,11 +33,15 @@ extensions = [
     "myst_parser",
     "sphinx_external_toc",
     "sphinx_inline_tabs",
+    "sphinx_comments",
+    "sphinx.ext.todo",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.mermaid",
     "sphinx_design",
 ]
 external_toc_path = "_toc.yml"
+
+comments_config = {"hypothesis": True}
 
 myst_enable_extensions = [
     # "amsmath",
