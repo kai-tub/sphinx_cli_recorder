@@ -1,7 +1,9 @@
 from __future__ import annotations
 from venv import EnvBuilder
+import importlib.metadata
 
-__version__ = "0.1.0"
+__version__ = importlib.metadata.version("sphinx_cli_recorder")
+
 import itertools
 
 from enum import Enum, auto
