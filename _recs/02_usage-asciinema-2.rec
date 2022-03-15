@@ -1,8 +1,7 @@
-{"version": 2, "width": 80, "height": 24, "timestamp": 1647327437, "idle_time_limit": 5.0, "env": {"SHELL": null, "TERM": null}}
-[2.389395, "o", "\u001b[1mYes\u001b[0m or \u001b[3mno\u001b[0m? \u001b[1;35m[y/n]\u001b[0m \u001b[31m(y)\u001b[0m: "]
-[4.142496, "i", ""]
-[4.143025, "o", "y"]
-[4.395662, "i", ""]
-[4.396006, "o", "\r\n"]
-[4.399165, "o", "Nice, good to know!"]
-[4.399365, "o", "\r\n"]
+{"version": 2, "width": 80, "height": 24, "timestamp": 1647376017, "idle_time_limit": 5.0, "env": {"SHELL": null, "TERM": null}}
+[2.689808, "o", "\u001b[1mYes\u001b[0m or \u001b[3mno\u001b[0m? \u001b[1;35m[y/n]\u001b[0m \u001b[31m(y)\u001b[0m: "]
+[4.164616, "i", ""]
+[4.164748, "o", "y"]
+[4.517845, "i", ""]
+[4.518127, "o", "\r\n"]
+[4.520808, "o", "Nice, good to know!\r\n"]
