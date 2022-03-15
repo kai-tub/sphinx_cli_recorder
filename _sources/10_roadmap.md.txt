@@ -1,6 +1,11 @@
 (roadmap)=
 # Roadmap
 
+- [ ] Publish to PyPI
+- [ ] Add CI/CD pipeline
+  - [ ] Try to configure a single source of truth for the `version`
+- [ ] Make an example prompt that explain what the recorder is doing
+- [ ] Use explanation-video to open graph protocol
 - [ ] Increase test coverage
   - [ ] Better test the option validators
   - [ ] Add integration tests to test the sphinx-code
@@ -12,7 +17,6 @@
 - [ ] Add detailed validators for the directive options
 - [ ] Remove the generated CSS/JS files from git, automatically build and include them during packaging stage
 - [ ] Fix the `conf.py` variable issue, where the local changes do not have any effect
-- [ ]
 
 The _long-term roadmap_:
 - [ ] mixed await and time specification
