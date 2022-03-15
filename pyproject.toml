@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinx-cli-recorder"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
 
