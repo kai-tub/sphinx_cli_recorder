@@ -33,16 +33,10 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install library
         run: poetry install --no-interaction
-      - name: Check precommit
-        run: |
-          pre-commit run --all-files
       # CUSTOM
-      - name: Check mypy
-        run: |
-          mypy sphinx_cli_recorder
-      - uses: extractions/setup-just@v1
-      #
       - name: Run tests
         run: |
           source $VENV
+          pre-commit run --all-files
+          mypy sphinx_cli_recorder
           pytest "tests/"

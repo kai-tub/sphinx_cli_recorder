@@ -25,6 +25,7 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
       ### Custom
+      - uses: extractions/setup-just@v1
       - name: Install node dependencies
         run: |
           just install
@@ -54,6 +55,12 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install library
         run: poetry install --no-interaction
+      ### CUSTOM
+      - uses: extractions/setup-just@v1
+      - name: Install node dependencies
+        run: |
+          just install
+      ###
       - name: Build documentation
         run: |
           source $VENV

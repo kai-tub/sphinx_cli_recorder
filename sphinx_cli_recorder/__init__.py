@@ -308,6 +308,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value(player_settings, {}, rebuild="html")
     app.add_config_value(sleep_times_settings, {}, rebuild="html")
 
+    # FUTURE: Better document this
     app.connect("build-finished", copy_local_resources)
     app.connect("env-updated", run_cmds)
     app.connect("env-merge-info", merge_cmds)
