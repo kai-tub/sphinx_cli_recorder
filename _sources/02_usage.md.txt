@@ -80,7 +80,6 @@ There are _many_ options to configure the behavior of the [directive](sphinx:rst
 
 (interactive-runner)=
 ## Interactive command runner
-Ok, this is the more _interesting_ feature of the Sphinx-CLI-Recorder library.
 There are two [directives](sphinx:rst-directives) that allow you to _interact_ with the command that will be run:
 - [`record_timed_cli_interaction`](timed_command_runner)
 - [`record_scripted_cli_interaction`](scripted_command_runner)
@@ -95,7 +94,7 @@ Here is a shortlist of the key takeaways of the _timed_ command runner:
     - The _input_ should be provided as a list of _send_ strings enclosed by `"`
     - The _send_ string will be terminated by a newline, or from a CLI application's viewpoint, by _receiving enter_
     - The _send_ string will be sent after a configurable amount of time, **possibly not** when the terminal is ready!
-- There must be a newline-character between the options and the list of strings that will be send
+- There must be a newline-character between the options and the list of strings that will be sent
 - After sending the last _send_ strings, the command _must_ terminate
 
 The _timed_ command runner has the following syntax:
@@ -136,10 +135,10 @@ The _timed_ command runner has the following syntax:
 The beauty of the _timed_ interactive style is that it is easy to write and reason about _but_ its simplicity comes with a cost.
 ```
 
-There is no way to _know_ that a CLI application is _waiting_ for input. Instead, the next _send_ string will be sent after a specific amount of time. If the application is _not_ ready to receive the following line yet, the recording will probably crash because the wrong input will be sent.
+There is no way to _know_ that a CLI application is _waiting_ for input. Instead, the next _send_ string will be sent after a specific time. If the application is _not_ ready to receive the following line yet, the recording will probably crash because the wrong input will be sent.
 The time-based approach may be incredibly frustrating if the execution time differs between development machines and _works_ on one device but fails in the CI pipeline. The time to execute the command might take _too_ long for the CI systems to finish and fail documentation builds.
 
-Another issue is that the wait-time between sending the lines might become relatively long if many _sends_ are required, resulting in long documentation build times.
+Another issue is that the wait time between sending the lines might become relatively long if many _sends_ are required, resulting in lengthy documentation build times.
 
 <!-- TODO: Add timeout links -->
 The main options to tune will probably be the [between-command]() and [timeout]() values.
@@ -199,7 +198,7 @@ Here is a shortlist of the key takeaways of the _scripted_ command runner:
     - The inputs should be provided as a list of _expect_ and _send_ pairs, enclosed by `["<EXPECT>", "<SEND>"]`
     - After creating a subprocess with the given command, the execution will wait until the `<EXPECT>` string is received and will then continue by sending the `<SEND>` string
     - The _send_ string will be terminated by a newline, or from a CLI application's viewpoint, by _receiving enter_
-- There must be a newline-character between the options and the list of strings that will be send
+- There must be a newline-character between the options and the list of strings that will be sent
 - After sending the last _send_ strings, the command _must_ terminate
 
 The _scripted_ command runner has the following syntax:
@@ -212,9 +211,9 @@ The _scripted_ command runner has the following syntax:
 .. record_scripted_cli_interaction:: <CMD>
 <OPTIONS>
 <NEWLINE>
-    - ["<EXPECT>", "<WAIT>"]
-    - ["<EPECT_LIST>", "<WAIT_LIST>"]
-    - ["<EPECT_LAST>", "<WAIT_LAST>"]
+    - ["<EXPECT_FIRST>", "<WAIT_FIRST>"]
+    - ["<EXPECT_NEXT>", "<WAIT_NEXT>"]
+    - ["<EXPECT_LAST>", "<WAIT_LAST>"]
 :::
 
 ::::
@@ -226,9 +225,9 @@ The _scripted_ command runner has the following syntax:
 ```{record_timed_cli_interaction} <CMD>
 <OPTIONS>
 <NEWLINE>
-    - ["<EXPECT>", "<WAIT>"]
-    - ["<EPECT_LIST>", "<WAIT_LIST>"]
-    - ["<EPECT_LAST>", "<WAIT_LAST>"]
+    - ["<EXPECT_FIRST>", "<WAIT_FIRST>"]
+    - ["<EXPECT_NEXT>", "<WAIT_NEXT>"]
+    - ["<EXPECT_LAST>", "<WAIT_LAST>"]
 ```
 ::::
 :::::
@@ -249,7 +248,7 @@ Let's look at the following example:
 
 It is possible to wait on `:` at the end of the prompt.
 But waiting for `):` will raise a _timeout_ error.
-This is due to how the color of the output is encoded.
+This error is caused to how the color of the output is encoded.
 In reality, the last few characters the terminal receives aren't `(y):` but `\x1b[31m(y)\x1b[0m:` 🤯.
 
 Welcome to the world of [ANSI escape codes](https://notes.burke.libbey.me/ansi-escape-codes/).

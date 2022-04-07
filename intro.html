@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Quickstart" href="00_quickstart.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>sphinx-cli-recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
@@ -197,15 +197,24 @@
         </div>
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-sphinx-cli-recorder-documentation">
-<h1>Welcome to the Sphinx-CLI-Recorder documentation!<a class="headerlink" href="#welcome-to-the-sphinx-cli-recorder-documentation" title="Permalink to this headline">#</a></h1>
+<span id="welcome"></span><h1>Welcome to the Sphinx-CLI-Recorder documentation!<a class="headerlink" href="#welcome-to-the-sphinx-cli-recorder-documentation" title="Permalink to this headline">#</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The library is in its early stages!</p>
 </div>
-<p>This Sphinx extension is a tool to allow you to easily automate terminal/CLI recording sessions (without you having to leave your editor 🤯)</p>
+<div class="note admonition">
+<p class="admonition-title">TL;DR</p>
+<ul class="simple">
+<li><p>🎥 Record interactions (input &amp; output) with CLI applications</p></li>
+<li><p>🤖 Automate the recording process via simple Sphinx directives</p></li>
+<li><p>✔️ Simple; does not require any knowledge of the underlying recording application</p></li>
+<li><p>⛓️ No dependencies on external services; all files are generated and hosted locally</p></li>
+</ul>
+</div>
+<p>This Sphinx extension is a tool to allow you to easily automate the recording process of CLI applications (without you having to leave your editor 🤯).</p>
 <p>Suppose you are developing a neat CLI application, possibly with <a class="reference external" href="https://rich.readthedocs.io/en/stable/introduction.html#introduction" title="(in Rich)"><span class="xref myst">rich</span></a> (get it?) visual output. In that case, you put blood, sweat, and tears into the development part but do you want to put the same amount of effort into the documentation?
 Shouldn’t it be easy to show what your CLI application can do?
-If you record a terminal session to show-case how to interact with your tool, you need to ensure that the recording is kept up-to-date and doesn’t break with future updates.
+If you record a terminal session to show how to interact with your tool, you need to ensure that the recording is kept up-to-date and doesn’t break with future updates.
 Then you need to know how to upload the file and embed it into your documentation.
 And all you want to do is to show something cool like:</p>
 <div class="asciinema" id="asciinema-0">
@@ -244,6 +253,7 @@ Utilizing a text-based terminal player has the following advantages:</p>
 </ul>
 </li>
 <li><p>🚅 The recordings are done in parallel to minimize the documentation build time</p></li>
+<li><p>☑️ Simple; no need to understand how <a class="reference external" href="https://asciinema.org">asciinema</a> works</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>

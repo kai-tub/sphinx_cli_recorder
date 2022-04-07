@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Limitations" href="04_limitation.html" /><link rel="prev" title="Installation" href="01_installation.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>Usage - sphinx-cli-recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
@@ -202,14 +202,14 @@
 <ul class="simple">
 <li><p>The <a class="reference internal" href="#command-runner"><span class="std std-ref"><em>plain</em> command runner</span></a></p>
 <ul>
-<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directive</span></a> name is <code class="docutils literal notranslate"><span class="pre">record_cli_cmd</span></code></p></li>
+<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a> name is <code class="docutils literal notranslate"><span class="pre">record_cli_cmd</span></code></p></li>
 <li><p>The command will be run and the output logged</p></li>
 <li><p>No user-input required</p></li>
 </ul>
 </li>
 <li><p>An <a class="reference internal" href="#interactive-runner"><span class="std std-ref"><em>interactive</em> command runner</span></a></p>
 <ul>
-<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directives</span></a> are called:</p>
+<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directives</span></a> are called:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">record_scripted_cli_interaction</span></code></p></li>
@@ -232,7 +232,7 @@ flowchart TD
 <span id="id2"></span><h2>Command runner<a class="headerlink" href="#command-runner" title="Permalink to this headline">#</a></h2>
 <p>Here is a shortlist of the key takeaways:</p>
 <ul class="simple">
-<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directive</span></a> is called <code class="docutils literal notranslate"><span class="pre">record_cli_cmd</span></code></p></li>
+<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a> is called <code class="docutils literal notranslate"><span class="pre">record_cli_cmd</span></code></p></li>
 <li><p>The command must <em>terminate</em> without any input</p>
 <ul>
 <li><p>The command is spawned as a subprocess and must terminate on its own</p></li>
@@ -246,16 +246,16 @@ flowchart TD
 </ul>
 <p>The directive syntax looks as follows:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="4d34423f-34f6-4573-bf2c-f9d57b040762" name="25ef5c64-c851-4751-8322-7e1fad3dda87" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="4d34423f-34f6-4573-bf2c-f9d57b040762">
+<input checked="checked" id="dc970cd3-dda7-4c7b-af8e-7381d1c535ad" name="00432120-f3a3-42fb-b5f6-2c14b7b39cab" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="dc970cd3-dda7-4c7b-af8e-7381d1c535ad">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span>. record_cli_cmd:: &lt;CMD_TO_RUN&gt;
 <span class="nc">:&lt;OPTION_KEY&gt;:</span> <span class="nt">&lt;OPTION_VALUE&gt;</span>
 </pre></div>
 </div>
 </div>
-<input id="d9c70a54-efd7-4ba5-8766-b1ce7cc626fa" name="25ef5c64-c851-4751-8322-7e1fad3dda87" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="d9c70a54-efd7-4ba5-8766-b1ce7cc626fa">
+<input id="49f943b3-431f-4196-8154-fa3982288290" name="00432120-f3a3-42fb-b5f6-2c14b7b39cab" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="49f943b3-431f-4196-8154-fa3982288290">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} &lt;CMD_TO_RUN&gt;
 :&lt;OPTION_KEY&gt;: &lt;OPTION_VALUE&gt;
@@ -269,15 +269,15 @@ There is simply no use for text input.
 The provided <code class="docutils literal notranslate"><span class="pre">&lt;CMD&gt;</span></code> will be run as a subprocess, and since no interaction is necessary, there is no need to give any <em>input</em>.
 Remember, <code class="docutils literal notranslate"><span class="pre">&lt;CMD&gt;</span></code> may contain any number of whitespace, so the following is allowed:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="1c27c4a8-eeb5-44a6-8a4c-3d77f25d288e" name="f1242f52-7887-4032-a0c0-cda8f6df127d" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="1c27c4a8-eeb5-44a6-8a4c-3d77f25d288e">
+<input checked="checked" id="b05a7bef-020a-49bd-ae64-4d107b16777f" name="fbc03f3b-a790-46c7-bef4-be1f74f1380f" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="b05a7bef-020a-49bd-ae64-4d107b16777f">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.animation_example
 </pre></div>
 </div>
 </div>
-<input id="2185761e-deb0-447a-aeb3-a29b9159f5e8" name="f1242f52-7887-4032-a0c0-cda8f6df127d" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="2185761e-deb0-447a-aeb3-a29b9159f5e8">
+<input id="b7f2c94a-8a09-43cd-99b2-75f0f312cf1d" name="fbc03f3b-a790-46c7-bef4-be1f74f1380f" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="b7f2c94a-8a09-43cd-99b2-75f0f312cf1d">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
@@ -290,12 +290,11 @@ md</label><div class="sd-tab-content docutils">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
 AsciinemaPlayer.create('_recs/02_usage-asciinema-0.rec', document.getElementById('asciinema-0'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
-</script><p>There are <em>many</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
+</script><p>There are <em>many</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
 </section>
 <section id="interactive-command-runner">
 <span id="interactive-runner"></span><h2>Interactive command runner<a class="headerlink" href="#interactive-command-runner" title="Permalink to this headline">#</a></h2>
-<p>Ok, this is the more <em>interesting</em> feature of the Sphinx-CLI-Recorder library.
-There are two <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directives</span></a> that allow you to <em>interact</em> with the command that will be run:</p>
+<p>There are two <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directives</span></a> that allow you to <em>interact</em> with the command that will be run:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#timed-command-runner"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code></span></a></p></li>
 <li><p><a class="reference internal" href="#scripted-command-runner"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">record_scripted_cli_interaction</span></code></span></a></p></li>
@@ -304,7 +303,7 @@ There are two <a class="reference external" href="https://www.sphinx-doc.org/en/
 <span id="id3"></span><h3>Timed command runner<a class="headerlink" href="#timed-command-runner" title="Permalink to this headline">#</a></h3>
 <p>Here is a shortlist of the key takeaways of the <em>timed</em> command runner:</p>
 <ul class="simple">
-<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directive</span></a> is called <code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code></p></li>
+<li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a> is called <code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code></p></li>
 <li><p>The input command may contain any number of characters/whitespaces</p>
 <ul>
 <li><p><em>But</em> no newlines are allowed</p></li>
@@ -317,13 +316,13 @@ There are two <a class="reference external" href="https://www.sphinx-doc.org/en/
 <li><p>The <em>send</em> string will be sent after a configurable amount of time, <strong>possibly not</strong> when the terminal is ready!</p></li>
 </ul>
 </li>
-<li><p>There must be a newline-character between the options and the list of strings that will be send</p></li>
+<li><p>There must be a newline-character between the options and the list of strings that will be sent</p></li>
 <li><p>After sending the last <em>send</em> strings, the command <em>must</em> terminate</p></li>
 </ul>
 <p>The <em>timed</em> command runner has the following syntax:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="16c8b485-4604-43d9-82d8-696366d8fa33" name="06bae33f-4763-4f83-905d-0e177c0283c3" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="16c8b485-4604-43d9-82d8-696366d8fa33">
+<input checked="checked" id="28254693-a9b0-42ca-a7c3-6bdbea52a532" name="d9b8cf6d-d516-4b0f-913b-5a6b04856b6d" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="28254693-a9b0-42ca-a7c3-6bdbea52a532">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> <span class="nt">&lt;CMD&gt;</span>
 <span class="nt">&lt;OPTIONS&gt;</span>
@@ -335,8 +334,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="17a26f34-a99d-4275-bbd3-f6890f9818e8" name="06bae33f-4763-4f83-905d-0e177c0283c3" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="17a26f34-a99d-4275-bbd3-f6890f9818e8">
+<input id="a2bb418c-ea70-436b-96d7-0bfac36e7701" name="d9b8cf6d-d516-4b0f-913b-5a6b04856b6d" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="a2bb418c-ea70-436b-96d7-0bfac36e7701">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} &lt;CMD&gt;
 &lt;OPTIONS&gt;
@@ -356,17 +355,17 @@ md</label><div class="sd-tab-content docutils">
 <p class="admonition-title">Warning</p>
 <p>The beauty of the <em>timed</em> interactive style is that it is easy to write and reason about <em>but</em> its simplicity comes with a cost.</p>
 </div>
-<p>There is no way to <em>know</em> that a CLI application is <em>waiting</em> for input. Instead, the next <em>send</em> string will be sent after a specific amount of time. If the application is <em>not</em> ready to receive the following line yet, the recording will probably crash because the wrong input will be sent.
+<p>There is no way to <em>know</em> that a CLI application is <em>waiting</em> for input. Instead, the next <em>send</em> string will be sent after a specific time. If the application is <em>not</em> ready to receive the following line yet, the recording will probably crash because the wrong input will be sent.
 The time-based approach may be incredibly frustrating if the execution time differs between development machines and <em>works</em> on one device but fails in the CI pipeline. The time to execute the command might take <em>too</em> long for the CI systems to finish and fail documentation builds.</p>
-<p>Another issue is that the wait-time between sending the lines might become relatively long if many <em>sends</em> are required, resulting in long documentation build times.</p>
+<p>Another issue is that the wait time between sending the lines might become relatively long if many <em>sends</em> are required, resulting in lengthy documentation build times.</p>
 <!-- TODO: Add timeout links -->
 <p>The main options to tune will probably be the <span class="xref myst">between-command</span> and <span class="xref myst">timeout</span> values.
-There are <em>many more</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
+There are <em>many more</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
 <p>You made it until the end of the timed command runner documentation! 🥳
 Here is a visual example output to keep you entertained:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="333c754a-a03b-45cf-b824-c3b98a77b910" name="b155f6db-7e05-455d-b991-e49f9f5238ae" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="333c754a-a03b-45cf-b824-c3b98a77b910">
+<input checked="checked" id="a56a2090-6266-417e-bda4-411578138475" name="3ed32552-8f5f-4f3a-a795-73921786fb84" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="a56a2090-6266-417e-bda4-411578138475">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
@@ -378,8 +377,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="aa698846-6d4d-40f8-abd8-4ddb98f9cf4c" name="b155f6db-7e05-455d-b991-e49f9f5238ae" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="aa698846-6d4d-40f8-abd8-4ddb98f9cf4c">
+<input id="6eab37c8-419c-4b2c-884c-442cd230dcaa" name="3ed32552-8f5f-4f3a-a795-73921786fb84" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="6eab37c8-419c-4b2c-884c-442cd230dcaa">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
@@ -416,32 +415,32 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-1.rec', document.getElementById
 <li><p>The <em>send</em> string will be terminated by a newline, or from a CLI application’s viewpoint, by <em>receiving enter</em></p></li>
 </ul>
 </li>
-<li><p>There must be a newline-character between the options and the list of strings that will be send</p></li>
+<li><p>There must be a newline-character between the options and the list of strings that will be sent</p></li>
 <li><p>After sending the last <em>send</em> strings, the command <em>must</em> terminate</p></li>
 </ul>
 <p>The <em>scripted</em> command runner has the following syntax:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="810792bb-d454-480c-8c80-8753a423585e" name="0acce51c-143b-45b0-acca-3487de5180cd" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="810792bb-d454-480c-8c80-8753a423585e">
+<input checked="checked" id="5f7bfb6f-877f-49a0-9c4d-6f9fb92f514c" name="cd8edba9-4dfc-494a-a147-b14ad70b6030" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="5f7bfb6f-877f-49a0-9c4d-6f9fb92f514c">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> <span class="nt">&lt;CMD&gt;</span>
 <span class="nt">&lt;OPTIONS&gt;</span>
 <span class="nt">&lt;NEWLINE&gt;</span>
-    - ["&lt;EXPECT&gt;", "&lt;WAIT&gt;"]
-    <span class="m">-</span> ["&lt;EPECT_LIST&gt;", "&lt;WAIT_LIST&gt;"]
-    <span class="m">-</span> ["&lt;EPECT_LAST&gt;", "&lt;WAIT_LAST&gt;"]
+    - ["&lt;EXPECT_FIRST&gt;", "&lt;WAIT_FIRST&gt;"]
+    <span class="m">-</span> ["&lt;EXPECT_NEXT&gt;", "&lt;WAIT_NEXT&gt;"]
+    <span class="m">-</span> ["&lt;EXPECT_LAST&gt;", "&lt;WAIT_LAST&gt;"]
 </pre></div>
 </div>
 </div>
-<input id="9a5d449e-f65a-4267-a9ae-c81d2394cd79" name="0acce51c-143b-45b0-acca-3487de5180cd" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="9a5d449e-f65a-4267-a9ae-c81d2394cd79">
+<input id="fefd6eaf-87f9-4dc9-9e51-868c5390af9b" name="cd8edba9-4dfc-494a-a147-b14ad70b6030" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="fefd6eaf-87f9-4dc9-9e51-868c5390af9b">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} &lt;CMD&gt;
 &lt;OPTIONS&gt;
 &lt;NEWLINE&gt;
-    <span class="k">-</span> ["&lt;EXPECT&gt;", "&lt;WAIT&gt;"]
-    <span class="k">-</span> ["&lt;EPECT_LIST&gt;", "&lt;WAIT_LIST&gt;"]
-    <span class="k">-</span> ["&lt;EPECT_LAST&gt;", "&lt;WAIT_LAST&gt;"]
+    <span class="k">-</span> ["&lt;EXPECT_FIRST&gt;", "&lt;WAIT_FIRST&gt;"]
+    <span class="k">-</span> ["&lt;EXPECT_NEXT&gt;", "&lt;WAIT_NEXT&gt;"]
+    <span class="k">-</span> ["&lt;EXPECT_LAST&gt;", "&lt;WAIT_LAST&gt;"]
 ```
 </pre></div>
 </div>
@@ -461,7 +460,7 @@ Let’s look at the following example:</p>
 AsciinemaPlayer.create('_recs/02_usage-asciinema-2.rec', document.getElementById('asciinema-2'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><p>It is possible to wait on <code class="docutils literal notranslate"><span class="pre">:</span></code> at the end of the prompt.
 But waiting for <code class="docutils literal notranslate"><span class="pre">):</span></code> will raise a <em>timeout</em> error.
-This is due to how the color of the output is encoded.
+This error is caused to how the color of the output is encoded.
 In reality, the last few characters the terminal receives aren’t <code class="docutils literal notranslate"><span class="pre">(y):</span></code> but <code class="docutils literal notranslate"><span class="pre">\x1b[31m(y)\x1b[0m:</span></code> 🤯.</p>
 <p>Welcome to the world of <a class="reference external" href="https://notes.burke.libbey.me/ansi-escape-codes/">ANSI escape codes</a>.
 These weird characters <code class="docutils literal notranslate"><span class="pre">\x1b[31m</span></code> are the escape sequence.
@@ -471,8 +470,8 @@ The pair `\x1b[` is called the _Control Sequence Introducer_. -->
 <p><code class="docutils literal notranslate"><span class="pre">\x1b[0m</span></code> tells the terminal to go back to the <em>default</em> output mode, which is then followed by a <em>white</em> colored <code class="docutils literal notranslate"><span class="pre">:</span></code> in the output.
 So if we wanted to wait for the red-colored option, the directive would look like this:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="e42032ef-c894-444a-ba4c-6f0a24c0d95c" name="d0e069ef-75be-4238-a744-abe8f9fb7803" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="e42032ef-c894-444a-ba4c-6f0a24c0d95c">
+<input checked="checked" id="276c7215-8825-448d-b535-3706cb33f00a" name="98724e48-f9b1-4d7d-8249-2f07efa77636" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="276c7215-8825-448d-b535-3706cb33f00a">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.tiny_prompt
 
@@ -480,8 +479,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="4ac03f78-6734-4732-bff2-37a696740445" name="d0e069ef-75be-4238-a744-abe8f9fb7803" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="4ac03f78-6734-4732-bff2-37a696740445">
+<input id="9acbd114-bbff-4a30-8cbd-23cbc38de684" name="98724e48-f9b1-4d7d-8249-2f07efa77636" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="9acbd114-bbff-4a30-8cbd-23cbc38de684">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_scripted_cli_interaction} python -m sphinx_cli_recorder.testing.tiny_prompt
 
@@ -492,7 +491,7 @@ md</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p>The main options to tune will probably be the <span class="xref myst">timeout</span> value.
-There are <em>many more</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v5.0.0+)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
+There are <em>many more</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
 </section>
 </section>
 </section>

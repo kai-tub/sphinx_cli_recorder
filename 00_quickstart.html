@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="01_installation.html" /><link rel="prev" title="Welcome to the Sphinx-CLI-Recorder documentation!" href="intro.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>Quickstart - sphinx-cli-recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
@@ -198,18 +198,23 @@
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For an overview of <em>what</em> Sphinx-CLI-Recorder <em>is</em>, refer to the
+<a class="reference internal" href="intro.html#welcome"><span class="std std-ref">Welcome</span></a> page.</p>
+</div>
 <p>The best way to understand what the extension is capable of and if it is helpful for you, is to simply look at an example:</p>
 <!-- Future: Ensure that correct command is always run -->
 <div class="sd-tab-set docutils">
-<input checked="checked" id="54fefe35-f036-4fa1-ac35-b5400959bb15" name="d57b425c-9226-4741-867c-0b0f8777ebda" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="54fefe35-f036-4fa1-ac35-b5400959bb15">
+<input checked="checked" id="89b5d384-cc0f-4795-928e-3551c24a123b" name="acb62b25-82ec-422d-9cf2-20ecd5adc426" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="89b5d384-cc0f-4795-928e-3551c24a123b">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.animation_example
 </pre></div>
 </div>
 </div>
-<input id="fdb1067a-6f73-45b1-919c-592b0f779b6a" name="d57b425c-9226-4741-867c-0b0f8777ebda" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="fdb1067a-6f73-45b1-919c-592b0f779b6a">
+<input id="9148f22d-8b49-43b6-9cfc-e72963dc6b26" name="acb62b25-82ec-422d-9cf2-20ecd5adc426" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="9148f22d-8b49-43b6-9cfc-e72963dc6b26">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
@@ -227,17 +232,17 @@ AsciinemaPlayer.create('_recs/00_quickstart-asciinema-0.rec', document.getElemen
 </pre></div>
 </div>
 <p>Showcasing an example output of a specific command is especially helpful for tools similar to  <a class="reference external" href="https://rich.readthedocs.io/en/stable/introduction.html#introduction" title="(in Rich)"><span class="xref myst">rich</span></a> that provide fantastic formatting/highlighting options for the command line.
-The directive can automatically generate a nice-looking and always up-to-date help page for a CLI tool in development.</p>
+The directive can automatically generate a nice-looking and up-to-date help page for a CLI tool in development.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="01efa2ad-ffc9-4055-a20d-e03ce8ef39a5" name="fb636c48-762a-42b1-b2e8-86b80ec55d6f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="01efa2ad-ffc9-4055-a20d-e03ce8ef39a5">
+<input checked="checked" id="c5624a27-2a2f-473c-8e17-7b5ce8b1373f" name="086f66f0-46e5-4dcd-b858-931fb8ab9d14" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="c5624a27-2a2f-473c-8e17-7b5ce8b1373f">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> rich --help
 </pre></div>
 </div>
 </div>
-<input id="44ff7ced-7c2c-4e7b-ac97-8819ce070d94" name="fb636c48-762a-42b1-b2e8-86b80ec55d6f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="44ff7ced-7c2c-4e7b-ac97-8819ce070d94">
+<input id="9c243b3d-50b4-4c8d-addb-98ceaf4683e6" name="086f66f0-46e5-4dcd-b858-931fb8ab9d14" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="9c243b3d-50b4-4c8d-addb-98ceaf4683e6">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} rich --help
 ```
@@ -252,8 +257,8 @@ AsciinemaPlayer.create('_recs/00_quickstart-asciinema-1.rec', document.getElemen
 </script><p>But the extension is not limited to executing commands!
 It is also possible to walk through command prompts and script the interaction. 🤯</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="0d43ac4c-0ab7-4501-9add-9f8bd3ad6518" name="0d761465-e1a7-419f-9126-3a667adc878f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="0d43ac4c-0ab7-4501-9add-9f8bd3ad6518">
+<input checked="checked" id="e0a65c1c-db7b-4bf3-9b5b-adba74afad16" name="267f043f-b1dc-4c30-8ab5-9f8524cf8e89" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="e0a65c1c-db7b-4bf3-9b5b-adba74afad16">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
@@ -265,8 +270,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="17fce0f8-7147-4e52-ba66-6353c152f916" name="0d761465-e1a7-419f-9126-3a667adc878f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="17fce0f8-7147-4e52-ba66-6353c152f916">
+<input id="0ae77954-b6c4-4c42-8810-af2a569e47ef" name="267f043f-b1dc-4c30-8ab5-9f8524cf8e89" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="0ae77954-b6c4-4c42-8810-af2a569e47ef">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
@@ -289,8 +294,8 @@ AsciinemaPlayer.create('_recs/00_quickstart-asciinema-2.rec', document.getElemen
 The previous method, <code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code>, relies on <em>waiting</em> before sending input strings to the terminal.
 A different method, <code class="docutils literal notranslate"><span class="pre">record_scripted_cli_interaction</span></code>, is to <em>wait</em> until a specific character or sequences of characters have been received from the terminal to send the <em>input</em>:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="b14f58d8-647f-4f20-81b8-7e7bd71fe234" name="4ec30a2c-eb01-42b8-8b8a-237a560dd010" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="b14f58d8-647f-4f20-81b8-7e7bd71fe234">
+<input checked="checked" id="01b493d5-c3ac-4aa3-b616-ee85b47303d3" name="c8683b5d-3497-4384-8429-04ef8893a31c" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="01b493d5-c3ac-4aa3-b616-ee85b47303d3">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
@@ -302,8 +307,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="29481717-ceba-4c54-99d4-67d8f3d9fe2f" name="4ec30a2c-eb01-42b8-8b8a-237a560dd010" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="29481717-ceba-4c54-99d4-67d8f3d9fe2f">
+<input id="755a2517-5593-4daf-b1b1-15cb85abf83a" name="c8683b5d-3497-4384-8429-04ef8893a31c" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="755a2517-5593-4daf-b1b1-15cb85abf83a">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_scripted_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
@@ -333,7 +338,7 @@ flowchart TD
     B -- No --&gt; C[Use record_cli_command]
     B -- Yes --&gt; D[Use record_timed/scripted_cli_interaction]
 
-        </div><p>Please take a look at the <a class="reference internal" href="02_usage.html#usage"><span class="std std-ref">Usage</span></a> section for more details (otherwise this shouldn’t be called a <em>Quickstart</em> section, I guess 🤔)</p>
+        </div><p>Please take a look at the <a class="reference internal" href="02_usage.html#usage"><span class="std std-ref">Usage</span></a> section for more details (otherwise, this shouldn’t be called a <em>Quickstart</em> section, I guess 🤔)</p>
 </section>
 </section>
 

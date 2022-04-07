@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Security concerns" href="20_security.html" /><link rel="prev" title="Configuration" href="05_configuration.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>Roadmap - sphinx-cli-recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
@@ -202,11 +202,10 @@
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Publish to PyPI</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Add CI/CD pipeline</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Try to configure a single source of truth for the <code class="docutils literal notranslate"><span class="pre">version</span></code></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Fix failing macOS tests</p></li>
 </ul>
 </li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Make an example prompt that explain what the recorder is doing</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Use explanation-video to open graph protocol</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Add explanation-video to open graph protocol</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Increase test coverage</p>
 <ul class="contains-task-list">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Better test the option validators</p></li>
@@ -222,16 +221,15 @@
 </ul>
 </li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Add detailed validators for the directive options</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Remove the generated CSS/JS files from git, automatically build and include them during packaging stage</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> Fix the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> variable issue, where the local changes do not have any effect</p></li>
 </ul>
 <p>The <em>long-term roadmap</em>:</p>
 <ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> mixed await and time specification</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> add better error-messages</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> add aliases to the validators for the <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> option-inputs</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> re-use recording if command with <em>identical</em> settings was already run</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> whitelist option (see <a class="reference internal" href="20_security.html#security"><span class="std std-ref">Security concerns</span></a>)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"/> mixed await and time specification</p></li>
 </ul>
 <section id="if-i-had-unlimited-time">
 <h2>If-I-Had-Unlimited-Time<a class="headerlink" href="#if-i-had-unlimited-time" title="Permalink to this headline">#</a></h2>

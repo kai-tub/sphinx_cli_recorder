@@ -1,7 +1,7 @@
-{"version": 2, "width": 80, "height": 24, "timestamp": 1647376017, "idle_time_limit": 5.0, "env": {"SHELL": null, "TERM": null}}
-[2.689808, "o", "\u001b[1mYes\u001b[0m or \u001b[3mno\u001b[0m? \u001b[1;35m[y/n]\u001b[0m \u001b[31m(y)\u001b[0m: "]
-[4.164616, "i", ""]
-[4.164748, "o", "y"]
-[4.517845, "i", ""]
-[4.518127, "o", "\r\n"]
-[4.520808, "o", "Nice, good to know!\r\n"]
+{"version": 2, "width": 80, "height": 24, "timestamp": 1649351341, "idle_time_limit": 5.0, "env": {"SHELL": null, "TERM": null}}
+[3.466999, "o", "\u001b[1mYes\u001b[0m or \u001b[3mno\u001b[0m? \u001b[1;35m[y/n]\u001b[0m \u001b[31m(y)\u001b[0m: "]
+[5.108761, "i", ""]
+[5.108927, "o", "y"]
+[5.563066, "i", ""]
+[5.563215, "o", "\r\n"]
+[5.56698, "o", "Nice, good to know!\r\n"]
