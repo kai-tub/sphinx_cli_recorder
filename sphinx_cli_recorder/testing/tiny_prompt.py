@@ -1,5 +1,5 @@
 from rich import print
-from rich.prompt import Confirm, Prompt, IntPrompt
+from rich.prompt import Confirm, IntPrompt, Prompt
 from rich.text import Text
 
 

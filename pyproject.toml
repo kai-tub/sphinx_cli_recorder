@@ -1,12 +1,21 @@
 [tool.poetry]
 name = "sphinx-cli-recorder"
 version = "0.1.1"
-description = ""
+description = "A Sphinx extension that runs/automates recordings of CLI applications, without requiring any external services."
 authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
+license = "GNU General Public License v3"
+readme = "README.md"
+homepage = "https://github.com/kai-tub/sphinx_cli_recorder/"
+repository = "https://github.com/kai-tub/sphinx_cli_recorder/"
+documentation = "https://github.com/kai-tub.github.io/sphinx_cli_recorder"
+
+include = [
+    "LICENSE",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-asciinema = { git = "https://github.com/asciinema/asciinema", branch = "develop"}
+asciinema = {git = "https://github.com/asciinema/asciinema", rev = "fdb6cb067ad73ded7253762534171bcf5a97c6e4"}
 Sphinx = "^4.4.0"
 pexpect = "^4.8.0"
 unsync = "^1.4.0"
@@ -16,9 +25,9 @@ antidote = "^1.0.1"
 pydantic = "^1.9.0"
 PyYAML = "^6.0"
 yamale = "^4.0.3"
-autodoc-pydantic = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
+autodoc-pydantic = "^1.6.1"
 rich = "^11.2.0"
 jupyter = "^1.0.0"
 livereload = "^2.6.3"
@@ -34,6 +43,12 @@ sphinxcontrib-mermaid = "^0.7.1"
 sphinx-design = "^0.0.13"
 rich-cli = "^1.5.1"
 sphinx-comments = "^0.0.3"
+pre-commit = "^2.17.0"
+isort = "^5.10.1"
+black = "^22.3.0"
+mypy = "^0.942"
+types-PyYAML = "^6.0.5"
+types-docutils = "^0.18.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -41,3 +56,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"
+
+[tool.isort]
+profile = "black"

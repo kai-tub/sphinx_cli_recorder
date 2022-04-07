@@ -1,6 +1,7 @@
 from enum import Enum
+from typing import Optional, Union
+
 from pydantic import BaseModel, PositiveFloat, PositiveInt
-from typing import Union, Optional
 
 
 class AsciinemaTheme(str, Enum):

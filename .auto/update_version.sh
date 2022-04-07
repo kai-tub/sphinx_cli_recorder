@@ -14,6 +14,7 @@ function error {
 # https://stackoverflow.com/questions/59895/how-to-get-the-source-directory-of-a-bash-script-from-within-the-script-itself
 # scriptFolder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+echo "$ARG_0"
 bumpType=$(echo "$ARG_0" | jq -r '.bump')
 echo "bump type: $bumpType"
 

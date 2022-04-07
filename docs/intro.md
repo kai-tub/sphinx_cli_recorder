@@ -1,14 +1,24 @@
+(welcome)=
 # Welcome to the Sphinx-CLI-Recorder documentation!
 
 ```{warning}
 The library is in its early stages!
 ```
 
-This Sphinx extension is a tool to allow you to easily automate terminal/CLI recording sessions (without you having to leave your editor 🤯)
+:::{admonition} TL;DR
+:class: note
+
+- 🎥 Record interactions (input & output) with CLI applications
+- 🤖 Automate the recording process via simple Sphinx directives
+- ✔️ Simple; does not require any knowledge of the underlying recording application
+- ⛓️ No dependencies on external services; all files are generated and hosted locally
+:::
+
+This Sphinx extension is a tool to allow you to easily automate the recording process of CLI applications (without you having to leave your editor 🤯).
 
 Suppose you are developing a neat CLI application, possibly with [rich](rich:introduction) (get it?) visual output. In that case, you put blood, sweat, and tears into the development part but do you want to put the same amount of effort into the documentation?
 Shouldn't it be easy to show what your CLI application can do?
-If you record a terminal session to show-case how to interact with your tool, you need to ensure that the recording is kept up-to-date and doesn't break with future updates.
+If you record a terminal session to show how to interact with your tool, you need to ensure that the recording is kept up-to-date and doesn't break with future updates.
 Then you need to know how to upload the file and embed it into your documentation.
 And all you want to do is to show something cool like:
 
@@ -46,3 +56,4 @@ The benefits of using this Sphinx extension are:
 - 🏠 Keeps all of your files/data local:
     - 🔐 No need to depend on external services/tokens to upload the recordings
 - 🚅 The recordings are done in parallel to minimize the documentation build time
+- ☑️ Simple; no need to understand how [asciinema](https://asciinema.org) works

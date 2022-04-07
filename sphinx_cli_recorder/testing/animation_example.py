@@ -4,14 +4,15 @@ Only useful for testing.
 """
 
 import time
+
 from rich import print
-from rich.prompt import Prompt, Confirm
+from rich.console import Console
+from rich.panel import Panel
+from rich.progress import Progress, SpinnerColumn, TimeElapsedColumn
+from rich.prompt import Confirm, Prompt
+from rich.rule import Rule
 from rich.syntax import Syntax
 from rich.table import Table
-from rich.panel import Panel
-from rich.rule import Rule
-from rich.progress import Progress, SpinnerColumn, TimeElapsedColumn
-from rich.console import Console
 
 
 def progress_example():
@@ -19,22 +20,22 @@ def progress_example():
         '''def hello_potential_user():
     """Say hello to a potential user 💜"""
     # this is comment
-    s = "Do you want to use a cool extension?"
+    s = "Hello hard-worker"
     print(s)''',
         "python",
     )
 
-    table = Table("rich", "is", "awesome")
-    table.add_row("yes", "yep", "definitely")
-
     progress_renderables = [
-        "This is a cool prompt",
-        Panel("Aren't [i]I[/i] right?"),
-        "See this nice looking [magenta]table[/]",
-        table,
-        "And showing some syntax...",
+        "This is a cool CLI application you want to show to the 🌍",
+        Panel("Which probably includes some [i][blue]neat visualizations[/]"),
+        "Like styling some source-code",
         syntax,
-        Rule("Thank you for your patience!"),
+        Rule(),
+        "But you should [b]not[/b] have to record and host it manually!",
+        "You've worked enough writing the CLI application",
+        "Automate the recording and hosting with:",
+        Panel("[magenta]Sphinx-CLI-Recorder[/]"),
+        Rule("Thank you for watching until the end!"),
     ]
 
     console = Console(record=True)
