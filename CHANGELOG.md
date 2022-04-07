@@ -1,3 +1,19 @@
+# v0.1.2 (Thu Apr 07 2022)
+
+#### 🐛 Bug Fix
+
+- Monster update [#1](https://github.com/kai-tub/sphinx_cli_recorder/pull/1) ([@kai-tub](https://github.com/kai-tub))
+
+#### ⚠️ Pushed to `main`
+
+- Run release script before pages-deploy ([@kai-tub](https://github.com/kai-tub))
+
+#### Authors: 1
+
+- Kai Norman Clasen ([@kai-tub](https://github.com/kai-tub))
+
+---
+
 # v0.0.1 (Tue Mar 15 2022)
 
 :tada: This release contains work from a new contributor! :tada:

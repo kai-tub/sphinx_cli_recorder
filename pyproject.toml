@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinx-cli-recorder"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Sphinx extension that runs/automates recordings of CLI applications, without requiring any external services."
 authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
 license = "GNU General Public License v3"
