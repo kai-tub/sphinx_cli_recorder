@@ -6,6 +6,26 @@
 
 #### ⚠️ Pushed to `main`
 
+- Fix main.yml missing action spec ([@kai-tub](https://github.com/kai-tub))
+- Fix main.yml intendation error ([@kai-tub](https://github.com/kai-tub))
+- Update CI ([@kai-tub](https://github.com/kai-tub))
+- Sync release script ([@kai-tub](https://github.com/kai-tub))
+- Run release script before pages-deploy ([@kai-tub](https://github.com/kai-tub))
+
+#### Authors: 1
+
+- Kai Norman Clasen ([@kai-tub](https://github.com/kai-tub))
+
+---
+
+# v0.1.2 (Thu Apr 07 2022)
+
+#### 🐛 Bug Fix
+
+- Monster update [#1](https://github.com/kai-tub/sphinx_cli_recorder/pull/1) ([@kai-tub](https://github.com/kai-tub))
+
+#### ⚠️ Pushed to `main`
+
 - Run release script before pages-deploy ([@kai-tub](https://github.com/kai-tub))
 
 #### Authors: 1
