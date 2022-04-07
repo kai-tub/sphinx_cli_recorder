@@ -14,11 +14,12 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+
+        python-version: [ "3.8", "3.9", "3.10" ]
 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
@@ -28,14 +29,14 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
           installer-parallel: true
+      - uses: extractions/setup-just@v1
       - name: Install dependencies
-        run: poetry install --no-interaction --no-root
-      - name: Install library
-        run: poetry install --no-interaction
-      # CUSTOM
-      - name: Run tests
+        run: |
+          just install
+      - name: Check precommit
+        run: |
+          pre-commit run --all-files
+      - name: Run tests from within poetry
         run: |
           source $VENV
-          pre-commit run --all-files
-          mypy sphinx_cli_recorder
-          pytest "tests/"
+          just test

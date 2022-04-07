@@ -6,73 +6,57 @@ on:
     branches: [main]
 
 jobs:
-  check-documentation:
-    name: Build documentation
+  # Here I am assuming that the tests have been run on the PR
+  # Otherwise it could be possible that a direct push to main
+  # would not run the test code and still publish to PyPI
+  documentation-and-publish:
+    name: Build documentation and publish
     runs-on: ubuntu-latest
     # Always try to build the documentation!
     # if: ${{ github.event_name == 'push' }}
     steps:
       - name: Set up Git
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        with:
+
+        python-version: 3.8
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
           installer-parallel: true
-      - name: Install dependencies
-        run: poetry install --no-interaction --no-root
-      - name: Install library
-        run: poetry install --no-interaction
-      ### Custom
       - uses: extractions/setup-just@v1
-      - name: Install node dependencies
+      - name: Install dependencies
         run: |
           just install
-      ###
       - name: Build documentation
         run: |
           source $VENV
-          sphinx-build docs docs/_build
-  # Here I am assuming that the tests have been run on the PR
-  # Otherwise it could be possible that a direct push to main
-  # would not run the test code and still publish to PyPI
-  release:
-    name: Release new version on GitHub
-    runs-on: ubuntu-latest
-    needs: check-documentation
-    if: ${{ github.event_name == 'push' }}
-    steps:
-      - name: Set up Git
-        uses: actions/checkout@v2
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-      - name: Install dependencies
-        run: poetry install --no-interaction --no-root
-      - name: Install library
-        run: poetry install --no-interaction
-      ### CUSTOM
-      - uses: extractions/setup-just@v1
-      - name: Install node dependencies
-        run: |
-          just install
-      ###
-      - name: Build documentation
-        run: |
-          source $VENV
-          sphinx-build docs docs/_build
+          just build
+      # Must be run BEFORE GitHub Pages Deploy
+      # as the GitHub Pages action would check out a different
+      # branch; the error you would see is "no canary release available"
+      # It also requires checkout with all associated tags, i.e.,
+      # uses: actions/checkout@v3
+      # with:
+      #   fetch-depth: 0
       - name: Run release script
+        if: ${{ github.event_name == 'push' }}
         run: bash .auto/run_auto.sh
         env:
           # To be able to trigger publish event
           GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
 
+      # always deploy github-pages if pushed to main
       - name: Deploy 🚀
+        if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages # The branch the action should deploy to.
+          # This should be set via `just build`
           folder: docs/_build

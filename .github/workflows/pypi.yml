@@ -14,22 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git
-        uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+        uses: actions/checkout@v3
+      - name: Set up Python
         with:
-          python-version: 3.8 # minimum python version
-
-      - name: Set-Up poetry
-        uses: abatilo/actions-poetry@v2.0.0
+          python-version: 3.8
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
         with:
-          poetry-version: 1.1.12
-      ### Custom
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
       - uses: extractions/setup-just@v1
       - name: Install node dependencies
         run: |
           just install
-          git fetch --tags
-      ###
       - name: Build package
         run: poetry build
       - name: Publish
