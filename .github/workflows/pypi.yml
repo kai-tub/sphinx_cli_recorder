@@ -28,6 +28,7 @@ jobs:
       - name: Install node dependencies
         run: |
           just install
+          git fetch --tags
       ###
       - name: Build package
         run: poetry build
