@@ -1,12 +1,12 @@
 import asyncio
 from typing import Sequence
 
-import pexpect
-import pexpect.replwrap
-from icecream import ic
+import pexpect  # type: ignore
+from icecream import ic  # type: ignore
 from pydantic import BaseSettings, NonNegativeFloat, validate_arguments
+from typing_extensions import TypeAlias
 
-PEXPECT_TYPE = pexpect.pty_spawn.spawn
+PEXPECT_TYPE: TypeAlias = pexpect.pty_spawn.spawn
 
 
 class Config:
@@ -21,7 +21,7 @@ class SleepTimes(BaseSettings):
     between_character: NonNegativeFloat = 0.1
     between_commands: NonNegativeFloat = 1.0
     after_command: NonNegativeFloat = 1.0
-    timeout: NonNegativeFloat = 15
+    timeout: NonNegativeFloat = 30
 
 
 @validate_arguments(config=Config)
@@ -40,6 +40,12 @@ async def scripted_cmd_interaction(
     sends: Sequence[str],
     sleep_times: SleepTimes = SleepTimes(),
 ):
+    expects, sends = list(expects), list(sends)
+    if len(expects) != len(sends):
+        raise ValueError(
+            "The `expects` and `sends` sequences have to have the same length!"
+        )
+
     for expect, send in zip(expects, sends):
         await proc.expect_exact(expect, async_=True)
         await _send_to_proc(proc, send, sleep_times)

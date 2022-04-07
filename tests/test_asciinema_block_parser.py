@@ -1,4 +1,5 @@
 import pytest
+
 from sphinx_cli_recorder.asciinema_block_parser import *
 
 

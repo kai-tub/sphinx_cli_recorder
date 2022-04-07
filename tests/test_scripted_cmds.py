@@ -1,12 +1,14 @@
-from pydantic import ValidationError
-import pytest
+import sys
+
 import pexpect
+import pytest
+from pydantic import ValidationError
+
 from sphinx_cli_recorder.scripted_cmds import (
     SleepTimes,
     scripted_cmd_interaction,
     timed_cmd_interaction,
 )
-import sys
 
 PEXPECT_TYPE = pexpect.pty_spawn.spawn
 
@@ -55,6 +57,7 @@ async def test_scripted_cmd_interaction_yes_path(simple_prompt_proc: PEXPECT_TYP
         (":::", ["n"], SleepTimes()),
         ([":"], "n", SleepTimes()),
         ([":"], ["n"], 0.1),
+        ([":"], None, 0.1),
     ],
 )
 async def test_scripted_cmd_interaction_wrong_input(
@@ -62,6 +65,21 @@ async def test_scripted_cmd_interaction_wrong_input(
 ):
     with pytest.raises(ValidationError):
         await scripted_cmd_interaction(simple_prompt_proc, expects, sends, sleep_times)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ["expects", "sends"],
+    [
+        ([":"], ["s", "s"]),
+        ([":", ":"], ["s"]),
+    ],
+)
+async def test_scripted_cmd_interaction_invalid_expects_sends_lengths(
+    simple_prompt_proc: PEXPECT_TYPE, expects, sends
+):
+    with pytest.raises(ValueError, match="sequences .* same length"):
+        await scripted_cmd_interaction(simple_prompt_proc, expects, sends)
 
 
 @pytest.mark.asyncio

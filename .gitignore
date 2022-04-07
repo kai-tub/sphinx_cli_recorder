@@ -2,6 +2,8 @@
 node_modules
 links
 tweet.txt
+sphinx_cli_recorder/asciinema-player.css
+sphinx_cli_recorder/asciinema-player.min.js
 
 
 # Byte-compiled / optimized / DLL files

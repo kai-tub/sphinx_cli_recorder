@@ -6,19 +6,14 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    strategy:
-      fail-fast: true
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
-        # os: [ubuntu-latest, macos-latest]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+  check-documentation:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    # Always try to build the documentation!
+    # if: ${{ github.event_name == 'push' }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
+      - name: Set up Git
+        uses: actions/checkout@v2
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -29,14 +24,22 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install library
         run: poetry install --no-interaction
-      - name: Run tests
+      ### Custom
+      - name: Install node dependencies
+        run: |
+          just install
+      ###
+      - name: Build documentation
         run: |
           source $VENV
-          pytest "tests/"
-  build-documentation:
-    name: Build documentation
+          sphinx-build docs docs/_build
+  # Here I am assuming that the tests have been run on the PR
+  # Otherwise it could be possible that a direct push to main
+  # would not run the test code and still publish to PyPI
+  release:
+    name: Release new version on GitHub
     runs-on: ubuntu-latest
-    needs: test
+    needs: check-documentation
     if: ${{ github.event_name == 'push' }}
     steps:
       - name: Set up Git
@@ -55,28 +58,13 @@ jobs:
         run: |
           source $VENV
           sphinx-build docs docs/_build
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs/_build
-  release:
-    name: Release new version on GitHub
-    runs-on: ubuntu-latest
-    needs: build-documentation
-    if: ${{ github.event_name == 'push' }}
-    steps:
-      - name: Set up Git
-        uses: actions/checkout@v2
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - name: Set-Up poetry
-        uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: 1.1.12
+
       - name: Run release script
         run: bash .auto/run_auto.sh
         env:

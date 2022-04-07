@@ -5,20 +5,33 @@
 
 # TODO: check that total duration is close to sleep_times!
 
-import pytest
 import tempfile
-from sphinx_cli_recorder.scripted_asciinema_runner import (
-    scripted_asciinema_runner,
-)
-from sphinx_cli_recorder.scripted_cmds import SleepTimes
 from pathlib import Path
+
+import pytest
+
+from sphinx_cli_recorder.scripted_asciinema_runner import scripted_asciinema_runner
+from sphinx_cli_recorder.scripted_cmds import SleepTimes
 
 
 @pytest.mark.asyncio
-async def test_single_cmd():
+async def test_single_cmd(tmpdir):
     cmd = "python --version"
     expects = None
     sends = None
-    with tempfile.NamedTemporaryFile() as tmpfile:
-        await scripted_asciinema_runner(cmd, expects, sends, tmpfile.name, SleepTimes())
-        assert Path(tmpfile.name).stat().st_size > 0
+    p = tmpdir / "tmpfile"
+    await scripted_asciinema_runner(cmd, expects, sends, p, SleepTimes())
+    assert Path(p).stat().st_size > 0
+
+
+@pytest.mark.asyncio
+async def test_invalid_expect_send_specification(tmpdir):
+    cmd = "python --version"
+    expects = [":"]
+    sends = None
+    p = tmpdir / "tmpfile"
+    # is actually catched in underlying scripted_cmds code
+    with pytest.raises(
+        ValueError, match="Missing `sequence` for given `expects` sequence"
+    ):
+        await scripted_asciinema_runner(cmd, expects, sends, p, SleepTimes())

@@ -1,35 +1,30 @@
 from __future__ import annotations
-from venv import EnvBuilder
+
 import importlib.metadata
 
 __version__ = importlib.metadata.version("sphinx_cli_recorder")
 
+import importlib.resources
 import itertools
-
+import tempfile
+import urllib.parse
 from enum import Enum, auto
+from functools import partial
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Set
+
 import asyncer
 from docutils import nodes
-
 from docutils.parsers.rst import directives
 from pydantic import BaseModel
-from sphinx.util.docutils import SphinxDirective
-from typing import List, Dict, Any, Optional, Set
-from sphinx.application import Sphinx
-from sphinx.writers.html5 import HTML5Translator
-import tempfile
-from sphinx.util.fileutil import copy_asset
-from pathlib import Path
 from sphinx.application import Sphinx
 from sphinx.environment import BuildEnvironment
-import importlib
-
 from sphinx.util import logging
-import sphinx_cli_recorder
-from functools import partial
+from sphinx.util.docutils import SphinxDirective
+from sphinx.util.fileutil import copy_asset
+from sphinx.writers.html5 import HTML5Translator
 
-from sphinx_cli_recorder.scripted_asciinema_runner import (
-    scripted_asciinema_runners,
-)
+import sphinx_cli_recorder
 from sphinx_cli_recorder.asciinema_block_parser import (
     scripted_cmd_interaction_parser,
     timed_cmd_interaction_parser,
@@ -38,14 +33,25 @@ from sphinx_cli_recorder.asciinema_player_settings import (
     AsciinemaPlayerSettings,
     AsciinemaRecorderSettings,
 )
-
+from sphinx_cli_recorder.scripted_asciinema_runner import scripted_asciinema_runners
 from sphinx_cli_recorder.scripted_cmds import SleepTimes
-import urllib.parse
 
 logger = logging.getLogger(__name__)
 
 JS_RESOURCE = "asciinema-player.min.js"
 CSS_RESOURCE = "asciinema-player.css"
+
+
+class SphinxCliRecorderEnvType(BuildEnvironment):
+    """
+    Sphinx build environment, including the attributes set by sphinx_cli_recorder.
+    As the build environment is designed to be dynamically patched, there is no
+    easy way to make the code mypy-ready.
+    This solution makes mypy pass, but the environment always has to be checked
+    if the attribute is available first!
+    """
+
+    sphinx_cli_recorder_commands: list
 
 
 class InteractionMode(Enum):
@@ -60,7 +66,7 @@ class SphinxAutoAsciinemaSettingNames(BaseModel):
     cmd_runner_settings = "sphinx_cli_recorder_cmd_runner_settings"
 
 
-def purge_commands(app: Sphinx, env: BuildEnvironment, docname: str):
+def purge_commands(app: Sphinx, env: SphinxCliRecorderEnvType, docname: str):
     if not hasattr(env, "sphinx_cli_recorder_commands"):
         return
     env.sphinx_cli_recorder_commands = [
@@ -99,7 +105,7 @@ def copy_resources(app: Sphinx, exception, resources: Optional[List[str]] = None
                 copy_asset(str(resource_path), str(outdir))
 
 
-def run_cmds(app: Sphinx, env: EnvBuilder):
+def run_cmds(app: Sphinx, env: SphinxCliRecorderEnvType):
     """
     Function that access the extension-cache from within `env`.
     The function will execute all commands in an asynchronous loop.
@@ -167,7 +173,10 @@ def depart_asciinema_node(self: HTML5Translator, node: nodes.Element):
 
 
 def merge_cmds(
-    _app: Sphinx, env: BuildEnvironment, docnames: Set[str], other: BuildEnvironment
+    _app: Sphinx,
+    env: SphinxCliRecorderEnvType,
+    docnames: Set[str],
+    other: SphinxCliRecorderEnvType,
 ):
     """
     Merge the extension-cache of sphinx_cli_recorder.
@@ -260,6 +269,7 @@ class RecordCliBaseDirective(SphinxDirective):
             id=target_id,
         )
 
+        self.env: SphinxCliRecorderEnvType
         if not hasattr(self.env, "sphinx_cli_recorder_commands"):
             self.env.sphinx_cli_recorder_commands = []
 

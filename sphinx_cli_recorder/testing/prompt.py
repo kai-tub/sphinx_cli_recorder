@@ -1,9 +1,13 @@
 from rich import print
-from rich.prompt import Confirm, Prompt, IntPrompt
+from rich.prompt import Confirm, IntPrompt, Prompt
 
 
 def main():
-    if Confirm.ask("Run [i]prompt[/i] tests?", default=True):
+    print("Sphinx-CLI-Recorder can also work with interactive CLI applications!\n\n")
+    if Confirm.ask(
+        "Do you want to start the [b]interactive[/b] example [i]prompt[/i]?",
+        default=True,
+    ):
         while True:
             result = IntPrompt.ask(
                 "Enter a number between [b]1[/b] and [b]3[/b]", default=2

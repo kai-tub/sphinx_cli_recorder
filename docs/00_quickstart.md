@@ -1,5 +1,10 @@
 # Quickstart
 
+:::{note}
+For an overview of _what_ Sphinx-CLI-Recorder _is_, refer to the
+[Welcome](welcome) page.
+:::
+
 The best way to understand what the extension is capable of and if it is helpful for you, is to simply look at an example:
 
 <!-- Future: Ensure that correct command is always run -->
@@ -33,7 +38,7 @@ python -m sphinx_cli_recorder.testing.animation_example
 ```
 
 Showcasing an example output of a specific command is especially helpful for tools similar to  [rich](rich:introduction) that provide fantastic formatting/highlighting options for the command line.
-The directive can automatically generate a nice-looking and always up-to-date help page for a CLI tool in development.
+The directive can automatically generate a nice-looking and up-to-date help page for a CLI tool in development.
 
 :::::{tab-set}
 ::::{tab-item} reST
@@ -155,4 +160,4 @@ You may use the following flowchart to decide which directive you should use.
 ```{mermaid} mermaid_files/decision.mmd
 ```
 
-Please take a look at the [](Usage) section for more details (otherwise this shouldn't be called a _Quickstart_ section, I guess 🤔)
+Please take a look at the [](Usage) section for more details (otherwise, this shouldn't be called a _Quickstart_ section, I guess 🤔)
