@@ -65,15 +65,14 @@ jobs:
         run: |
           source $VENV
           sphinx-build docs docs/_build
+      - name: Run release script
+        run: bash .auto/run_auto.sh
+        env:
+          # To be able to trigger publish event
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs/_build
-
-      - name: Run release script
-        run: bash .auto/run_auto.sh
-        env:
-          # To be able to trigger publish event
-          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
