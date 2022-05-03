@@ -1,9 +1,6 @@
 (Configuration)=
 # Configuration
 
-<!-- FUTURE: use autopydantic_model -->
-<!-- Or something similar to automatically generate the documentation from code -->
-
 :::{warning}
 In the dropdown menus, the last few columns are cut-off.
 The issue seems to be due to a CSS conflict regarding the dropdown's alignment/width/margin properties.
@@ -19,15 +16,10 @@ Finalize the examples
 ```
 
 ## Recorder Configuration
-
-## Player Configuration
 ### Columns
-    :cols: PositiveNumber
-
-Define the number of columns the terminal should have.
-The extension will ensure that the same number of columns is used for the recording and playback.
-If the number of columns is too low, the output could be wrapped weirdly.
-The text will also be _zoomed-in_ to fit the width of the container.
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.cols
+```
 
 ::::{dropdown} :cols: 20
 :animate: fade-in-slide-down
@@ -46,12 +38,9 @@ The text will also be _zoomed-in_ to fit the width of the container.
 ::::
 
 ### Rows
-    :rows: PositiveNumber
-
-Define the number of rows the terminal should have.
-The extension will ensure that the same number of rows is used for the recording and playback.
-If the number of rows is too low, the beginning of the output may be lost.
-Similar to how a _real_ terminal behaves.
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.rows
+```
 
 ::::{dropdown} :rows: 5
 :animate: fade-in-slide-down
@@ -69,14 +58,12 @@ Similar to how a _real_ terminal behaves.
 :::
 ::::
 
+## Player Configuration
+
 ### Auto-Play
-    :autoplay: "true"/"false"
-
-Set if the playback should start automatically.
-By default, the playback has to be started manually.
-
-Possible reasons to enable auto-play is to showcase some rich help-text of a command, where the full output is shown by tuning the number of _rows_ to display.
-Another reason is to start an eye-catching animation at the top of the page.
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.autoplay
+```
 
 ::::{dropdown} :autoplay: "false"
 :animate: fade-in-slide-down
@@ -97,14 +84,38 @@ Another reason is to start an eye-catching animation at the top of the page.
 ::::
 
 ### Preload
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.preload
+```
 
 ### Loop
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.loop
+```
+
+::::{dropdown} :loop: 3
+:animate: fade-in-slide-down
+
+:::{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.tiny_prompt
+:rows: 10
+:loop: 3
+
+    - "y"
+:::
+::::
 
 ### Start-At
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.startat
+```
 
 ### Speed
 
 ### Idle Time Limit
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.idletimelimit
+
+```
 
 ### Fit
 
@@ -131,6 +142,14 @@ Another reason is to start an eye-catching animation at the top of the page.
 
 ### Theme
 Define the style of the background and color palette of the terminal.
+
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.theme
+
+.. autoclass:: sphinx_cli_recorder.asciinema_player_settings::AsciinemaTheme
+    :members:
+    :undoc-members:
+```
 
 ::::{dropdown} :theme: "asciinema"
 :animate: fade-in-slide-down

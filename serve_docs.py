@@ -9,6 +9,8 @@ for watch_dir in [
     "docs/*.py",
     "docs/*.yml",
     "docs/*.ipynb",
+    "docs/**/*.css",
+    "docs/**/*.js",
 ]:
     server.watch(watch_dir, run_cmd)
 
