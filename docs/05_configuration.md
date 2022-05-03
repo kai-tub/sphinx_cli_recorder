@@ -110,6 +110,10 @@ Finalize the examples
 ```
 
 ### Speed
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.speed
+
+```
 
 ### Idle Time Limit
 ```{eval-rst}
@@ -118,14 +122,32 @@ Finalize the examples
 ```
 
 ### Fit
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.fit
+
+```
 
 ### Poster
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.poster
+
+```
 ::::{dropdown} :poster: "data:text/plain,rich --help"
 :animate: fade-in-slide-down
 
 :::{record_cli_cmd} rich --help
 :autoplay: "false"
 :poster: "data:text/plain,rich --help"
+:rows: 67
+:::
+::::
+
+::::{dropdown} :poster: "rich --help"
+:animate: fade-in-slide-down
+
+:::{record_cli_cmd} rich --help
+:autoplay: "false"
+:poster: "rich --help"
 :rows: 67
 :::
 ::::
@@ -146,9 +168,6 @@ Define the style of the background and color palette of the terminal.
 ```{eval-rst}
 .. autopydantic_field:: sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.theme
 
-.. autoclass:: sphinx_cli_recorder.asciinema_player_settings::AsciinemaTheme
-    :members:
-    :undoc-members:
 ```
 
 ::::{dropdown} :theme: "asciinema"

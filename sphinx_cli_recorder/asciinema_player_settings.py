@@ -1,9 +1,15 @@
 import time
 from datetime import datetime
 from enum import Enum
+from textwrap import dedent, fill, wrap
 from typing import Counter, Optional, Union
 
 from pydantic import BaseModel, Field, PositiveFloat, PositiveInt, conint, validator
+
+
+def _list_enum_values_as_bullets(enum_cls):
+    """List themes as bullet points with quotes around string values."""
+    return "\n".join(f'- "{v.value}"' for v in enum_cls)
 
 
 class AsciinemaTheme(str, Enum):
@@ -17,6 +23,13 @@ class AsciinemaTheme(str, Enum):
 
 
 class AsciinemaFit(str, Enum):
+    """
+    - "width" - scale to full width of the container
+    - "height" - scale to full height of the container (requires the container element to have fixed height)
+    - "both" - scale to either full width or height, maximizing usage of available space (requires the container element to have fixed height)
+    - "none" - don't scale, use fixed size font (also see fontSize option below)
+    """
+
     width = "width"
     height = "height"
     both = "both"
@@ -88,14 +101,61 @@ class AsciinemaPlayerSettings(AsciinemaRecorderSettings):
         """,
     )
     # First try to coerce to Integer than Str
-    startat: Union[conint(ge=0, strict=True), str] = 0
+    startat: Union[conint(ge=0, strict=True), str] = Field(
+        default=0,
+        description="""\
+            Start playback at a given time.
+            Supports the following formats:
+
+            - 122 (number of seconds as integer)
+            - "1:03" ("mm:ss")
+            - "1:02:03" ("hh:mm:ss")
+    """,
+    )
     # could also be int
-    speed: PositiveFloat = 1.0
-    theme: AsciinemaTheme = AsciinemaTheme.asciinema
+    # TODO: Check if float actually works
+    speed: PositiveFloat = Field(
+        default=1.0,
+        description="""\
+            Playback speed. 2.0 means 2x faster.
+        """,
+    )
+    # FUTURE: Figure out how to correctly ident the lines from list_themes
+    theme: AsciinemaTheme = Field(
+        default=AsciinemaTheme.asciinema,
+        description=f"""\
+            Select a pre-defined Asciinema theme for the terminal/text color.
+Can be one of:
+
+{_list_enum_values_as_bullets(AsciinemaTheme)}
+
+        """,
+    )
     # FUTURE: could use poster to show what command
     # was run/will be run
-    poster: Optional[str] = None
-    fit: AsciinemaFit = AsciinemaFit.width
+    poster: Optional[str] = Field(
+        default=None,
+        description="""\
+            The preview frame to display until the playback is started.
+            Can either be plain text encoded as: `data:text/plain,Poster TXT`
+            or the display recording "frame" at a given time using the NPT ("Normal Play Time") notation:
+            `npt:0:1`.
+
+            If no prefix is given, the `data:text/plain,Poster` prefix is added.
+        """,
+    )
+    # FUTURE: See theme
+    fit: AsciinemaFit = Field(
+        default=AsciinemaFit.width,
+        description=f"""\
+            Controls the player's sizing behaviour inside its container element.
+
+Can be one of:
+
+{_list_enum_values_as_bullets(AsciinemaFit)}
+
+        """,
+    )
     fontsize: str = "small"
 
     @validator("startat")
@@ -116,3 +176,16 @@ class AsciinemaPlayerSettings(AsciinemaRecorderSettings):
                 return time.strftime("%H:%M:%S", tm)
             raise ValueError(f"{v} is an unknown time-format!")
         raise TypeError(f"{v} of type {type(v)} is an unsupported startat type!")
+
+    @validator("poster")
+    def poster_match(cls, v: Optional[str]):
+        if v is None:
+            return v
+
+        text_prefix = "data:text/plain,"
+        v = v.lstrip()
+        if v.startswith(text_prefix):
+            return v
+        if v.startswith("npt"):
+            return v
+        return text_prefix + v

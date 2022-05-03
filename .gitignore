@@ -1,4 +1,5 @@
 .nodeenv
+tmp.*
 node_modules
 links
 tweet.txt
