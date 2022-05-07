@@ -1,3 +1,15 @@
+# v0.1.3 (Sat May 07 2022)
+
+#### 🐛 Bug Fix
+
+- Update configuration & dependencies [#2](https://github.com/kai-tub/sphinx_cli_recorder/pull/2) ([@kai-tub](https://github.com/kai-tub))
+
+#### Authors: 1
+
+- Kai Norman Clasen ([@kai-tub](https://github.com/kai-tub))
+
+---
+
 # v0.1.2 (Thu Apr 07 2022)
 
 #### 🐛 Bug Fix
