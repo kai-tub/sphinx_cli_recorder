@@ -5,6 +5,7 @@ on:
   pull_request:
     branches: [main]
 
+
 jobs:
   # Here I am assuming that the tests have been run on the PR
   # Otherwise it could be possible that a direct push to main
@@ -22,7 +23,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
+
           python-version: 3.8
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -50,6 +53,8 @@ jobs:
         env:
           # To be able to trigger publish event
           GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+
+
 
       # always deploy github-pages if pushed to main
       - name: Deploy 🚀

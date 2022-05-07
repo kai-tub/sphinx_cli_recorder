@@ -38,7 +38,13 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinxcontrib.mermaid",
     "sphinx_design",
+    "sphinxcontrib.autodoc_pydantic",
+    "sphinx.ext.autodoc",
+    "sphinx_autodoc_typehints",
 ]
+
+autodoc_pydantic_settings_show_json = False
+
 external_toc_path = "_toc.yml"
 
 comments_config = {"hypothesis": True}
@@ -73,10 +79,10 @@ intersphinx_mapping = {
     "rich": ("https://rich.readthedocs.io/en/stable/", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
 }
-myst_url_schemes = [
+myst_url_schemes = (
     "http",
     "https",
-]
+)
 
 # -- Options for HTML output -------------------------------------------------
 
