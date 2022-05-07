@@ -19,7 +19,7 @@ Or, if you are like me and would rather like to look at a picture:
 
 (command_runner)=
 ## Command runner
-Here is a shortlist of the key takeaways:
+Here is a short list of the key takeaways:
 - The [directive](sphinx:rst-directives) is called `record_cli_cmd`
 - The command must _terminate_ without any input
     - The command is spawned as a subprocess and must terminate on its own
@@ -86,7 +86,7 @@ There are two [directives](sphinx:rst-directives) that allow you to _interact_ w
 
 (timed_command_runner)=
 ### Timed command runner
-Here is a shortlist of the key takeaways of the _timed_ command runner:
+Here is a short list of the key takeaways of the _timed_ command runner:
 - The [directive](sphinx:rst-directives) is called `record_timed_cli_interaction`
 - The input command may contain any number of characters/whitespaces
     - _But_ no newlines are allowed
@@ -190,7 +190,7 @@ Here is a visual example output to keep you entertained:
 
 (scripted_command_runner)=
 ### Scripted command runner
-Here is a shortlist of the key takeaways of the _scripted_ command runner:
+Here is a short list of the key takeaways of the _scripted_ command runner:
 - The [directive](sphinx:rst-directive) is called `record_scripted_cli_interaction`
 - The input command may contain any number of characters/whitespaces
     - _But_ no newlines are allowed

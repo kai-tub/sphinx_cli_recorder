@@ -5,14 +5,15 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Roadmap" href="10_roadmap.html" /><link rel="prev" title="Limitations" href="04_limitation.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
         <title>Configuration - sphinx-cli-recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -39,10 +40,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -164,6 +167,8 @@
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30_internals.html">Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90_dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95_license.html">License</a></li>
 </ul>
 
 </div>
@@ -198,8 +203,6 @@
         <article role="main">
           <section class="tex2jax_ignore mathjax_ignore" id="configuration">
 <span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h1>
-<!-- FUTURE: use autopydantic_model -->
-<!-- Or something similar to automatically generate the documentation from code -->
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>In the dropdown menus, the last few columns are cut-off.
@@ -213,18 +216,23 @@ If the <code class="docutils literal notranslate"><span class="pre">border</span
 </div>
 <section id="recorder-configuration">
 <h2>Recorder Configuration<a class="headerlink" href="#recorder-configuration" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="player-configuration">
-<h2>Player Configuration<a class="headerlink" href="#player-configuration" title="Permalink to this headline">#</a></h2>
 <section id="columns">
 <h3>Columns<a class="headerlink" href="#columns" title="Permalink to this headline">#</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>:cols: PositiveNumber
-</pre></div>
-</div>
-<p>Define the number of columns the terminal should have.
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.cols">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaRecorderSettings.</span></span><span class="sig-name descname"><span class="pre">cols</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.types.PositiveInt</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">80</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.cols" title="Permalink to this definition">#</a></dt>
+<dd><p>Define the number of columns the terminal should have.
 The extension will ensure that the same number of columns is used for the recording and playback.
 If the number of columns is too low, the output could be wrapped weirdly.
-The text will also be <em>zoomed-in</em> to fit the width of the container.</p>
+The text will also be zoomed-in to fit the width of the container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Constraints</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exclusiveMinimum</strong> = 0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
 :cols: 20<div class="sd-summary-down docutils">
@@ -252,13 +260,21 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-1.rec', document.getEle
 </details></section>
 <section id="rows">
 <h3>Rows<a class="headerlink" href="#rows" title="Permalink to this headline">#</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>:rows: PositiveNumber
-</pre></div>
-</div>
-<p>Define the number of rows the terminal should have.
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.rows">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaRecorderSettings.</span></span><span class="sig-name descname"><span class="pre">rows</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.types.PositiveInt</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.rows" title="Permalink to this definition">#</a></dt>
+<dd><p>Define the number of rows the terminal should have.
 The extension will ensure that the same number of rows is used for the recording and playback.
 If the number of rows is too low, the beginning of the output may be lost.
-Similar to how a <em>real</em> terminal behaves.</p>
+Similar to how a _real_ terminal behaves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Constraints</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exclusiveMinimum</strong> = 0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
 :rows: 5<div class="sd-summary-down docutils">
@@ -284,15 +300,20 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-2.rec', document.getEle
 AsciinemaPlayer.create('_recs/05_configuration-asciinema-3.rec', document.getElementById('asciinema-3'), {"rows": 10, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script></div>
 </details></section>
+</section>
+<section id="player-configuration">
+<h2>Player Configuration<a class="headerlink" href="#player-configuration" title="Permalink to this headline">#</a></h2>
 <section id="auto-play">
 <h3>Auto-Play<a class="headerlink" href="#auto-play" title="Permalink to this headline">#</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>:autoplay: "true"/"false"
-</pre></div>
-</div>
-<p>Set if the playback should start automatically.
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.autoplay">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">autoplay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.autoplay" title="Permalink to this definition">#</a></dt>
+<dd><p>Set if the playback should start automatically.
+If <cite>True</cite> the player will start even if the video is <em>not</em> in the viewport!
 By default, the playback has to be started manually.</p>
-<p>Possible reasons to enable auto-play is to showcase some rich help-text of a command, where the full output is shown by tuning the number of <em>rows</em> to display.
+<p>Possible reasons to enable auto-play is to showcase some rich help-text of a command, where the full output is shown by tuning the number of _rows_ to display.
 Another reason is to start an eye-catching animation at the top of the page.</p>
+</dd></dl>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
 :autoplay: “false”<div class="sd-summary-down docutils">
@@ -320,27 +341,29 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-5.rec', document.getEle
 </details></section>
 <section id="preload">
 <h3>Preload<a class="headerlink" href="#preload" title="Permalink to this headline">#</a></h3>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.preload">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">preload</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.preload" title="Permalink to this definition">#</a></dt>
+<dd><p>Set this option to true if the recording should be preloaded on player’s initialization.</p>
+</dd></dl>
 </section>
 <section id="loop">
 <h3>Loop<a class="headerlink" href="#loop" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="start-at">
-<h3>Start-At<a class="headerlink" href="#start-at" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="speed">
-<h3>Speed<a class="headerlink" href="#speed" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="idle-time-limit">
-<h3>Idle Time Limit<a class="headerlink" href="#idle-time-limit" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="fit">
-<h3>Fit<a class="headerlink" href="#fit" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="poster">
-<h3>Poster<a class="headerlink" href="#poster" title="Permalink to this headline">#</a></h3>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.loop">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">loop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pydantic.types.PositiveInt</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.loop" title="Permalink to this definition">#</a></dt>
+<dd><p>If set to <cite>True</cite> video will loop indefinitely.
+When set to a number, then the recording will be re-played <cite>loop</cite> times and stopped
+after that.</p>
+<p>The number of loops will only be respected in the “first” playback.
+Please note that the recording will <em>immediately</em> restart once it has
+finished. If there is no wait-time after finishing the loop, it will
+look like no output has been generated since the next loop will
+“repaint” the window.</p>
+</dd></dl>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
-:poster: “data:text/plain,rich –help”<div class="sd-summary-down docutils">
+:loop: 3<div class="sd-summary-down docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-down" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z" fill-rule="evenodd"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
@@ -348,7 +371,117 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-5.rec', document.getEle
 <div class="asciinema" id="asciinema-6">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
-AsciinemaPlayer.create('_recs/05_configuration-asciinema-6.rec', document.getElementById('asciinema-6'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": "data:text/plain,rich --help", "fit": "width", "fontsize": "small"});
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-6.rec', document.getElementById('asciinema-6'), {"rows": 10, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": 3, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+</script></div>
+</details></section>
+<section id="start-at">
+<h3>Start-At<a class="headerlink" href="#start-at" title="Permalink to this headline">#</a></h3>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.startat">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">startat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">sphinx_cli_recorder.asciinema_player_settings.ConstrainedIntValue</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.startat" title="Permalink to this definition">#</a></dt>
+<dd><p>Start playback at a given time.
+Supports the following formats:</p>
+<ul class="simple">
+<li><p>122 (number of seconds as integer)</p></li>
+<li><p>“1:03” (“mm:ss”)</p></li>
+<li><p>“1:02:03” (“hh:mm:ss”)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Validated by</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">startat_match</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="speed">
+<h3>Speed<a class="headerlink" href="#speed" title="Permalink to this headline">#</a></h3>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.speed">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">speed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.types.PositiveFloat</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.speed" title="Permalink to this definition">#</a></dt>
+<dd><p>Playback speed. 2.0 means 2x faster.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Constraints</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exclusiveMinimum</strong> = 0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="idle-time-limit">
+<h3>Idle Time Limit<a class="headerlink" href="#idle-time-limit" title="Permalink to this headline">#</a></h3>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.idletimelimit">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaRecorderSettings.</span></span><span class="sig-name descname"><span class="pre">idletimelimit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic.types.PositiveFloat</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaRecorderSettings.idletimelimit" title="Permalink to this definition">#</a></dt>
+<dd><p>Limit recorded terminal inactivity to max &lt;idletimelimit&gt; seconds.
+<em>Not</em> milli-seconds!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Constraints</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exclusiveMinimum</strong> = 0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="fit">
+<h3>Fit<a class="headerlink" href="#fit" title="Permalink to this headline">#</a></h3>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.fit">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">fit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sphinx_cli_recorder.asciinema_player_settings.AsciinemaFit</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">AsciinemaFit.width</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Controls the player’s sizing behaviour inside its container element.</p>
+<p>Can be one of:</p>
+<ul class="simple">
+<li><p>“width”</p></li>
+<li><p>“height”</p></li>
+<li><p>“both”</p></li>
+<li><p>“none”</p></li>
+</ul>
+</dd></dl>
+</section>
+<section id="poster">
+<h3>Poster<a class="headerlink" href="#poster" title="Permalink to this headline">#</a></h3>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.poster">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">poster</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.poster" title="Permalink to this definition">#</a></dt>
+<dd><p>The preview frame to display until the playback is started.
+Can either be plain text encoded as: <cite>data:text/plain,Poster TXT</cite>
+or the display recording “frame” at a given time using the NPT (“Normal Play Time”) notation:
+<cite>npt:0:1</cite>.</p>
+<p>If no prefix is given, the <cite>data:text/plain,Poster</cite> prefix is added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Validated by</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">poster_match</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+:poster: “data:text/plain,rich –help”<div class="sd-summary-down docutils">
+<svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-down" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z" fill-rule="evenodd"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="asciinema" id="asciinema-7">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-7.rec', document.getElementById('asciinema-7'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": "data:text/plain,rich --help", "fit": "width", "fontsize": "small"});
+</script></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+:poster: “rich –help”<div class="sd-summary-down docutils">
+<svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-down" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z" fill-rule="evenodd"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="asciinema" id="asciinema-8">
+</div>
+<script src="_static/asciinema-player.min.js"></script><script>
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-8.rec', document.getElementById('asciinema-8'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": "data:text/plain,rich --help", "fit": "width", "fontsize": "small"});
 </script></div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
@@ -357,15 +490,28 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-6.rec', document.getEle
 <div class="sd-summary-up docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="asciinema" id="asciinema-7">
+<div class="asciinema" id="asciinema-9">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
-AsciinemaPlayer.create('_recs/05_configuration-asciinema-7.rec', document.getElementById('asciinema-7'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": "npt:0:1", "fit": "width", "fontsize": "small"});
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-9.rec', document.getElementById('asciinema-9'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": "npt:0:1", "fit": "width", "fontsize": "small"});
 </script></div>
 </details></section>
 <section id="theme">
 <h3>Theme<a class="headerlink" href="#theme" title="Permalink to this headline">#</a></h3>
 <p>Define the style of the background and color palette of the terminal.</p>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.theme">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AsciinemaPlayerSettings.</span></span><span class="sig-name descname"><span class="pre">theme</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sphinx_cli_recorder.asciinema_player_settings.AsciinemaTheme</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">AsciinemaTheme.asciinema</span></em><a class="headerlink" href="#sphinx_cli_recorder.asciinema_player_settings.AsciinemaPlayerSettings.theme" title="Permalink to this definition">#</a></dt>
+<dd><p>Select a pre-defined Asciinema theme for the terminal/text color.
+Can be one of:</p>
+<ul class="simple">
+<li><p>“asciinema”</p></li>
+<li><p>“monokai”</p></li>
+<li><p>“tango”</p></li>
+<li><p>“solarized-dark”</p></li>
+<li><p>“solarized-light”</p></li>
+</ul>
+</dd></dl>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
 :theme: “asciinema”<div class="sd-summary-down docutils">
@@ -373,10 +519,10 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-7.rec', document.getEle
 <div class="sd-summary-up docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="asciinema" id="asciinema-8">
+<div class="asciinema" id="asciinema-10">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
-AsciinemaPlayer.create('_recs/05_configuration-asciinema-8.rec', document.getElementById('asciinema-8'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-10.rec', document.getElementById('asciinema-10'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script></div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
@@ -385,10 +531,10 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-8.rec', document.getEle
 <div class="sd-summary-up docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="asciinema" id="asciinema-9">
+<div class="asciinema" id="asciinema-11">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
-AsciinemaPlayer.create('_recs/05_configuration-asciinema-9.rec', document.getElementById('asciinema-9'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "monokai", "poster": null, "fit": "width", "fontsize": "small"});
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-11.rec', document.getElementById('asciinema-11'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "monokai", "poster": null, "fit": "width", "fontsize": "small"});
 </script></div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
@@ -397,10 +543,10 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-9.rec', document.getEle
 <div class="sd-summary-up docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="asciinema" id="asciinema-10">
+<div class="asciinema" id="asciinema-12">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
-AsciinemaPlayer.create('_recs/05_configuration-asciinema-10.rec', document.getElementById('asciinema-10'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "tango", "poster": null, "fit": "width", "fontsize": "small"});
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-12.rec', document.getElementById('asciinema-12'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "tango", "poster": null, "fit": "width", "fontsize": "small"});
 </script></div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
@@ -409,10 +555,10 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-10.rec', document.getEl
 <div class="sd-summary-up docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="asciinema" id="asciinema-11">
+<div class="asciinema" id="asciinema-13">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
-AsciinemaPlayer.create('_recs/05_configuration-asciinema-11.rec', document.getElementById('asciinema-11'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "solarized-dark", "poster": null, "fit": "width", "fontsize": "small"});
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-13.rec', document.getElementById('asciinema-13'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "solarized-dark", "poster": null, "fit": "width", "fontsize": "small"});
 </script></div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
@@ -421,10 +567,10 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-11.rec', document.getEl
 <div class="sd-summary-up docutils">
 <svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-up" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z" fill-rule="evenodd"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="asciinema" id="asciinema-12">
+<div class="asciinema" id="asciinema-14">
 </div>
 <script src="_static/asciinema-player.min.js"></script><script>
-AsciinemaPlayer.create('_recs/05_configuration-asciinema-12.rec', document.getElementById('asciinema-12'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "solarized-light", "poster": null, "fit": "width", "fontsize": "small"});
+AsciinemaPlayer.create('_recs/05_configuration-asciinema-14.rec', document.getElementById('asciinema-14'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "solarized-light", "poster": null, "fit": "width", "fontsize": "small"});
 </script></div>
 </details></section>
 </section>
@@ -498,10 +644,12 @@ AsciinemaPlayer.create('_recs/05_configuration-asciinema-12.rec', document.getEl
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Configuration</a><ul>
-<li><a class="reference internal" href="#recorder-configuration">Recorder Configuration</a></li>
-<li><a class="reference internal" href="#player-configuration">Player Configuration</a><ul>
+<li><a class="reference internal" href="#recorder-configuration">Recorder Configuration</a><ul>
 <li><a class="reference internal" href="#columns">Columns</a></li>
 <li><a class="reference internal" href="#rows">Rows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#player-configuration">Player Configuration</a><ul>
 <li><a class="reference internal" href="#auto-play">Auto-Play</a></li>
 <li><a class="reference internal" href="#preload">Preload</a></li>
 <li><a class="reference internal" href="#loop">Loop</a></li>

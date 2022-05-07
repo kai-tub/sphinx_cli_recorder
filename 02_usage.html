@@ -5,14 +5,15 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Limitations" href="04_limitation.html" /><link rel="prev" title="Installation" href="01_installation.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
         <title>Usage - sphinx-cli-recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -39,10 +40,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -164,6 +167,8 @@
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30_internals.html">Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90_dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95_license.html">License</a></li>
 </ul>
 
 </div>
@@ -230,7 +235,7 @@ flowchart TD
 
         </div><section id="command-runner">
 <span id="id2"></span><h2>Command runner<a class="headerlink" href="#command-runner" title="Permalink to this headline">#</a></h2>
-<p>Here is a shortlist of the key takeaways:</p>
+<p>Here is a short list of the key takeaways:</p>
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a> is called <code class="docutils literal notranslate"><span class="pre">record_cli_cmd</span></code></p></li>
 <li><p>The command must <em>terminate</em> without any input</p>
@@ -246,16 +251,16 @@ flowchart TD
 </ul>
 <p>The directive syntax looks as follows:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="309bd809-9485-4ea6-813f-466e1c7f374a" name="69d809e5-9a9e-42ff-9abd-e87815649280" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="309bd809-9485-4ea6-813f-466e1c7f374a">
+<input checked="checked" id="13739bea-fd3d-4bf6-917e-f123084519fe" name="0d32d5fd-9676-4ac1-9d1a-18a86bdac749" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="13739bea-fd3d-4bf6-917e-f123084519fe">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span>. record_cli_cmd:: &lt;CMD_TO_RUN&gt;
 <span class="nc">:&lt;OPTION_KEY&gt;:</span> <span class="nt">&lt;OPTION_VALUE&gt;</span>
 </pre></div>
 </div>
 </div>
-<input id="7f158beb-2cde-4ced-b95e-1eb208fdd75b" name="69d809e5-9a9e-42ff-9abd-e87815649280" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="7f158beb-2cde-4ced-b95e-1eb208fdd75b">
+<input id="89d5e10a-f6df-44bb-9636-034e4880d00e" name="0d32d5fd-9676-4ac1-9d1a-18a86bdac749" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="89d5e10a-f6df-44bb-9636-034e4880d00e">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} &lt;CMD_TO_RUN&gt;
 :&lt;OPTION_KEY&gt;: &lt;OPTION_VALUE&gt;
@@ -269,15 +274,15 @@ There is simply no use for text input.
 The provided <code class="docutils literal notranslate"><span class="pre">&lt;CMD&gt;</span></code> will be run as a subprocess, and since no interaction is necessary, there is no need to give any <em>input</em>.
 Remember, <code class="docutils literal notranslate"><span class="pre">&lt;CMD&gt;</span></code> may contain any number of whitespace, so the following is allowed:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="33d5cafc-13f5-4743-a8d1-677780cdaacf" name="353e30fb-65da-456d-a0fa-82520e689cf1" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="33d5cafc-13f5-4743-a8d1-677780cdaacf">
+<input checked="checked" id="ca923ca8-6a43-4129-ba5b-e736dde8d283" name="8478de8d-7b20-487c-93b4-ebf44a689178" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="ca923ca8-6a43-4129-ba5b-e736dde8d283">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.animation_example
 </pre></div>
 </div>
 </div>
-<input id="421a1dff-e18e-41e2-9c29-4868c56be7ba" name="353e30fb-65da-456d-a0fa-82520e689cf1" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="421a1dff-e18e-41e2-9c29-4868c56be7ba">
+<input id="ca15724d-476a-4b7a-a0d3-d121dad95d25" name="8478de8d-7b20-487c-93b4-ebf44a689178" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="ca15724d-476a-4b7a-a0d3-d121dad95d25">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
@@ -301,7 +306,7 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-0.rec', document.getElementById
 </ul>
 <section id="timed-command-runner">
 <span id="id3"></span><h3>Timed command runner<a class="headerlink" href="#timed-command-runner" title="Permalink to this headline">#</a></h3>
-<p>Here is a shortlist of the key takeaways of the <em>timed</em> command runner:</p>
+<p>Here is a short list of the key takeaways of the <em>timed</em> command runner:</p>
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a> is called <code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code></p></li>
 <li><p>The input command may contain any number of characters/whitespaces</p>
@@ -321,8 +326,8 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-0.rec', document.getElementById
 </ul>
 <p>The <em>timed</em> command runner has the following syntax:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="89a7933d-8dde-4704-a6b1-b04e66280681" name="83d2d8d9-4269-45b5-995c-c75049217394" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="89a7933d-8dde-4704-a6b1-b04e66280681">
+<input checked="checked" id="66db1925-3c2b-453c-9486-119f3a5e58fd" name="c61fc6d5-0a33-4735-8b06-4a6a73c40841" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="66db1925-3c2b-453c-9486-119f3a5e58fd">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> <span class="nt">&lt;CMD&gt;</span>
 <span class="nt">&lt;OPTIONS&gt;</span>
@@ -334,8 +339,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="d7fe34bc-a114-4c21-9742-cf1b0b88adab" name="83d2d8d9-4269-45b5-995c-c75049217394" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="d7fe34bc-a114-4c21-9742-cf1b0b88adab">
+<input id="e34e3ca1-5723-4ca9-a487-9373751381db" name="c61fc6d5-0a33-4735-8b06-4a6a73c40841" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="e34e3ca1-5723-4ca9-a487-9373751381db">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} &lt;CMD&gt;
 &lt;OPTIONS&gt;
@@ -364,8 +369,8 @@ There are <em>many more</em> options to configure the behavior of the <a class="
 <p>You made it until the end of the timed command runner documentation! 🥳
 Here is a visual example output to keep you entertained:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="05be9ee4-bf7b-421c-9faa-7b8016d0be0c" name="5d8481df-e670-4b1f-8458-b049d8a2d825" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="05be9ee4-bf7b-421c-9faa-7b8016d0be0c">
+<input checked="checked" id="f553547d-6e3c-48d7-b1cd-70a9e6a258e8" name="4f03fb50-ae06-4624-8332-145e943b81ce" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="f553547d-6e3c-48d7-b1cd-70a9e6a258e8">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
@@ -377,8 +382,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="c96374e0-adb1-4d7b-ac14-2c40808df071" name="5d8481df-e670-4b1f-8458-b049d8a2d825" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="c96374e0-adb1-4d7b-ac14-2c40808df071">
+<input id="fb05caa7-305a-4b53-973e-109f50d39982" name="4f03fb50-ae06-4624-8332-145e943b81ce" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="fb05caa7-305a-4b53-973e-109f50d39982">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
@@ -400,7 +405,7 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-1.rec', document.getElementById
 </section>
 <section id="scripted-command-runner">
 <span id="id4"></span><h3>Scripted command runner<a class="headerlink" href="#scripted-command-runner" title="Permalink to this headline">#</a></h3>
-<p>Here is a shortlist of the key takeaways of the <em>scripted</em> command runner:</p>
+<p>Here is a short list of the key takeaways of the <em>scripted</em> command runner:</p>
 <ul class="simple">
 <li><p>The <span class="xref myst">directive</span> is called <code class="docutils literal notranslate"><span class="pre">record_scripted_cli_interaction</span></code></p></li>
 <li><p>The input command may contain any number of characters/whitespaces</p>
@@ -420,8 +425,8 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-1.rec', document.getElementById
 </ul>
 <p>The <em>scripted</em> command runner has the following syntax:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="42e74cc4-41c0-45dc-9a1b-0bef564d9f91" name="e620da53-6739-4210-ba5d-fc30e2d3204b" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="42e74cc4-41c0-45dc-9a1b-0bef564d9f91">
+<input checked="checked" id="715630f5-fdd2-462d-b63c-829a92978fcd" name="1f03c38b-ca6f-4ebe-924c-5c86165b22d5" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="715630f5-fdd2-462d-b63c-829a92978fcd">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> <span class="nt">&lt;CMD&gt;</span>
 <span class="nt">&lt;OPTIONS&gt;</span>
@@ -432,8 +437,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="8afa4297-1c5f-40ff-a324-1694311126e4" name="e620da53-6739-4210-ba5d-fc30e2d3204b" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="8afa4297-1c5f-40ff-a324-1694311126e4">
+<input id="5a92d2b4-962f-4c9c-adef-47024eb221b8" name="1f03c38b-ca6f-4ebe-924c-5c86165b22d5" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="5a92d2b4-962f-4c9c-adef-47024eb221b8">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} &lt;CMD&gt;
 &lt;OPTIONS&gt;
@@ -470,8 +475,8 @@ The pair `\x1b[` is called the _Control Sequence Introducer_. -->
 <p><code class="docutils literal notranslate"><span class="pre">\x1b[0m</span></code> tells the terminal to go back to the <em>default</em> output mode, which is then followed by a <em>white</em> colored <code class="docutils literal notranslate"><span class="pre">:</span></code> in the output.
 So if we wanted to wait for the red-colored option, the directive would look like this:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="e9c0a63d-7532-47a4-a4b7-298ac511b449" name="c75323dc-8d96-4088-845e-223c90d01654" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="e9c0a63d-7532-47a4-a4b7-298ac511b449">
+<input checked="checked" id="bad4f16b-09f3-406e-a247-b95f24bfd3be" name="b2b7f449-20b3-4284-aaee-b357eb8842d4" type="radio"/>
+<label class="sd-tab-label" data-sync-id="reST" for="bad4f16b-09f3-406e-a247-b95f24bfd3be">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.tiny_prompt
 
@@ -479,8 +484,8 @@ reST</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="b3efc029-641e-4596-addf-4cf1780bfeb9" name="c75323dc-8d96-4088-845e-223c90d01654" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="b3efc029-641e-4596-addf-4cf1780bfeb9">
+<input id="a3ac597e-7dc1-4600-9bc3-2ccce6e91e32" name="b2b7f449-20b3-4284-aaee-b357eb8842d4" type="radio"/>
+<label class="sd-tab-label" data-sync-id="md" for="a3ac597e-7dc1-4600-9bc3-2ccce6e91e32">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_scripted_cli_interaction} python -m sphinx_cli_recorder.testing.tiny_prompt
 
