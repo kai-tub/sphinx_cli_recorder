@@ -16,7 +16,7 @@ include = [
 [tool.poetry.dependencies]
 # dependencies-start
 python = "^3.8"
-asciinema = {git = "https://github.com/asciinema/asciinema", rev = "fdb6cb067ad73ded7253762534171bcf5a97c6e4"}
+asciinema = "^2.2.0"
 Sphinx = "^4.4.0"
 pexpect = "^4.8.0"
 unsync = "^1.4.0"
