@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import yamale  # type: ignore
 import yaml
-from icecream import ic  # type: ignore
 from pydantic import BaseModel
 
 _WAIT_FOR_AND_SEND_SPEC = """
