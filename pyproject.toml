@@ -12,8 +12,8 @@ documentation = "https://github.com/kai-tub.github.io/sphinx_cli_recorder"
 include = [
     "LICENSE",
     # overwrite inherited exclude from .gitignore!
-    "asciinema-player.css",
-    "asciinema-player.min.js",
+    "sphinx_cli_recorder/asciinema-player.css",
+    "sphinx_cli_recorder/asciinema-player.min.js",
 ]
 
 [tool.poetry.dependencies]
