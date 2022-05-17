@@ -1,3 +1,15 @@
+# v0.1.5 (Tue May 17 2022)
+
+#### 🐛 Bug Fix
+
+- Didn't correctly specify location of css/js files [#4](https://github.com/kai-tub/sphinx_cli_recorder/pull/4) ([@kai-tub](https://github.com/kai-tub))
+
+#### Authors: 1
+
+- Kai Norman Clasen ([@kai-tub](https://github.com/kai-tub))
+
+---
+
 # v0.1.4 (Tue May 17 2022)
 
 #### 🐛 Bug Fix
