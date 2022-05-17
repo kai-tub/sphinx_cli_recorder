@@ -86,7 +86,7 @@ def copy_resources(app: Sphinx, exception, resources: Optional[List[str]] = None
 
     Args:
         app (Sphinx): Sphinx application
-        exception: Do no run if exception is processed.
+        exception: Do not run if exception is processed.
         resources (Optional[List[str]], optional): Optional list of resource names.
         If none are given, will return. Defaults to None.
 
@@ -98,7 +98,9 @@ def copy_resources(app: Sphinx, exception, resources: Optional[List[str]] = None
 
     for resource in resources:
         if not importlib.resources.is_resource(sphinx_cli_recorder, resource):
-            raise ValueError(f"{JS_RESOURCE} is an unknown resource!")
+            raise ValueError(
+                f"{JS_RESOURCE} is an unknown resource! Something went wrong in the packaging!"
+            )
         with importlib.resources.path(sphinx_cli_recorder, resource) as resource_path:
             outdir = Path(app.outdir) / "_static"
             if exception is None:
