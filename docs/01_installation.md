@@ -8,8 +8,9 @@ python -m pip install sphinx-cli-recorder
 Then enable the extension in your [sphinx config (config.py)](sphinx:extensions)
 
 ```python
+# note that underscore `_` is used and not `-` as in the pip command!
 extensions = [
-    "sphinx-cli-recorder"
+    "sphinx_cli_recorder"
 ]
 ```
 ```{warning}

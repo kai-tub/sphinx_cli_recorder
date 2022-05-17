@@ -2,7 +2,6 @@ import asyncio
 from typing import Sequence
 
 import pexpect  # type: ignore
-from icecream import ic  # type: ignore
 from pydantic import BaseSettings, NonNegativeFloat, validate_arguments
 from typing_extensions import TypeAlias
 

@@ -1,7 +1,6 @@
 (roadmap)=
 # Roadmap
 
-- [ ] Publish to PyPI
 - [ ] Add CI/CD pipeline
   - [ ] Fix failing macOS tests
 - [ ] Add explanation-video to open graph protocol
