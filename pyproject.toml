@@ -34,6 +34,8 @@ build-backend = "pdm.pep517.api"
 [tool.pdm.build]
 includes = [
     "LICENSE",
+    "src"
+    # Maybe not necessary anymore with PDM?
     # overwrite inherited exclude from .gitignore!
     # "src/sphinx_cli_recorder/asciinema-player.css",
     # "src/sphinx_cli_recorder/asciinema-player.min.js",
@@ -63,8 +65,8 @@ docs = [
     "rich-cli",
     "sphinx-comments",
     "sphinx-autodoc-typehints",
-
 ]
+
 test = [
     "pytest",
     "pre-commit",
