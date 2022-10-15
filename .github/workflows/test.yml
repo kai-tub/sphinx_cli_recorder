@@ -33,7 +33,7 @@ jobs:
           pdm run pre-commit run --all-files
       - name: Test mypy
         run: |
-          pdm run check_types
+          pdm run check-types
       - name: Run tests from within PDM
         run: |
           pdm run tests
