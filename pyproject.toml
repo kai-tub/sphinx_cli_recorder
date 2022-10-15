@@ -91,7 +91,7 @@ profile = "black"
 
 [tool.pdm.scripts]
 check-pre-commit = "pre-commit run --all-files"
-check-types = "mypy sphinx_cli_recorder"
+check-types = "mypy src"
 
 lint.composite = [
     "check-pre-commit",
