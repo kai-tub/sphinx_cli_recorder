@@ -5,14 +5,16 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="01_installation.html" /><link rel="prev" title="Sphinx CLI Recorder" href="intro.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Quickstart - sphinx-cli-recorder documentation</title>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.09.29"/>
+        <title>Quickstart - Sphinx CLI Recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-asciinema-rules.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -127,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="intro.html"><div class="brand">sphinx-cli-recorder  documentation</div></a>
+      <a href="intro.html"><div class="brand">Sphinx CLI Recorder  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="intro.html">
   
   
-  <span class="sidebar-brand-text">sphinx-cli-recorder  documentation</span>
+  <span class="sidebar-brand-text">Sphinx CLI Recorder  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -167,8 +169,9 @@
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30_internals.html">Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="90_dependencies.html">Dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="95_license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/code_of_conduct.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/license.html">License</a></li>
 </ul>
 
 </div>
@@ -187,7 +190,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -211,15 +216,15 @@
 <p>The best way to understand what the extension is capable of and if it is helpful for you, is to simply look at an example:</p>
 <!-- Future: Ensure that correct command is always run -->
 <div class="sd-tab-set docutils">
-<input checked="checked" id="799b5da5-0b9c-4e04-aa7b-75460d805da4" name="1c4e2c0f-0f6d-4e52-aa16-1c22c691796f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="799b5da5-0b9c-4e04-aa7b-75460d805da4">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-0">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.animation_example
 </pre></div>
 </div>
 </div>
-<input id="7609deef-4b45-4d6e-950c-b2acbd4d0a35" name="1c4e2c0f-0f6d-4e52-aa16-1c22c691796f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="7609deef-4b45-4d6e-950c-b2acbd4d0a35">
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-1">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
@@ -230,7 +235,7 @@ md</label><div class="sd-tab-content docutils">
 <!-- Doesn't make the option in lower! -->
 <div class="asciinema" id="asciinema-0">
 </div>
-<script src="_static/asciinema-player.min.js"></script><script>
+<script src=_static/asciinema-player.min.js></script><script>
 AsciinemaPlayer.create('_recs/00_quickstart-asciinema-0.rec', document.getElementById('asciinema-0'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><p>The extension embeds a <em>recording</em> of the provided command into your documentation:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m sphinx_cli_recorder.testing.animation_example
@@ -239,15 +244,15 @@ AsciinemaPlayer.create('_recs/00_quickstart-asciinema-0.rec', document.getElemen
 <p>Showcasing an example output of a specific command is especially helpful for tools similar to  <a class="reference external" href="https://rich.readthedocs.io/en/stable/introduction.html#introduction" title="(in Rich)"><span class="xref myst">rich</span></a> that provide fantastic formatting/highlighting options for the command line.
 The directive can automatically generate a nice-looking and up-to-date help page for a CLI tool in development.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="13a38fe3-a99e-4e58-b18b-1894cdccbb34" name="47eede8a-6a3e-4ec3-b5e7-be6c44cfbf6c" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="13a38fe3-a99e-4e58-b18b-1894cdccbb34">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-2">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> rich --help
 </pre></div>
 </div>
 </div>
-<input id="af27b7dc-ff1f-414a-a173-9bc50a016a6f" name="47eede8a-6a3e-4ec3-b5e7-be6c44cfbf6c" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="af27b7dc-ff1f-414a-a173-9bc50a016a6f">
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-3">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} rich --help
 ```
@@ -257,34 +262,34 @@ md</label><div class="sd-tab-content docutils">
 </div>
 <div class="asciinema" id="asciinema-1">
 </div>
-<script src="_static/asciinema-player.min.js"></script><script>
+<script src=_static/asciinema-player.min.js></script><script>
 AsciinemaPlayer.create('_recs/00_quickstart-asciinema-1.rec', document.getElementById('asciinema-1'), {"rows": 67, "cols": 80, "idletimelimit": 5, "autoplay": true, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><p>But the extension is not limited to executing commands!
 It is also possible to walk through command prompts and script the interaction. 🤯</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="d5259563-8470-4691-9435-68b931b5208a" name="241a5667-b092-4cc4-94ec-24c3228bc612" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="d5259563-8470-4691-9435-68b931b5208a">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-4">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
-    <span class="m">-</span> "y"
-    <span class="m">-</span> "5"
-    <span class="m">-</span> "2"
-    <span class="m">-</span> "poodle"
-    <span class="m">-</span> "husky"
+    <span class="m">-</span> &quot;y&quot;
+    <span class="m">-</span> &quot;5&quot;
+    <span class="m">-</span> &quot;2&quot;
+    <span class="m">-</span> &quot;poodle&quot;
+    <span class="m">-</span> &quot;husky&quot;
 </pre></div>
 </div>
 </div>
-<input id="4ab6e706-a4ba-436b-a0f6-68afbae5bd8b" name="241a5667-b092-4cc4-94ec-24c3228bc612" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="4ab6e706-a4ba-436b-a0f6-68afbae5bd8b">
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-5">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
-    <span class="k">-</span> "y"
-    <span class="k">-</span> "5"
-    <span class="k">-</span> "2"
-    <span class="k">-</span> "poodle"
-    <span class="k">-</span> "husky"
+    <span class="k">-</span> &quot;y&quot;
+    <span class="k">-</span> &quot;5&quot;
+    <span class="k">-</span> &quot;2&quot;
+    <span class="k">-</span> &quot;poodle&quot;
+    <span class="k">-</span> &quot;husky&quot;
 ```
 </pre></div>
 </div>
@@ -293,35 +298,35 @@ md</label><div class="sd-tab-content docutils">
 <!-- Doesn't make the option in lower! -->
 <div class="asciinema" id="asciinema-2">
 </div>
-<script src="_static/asciinema-player.min.js"></script><script>
+<script src=_static/asciinema-player.min.js></script><script>
 AsciinemaPlayer.create('_recs/00_quickstart-asciinema-2.rec', document.getElementById('asciinema-2'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><p>The interactive functionality targets library authors of CLI tools and command prompt authors.
 The previous method, <code class="docutils literal notranslate"><span class="pre">record_timed_cli_interaction</span></code>, relies on <em>waiting</em> before sending input strings to the terminal.
 A different method, <code class="docutils literal notranslate"><span class="pre">record_scripted_cli_interaction</span></code>, is to <em>wait</em> until a specific character or sequences of characters have been received from the terminal to send the <em>input</em>:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="a0310ad5-ee4b-4e2d-bd54-73aaef88d495" name="aa46cc75-370b-4477-99eb-d51be46ed7c2" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="a0310ad5-ee4b-4e2d-bd54-73aaef88d495">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-6">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
-    <span class="m">-</span> [":", "y"]
-    <span class="m">-</span> [":", "5"]
-    <span class="m">-</span> [":", "2"]
-    <span class="m">-</span> [":", "poodle"]
-    <span class="m">-</span> [":", "husky"]
+    <span class="m">-</span> [&quot;:&quot;, &quot;y&quot;]
+    <span class="m">-</span> [&quot;:&quot;, &quot;5&quot;]
+    <span class="m">-</span> [&quot;:&quot;, &quot;2&quot;]
+    <span class="m">-</span> [&quot;:&quot;, &quot;poodle&quot;]
+    <span class="m">-</span> [&quot;:&quot;, &quot;husky&quot;]
 </pre></div>
 </div>
 </div>
-<input id="9c578acf-ba62-4c32-970e-3c6e5ca9deb5" name="aa46cc75-370b-4477-99eb-d51be46ed7c2" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="9c578acf-ba62-4c32-970e-3c6e5ca9deb5">
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-7">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_scripted_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
-    <span class="k">-</span> [":", "y"]
-    <span class="k">-</span> [":", "5"]
-    <span class="k">-</span> [":", "2"]
-    <span class="k">-</span> [":", "poodle"]
-    <span class="k">-</span> [":", "husky"]
+    <span class="k">-</span> [&quot;:&quot;, &quot;y&quot;]
+    <span class="k">-</span> [&quot;:&quot;, &quot;5&quot;]
+    <span class="k">-</span> [&quot;:&quot;, &quot;2&quot;]
+    <span class="k">-</span> [&quot;:&quot;, &quot;poodle&quot;]
+    <span class="k">-</span> [&quot;:&quot;, &quot;husky&quot;]
 ```
 </pre></div>
 </div>
@@ -330,7 +335,7 @@ md</label><div class="sd-tab-content docutils">
 <!-- Doesn't make the option in lower! -->
 <div class="asciinema" id="asciinema-3">
 </div>
-<script src="_static/asciinema-player.min.js"></script><script>
+<script src=_static/asciinema-player.min.js></script><script>
 AsciinemaPlayer.create('_recs/00_quickstart-asciinema-3.rec', document.getElementById('asciinema-3'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><section id="runner-directives">
 <h2>Runner directives<a class="headerlink" href="#runner-directives" title="Permalink to this headline">#</a></h2>
@@ -359,10 +364,10 @@ flowchart TD
                 </div>
                 <div class="title">Installation</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="intro.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -385,7 +390,7 @@ flowchart TD
           </div>
           <div class="right-details">
             <div class="icons">
-              <a class="muted-link " href="https://github.com/kai-tub/sphinx-cli-recorder" aria-label="GitHub">
+              <a class="muted-link " href="https://github.com/kai-tub/sphinx_cli_recorder/" aria-label="GitHub">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
                 </svg>
@@ -408,7 +413,7 @@ flowchart TD
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -433,7 +438,6 @@ flowchart TD
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/tabs.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>

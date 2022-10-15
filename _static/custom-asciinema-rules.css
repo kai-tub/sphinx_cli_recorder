@@ -1,0 +1,10 @@
+/* No clear idea why this is even relevant even
+when set to border-box */
+/* I have no idea why there are so many issues
+when setting to border-box
+If it is set, the border width must be set to 0
+Though I do not understand why the text still flows outside
+of it. I would have to check it in more detail... */
+.sd-summary-content .asciinema-terminal {
+    box-sizing: content-box;
+}

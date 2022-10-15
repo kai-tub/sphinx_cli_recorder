@@ -5,14 +5,16 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Limitations" href="04_limitation.html" /><link rel="prev" title="Installation" href="01_installation.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Usage - sphinx-cli-recorder documentation</title>
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.09.29"/>
+        <title>Usage - Sphinx CLI Recorder documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom-asciinema-rules.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -127,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="intro.html"><div class="brand">sphinx-cli-recorder  documentation</div></a>
+      <a href="intro.html"><div class="brand">Sphinx CLI Recorder  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +152,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="intro.html">
   
   
-  <span class="sidebar-brand-text">sphinx-cli-recorder  documentation</span>
+  <span class="sidebar-brand-text">Sphinx CLI Recorder  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -167,8 +169,9 @@
 <li class="toctree-l1"><a class="reference internal" href="10_roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_security.html">Security concerns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30_internals.html">Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="90_dependencies.html">Dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="95_license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/code_of_conduct.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/license.html">License</a></li>
 </ul>
 
 </div>
@@ -187,7 +190,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -251,16 +256,16 @@ flowchart TD
 </ul>
 <p>The directive syntax looks as follows:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="f30e1b09-f0be-429f-8b56-f5de10c45d50" name="faf09e83-c178-43fc-ae22-7d0dce7abc0c" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="f30e1b09-f0be-429f-8b56-f5de10c45d50">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-0">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span>. record_cli_cmd:: &lt;CMD_TO_RUN&gt;
 <span class="nc">:&lt;OPTION_KEY&gt;:</span> <span class="nt">&lt;OPTION_VALUE&gt;</span>
 </pre></div>
 </div>
 </div>
-<input id="c4c20991-a447-4bb1-8fa1-2e2607e9becd" name="faf09e83-c178-43fc-ae22-7d0dce7abc0c" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="c4c20991-a447-4bb1-8fa1-2e2607e9becd">
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-1">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} &lt;CMD_TO_RUN&gt;
 :&lt;OPTION_KEY&gt;: &lt;OPTION_VALUE&gt;
@@ -274,15 +279,15 @@ There is simply no use for text input.
 The provided <code class="docutils literal notranslate"><span class="pre">&lt;CMD&gt;</span></code> will be run as a subprocess, and since no interaction is necessary, there is no need to give any <em>input</em>.
 Remember, <code class="docutils literal notranslate"><span class="pre">&lt;CMD&gt;</span></code> may contain any number of whitespace, so the following is allowed:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="313fbb89-a102-48ee-a58a-24fed8461b47" name="548535b4-46a3-4acc-8c98-c76d282561ce" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="313fbb89-a102-48ee-a58a-24fed8461b47">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-2">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_cli_cmd</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.animation_example
 </pre></div>
 </div>
 </div>
-<input id="737b2e4a-e6c2-4daf-aecf-8497dc992d20" name="548535b4-46a3-4acc-8c98-c76d282561ce" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="737b2e4a-e6c2-4daf-aecf-8497dc992d20">
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-3">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_cli_cmd} python -m sphinx_cli_recorder.testing.animation_example
 ```
@@ -293,7 +298,7 @@ md</label><div class="sd-tab-content docutils">
 <!-- Doesn't make the option in lower! -->
 <div class="asciinema" id="asciinema-0">
 </div>
-<script src="_static/asciinema-player.min.js"></script><script>
+<script src=_static/asciinema-player.min.js></script><script>
 AsciinemaPlayer.create('_recs/02_usage-asciinema-0.rec', document.getElementById('asciinema-0'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><p>There are <em>many</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
 </section>
@@ -316,7 +321,7 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-0.rec', document.getElementById
 </li>
 <li><p>The command <em>must</em> require some <em>input</em></p>
 <ul>
-<li><p>The <em>input</em> should be provided as a list of <em>send</em> strings enclosed by <code class="docutils literal notranslate"><span class="pre">"</span></code></p></li>
+<li><p>The <em>input</em> should be provided as a list of <em>send</em> strings enclosed by <code class="docutils literal notranslate"><span class="pre">&quot;</span></code></p></li>
 <li><p>The <em>send</em> string will be terminated by a newline, or from a CLI application’s viewpoint, by <em>receiving enter</em></p></li>
 <li><p>The <em>send</em> string will be sent after a configurable amount of time, <strong>possibly not</strong> when the terminal is ready!</p></li>
 </ul>
@@ -326,29 +331,29 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-0.rec', document.getElementById
 </ul>
 <p>The <em>timed</em> command runner has the following syntax:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="0f1dc7ba-12ad-4dfe-8dbe-5288ee7e65bf" name="67ed9498-d15a-4090-a076-37749741705f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="0f1dc7ba-12ad-4dfe-8dbe-5288ee7e65bf">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-4">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> <span class="nt">&lt;CMD&gt;</span>
 <span class="nt">&lt;OPTIONS&gt;</span>
 <span class="nt">&lt;NEWLINE&gt;</span>
-    - "&lt;LIST&gt;"
-    <span class="m">-</span> "&lt;OF&gt;"
-    <span class="m">-</span> "&lt;SEND&gt;"
-    <span class="m">-</span> "&lt;STRINGS&gt;"
+    - &quot;&lt;LIST&gt;&quot;
+    <span class="m">-</span> &quot;&lt;OF&gt;&quot;
+    <span class="m">-</span> &quot;&lt;SEND&gt;&quot;
+    <span class="m">-</span> &quot;&lt;STRINGS&gt;&quot;
 </pre></div>
 </div>
 </div>
-<input id="aa57b782-a57f-4c91-b592-54dacc51ee41" name="67ed9498-d15a-4090-a076-37749741705f" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="aa57b782-a57f-4c91-b592-54dacc51ee41">
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-5">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} &lt;CMD&gt;
 &lt;OPTIONS&gt;
 &lt;NEWLINE&gt;
-    <span class="k">-</span> "&lt;LIST&gt;"
-    <span class="k">-</span> "&lt;OF&gt;"
-    <span class="k">-</span> "&lt;SEND&gt;"
-    <span class="k">-</span> "&lt;STRINGS&gt;"
+    <span class="k">-</span> &quot;&lt;LIST&gt;&quot;
+    <span class="k">-</span> &quot;&lt;OF&gt;&quot;
+    <span class="k">-</span> &quot;&lt;SEND&gt;&quot;
+    <span class="k">-</span> &quot;&lt;STRINGS&gt;&quot;
 ```
 </pre></div>
 </div>
@@ -364,34 +369,34 @@ md</label><div class="sd-tab-content docutils">
 The time-based approach may be incredibly frustrating if the execution time differs between development machines and <em>works</em> on one device but fails in the CI pipeline. The time to execute the command might take <em>too</em> long for the CI systems to finish and fail documentation builds.</p>
 <p>Another issue is that the wait time between sending the lines might become relatively long if many <em>sends</em> are required, resulting in lengthy documentation build times.</p>
 <!-- TODO: Add timeout links -->
-<p>The main options to tune will probably be the <span class="xref myst">between-command</span> and <span class="xref myst">timeout</span> values.
+<p>The main options to tune will probably be the <a class="reference internal" href="05_configuration.html#between-commands"><span class="std std-ref">between-commands</span></a> and <a class="reference internal" href="05_configuration.html#timeout"><span class="std std-ref">timeout</span></a> values.
 There are <em>many more</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
 <p>You made it until the end of the timed command runner documentation! 🥳
 Here is a visual example output to keep you entertained:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="423c7837-1cf4-4fb0-b97a-fce706c208d1" name="ddc869cc-052f-4d04-acbe-07551daeed06" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="423c7837-1cf4-4fb0-b97a-fce706c208d1">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-6">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_timed_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.prompt
 
-    <span class="m">-</span> "y"
-    <span class="m">-</span> "5"
-    <span class="m">-</span> "2"
-    <span class="m">-</span> "poodle"
-    <span class="m">-</span> "husky"
+    <span class="m">-</span> &quot;y&quot;
+    <span class="m">-</span> &quot;5&quot;
+    <span class="m">-</span> &quot;2&quot;
+    <span class="m">-</span> &quot;poodle&quot;
+    <span class="m">-</span> &quot;husky&quot;
 </pre></div>
 </div>
 </div>
-<input id="aefe9ebf-f364-4737-9c0e-802896e54853" name="ddc869cc-052f-4d04-acbe-07551daeed06" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="aefe9ebf-f364-4737-9c0e-802896e54853">
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-7">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} python -m sphinx_cli_recorder.testing.prompt
 
-    <span class="k">-</span> "y"
-    <span class="k">-</span> "5"
-    <span class="k">-</span> "2"
-    <span class="k">-</span> "poodle"
-    <span class="k">-</span> "husky"
+    <span class="k">-</span> &quot;y&quot;
+    <span class="k">-</span> &quot;5&quot;
+    <span class="k">-</span> &quot;2&quot;
+    <span class="k">-</span> &quot;poodle&quot;
+    <span class="k">-</span> &quot;husky&quot;
 ```
 </pre></div>
 </div>
@@ -399,7 +404,7 @@ md</label><div class="sd-tab-content docutils">
 </div>
 <div class="asciinema" id="asciinema-1">
 </div>
-<script src="_static/asciinema-player.min.js"></script><script>
+<script src=_static/asciinema-player.min.js></script><script>
 AsciinemaPlayer.create('_recs/02_usage-asciinema-1.rec', document.getElementById('asciinema-1'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script></section>
 </section>
@@ -415,7 +420,7 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-1.rec', document.getElementById
 </li>
 <li><p>The command <em>must</em> require some <em>expect</em> and <em>send</em> pairs</p>
 <ul>
-<li><p>The inputs should be provided as a list of <em>expect</em> and <em>send</em> pairs, enclosed by <code class="docutils literal notranslate"><span class="pre">["&lt;EXPECT&gt;",</span> <span class="pre">"&lt;SEND&gt;"]</span></code></p></li>
+<li><p>The inputs should be provided as a list of <em>expect</em> and <em>send</em> pairs, enclosed by <code class="docutils literal notranslate"><span class="pre">[&quot;&lt;EXPECT&gt;&quot;,</span> <span class="pre">&quot;&lt;SEND&gt;&quot;]</span></code></p></li>
 <li><p>After creating a subprocess with the given command, the execution will wait until the <code class="docutils literal notranslate"><span class="pre">&lt;EXPECT&gt;</span></code> string is received and will then continue by sending the <code class="docutils literal notranslate"><span class="pre">&lt;SEND&gt;</span></code> string</p></li>
 <li><p>The <em>send</em> string will be terminated by a newline, or from a CLI application’s viewpoint, by <em>receiving enter</em></p></li>
 </ul>
@@ -425,27 +430,27 @@ AsciinemaPlayer.create('_recs/02_usage-asciinema-1.rec', document.getElementById
 </ul>
 <p>The <em>scripted</em> command runner has the following syntax:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="f2a8e674-8b2e-4871-bc52-621998de783f" name="97624578-7e5b-48f4-96ab-9369be4ac0b3" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="f2a8e674-8b2e-4871-bc52-621998de783f">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-8">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> <span class="nt">&lt;CMD&gt;</span>
 <span class="nt">&lt;OPTIONS&gt;</span>
 <span class="nt">&lt;NEWLINE&gt;</span>
-    - ["&lt;EXPECT_FIRST&gt;", "&lt;WAIT_FIRST&gt;"]
-    <span class="m">-</span> ["&lt;EXPECT_NEXT&gt;", "&lt;WAIT_NEXT&gt;"]
-    <span class="m">-</span> ["&lt;EXPECT_LAST&gt;", "&lt;WAIT_LAST&gt;"]
+    - [&quot;&lt;EXPECT_FIRST&gt;&quot;, &quot;&lt;WAIT_FIRST&gt;&quot;]
+    <span class="m">-</span> [&quot;&lt;EXPECT_NEXT&gt;&quot;, &quot;&lt;WAIT_NEXT&gt;&quot;]
+    <span class="m">-</span> [&quot;&lt;EXPECT_LAST&gt;&quot;, &quot;&lt;WAIT_LAST&gt;&quot;]
 </pre></div>
 </div>
 </div>
-<input id="4cefbca0-0b15-437d-98d6-9822c9a8b67b" name="97624578-7e5b-48f4-96ab-9369be4ac0b3" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="4cefbca0-0b15-437d-98d6-9822c9a8b67b">
+<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-9">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_timed_cli_interaction} &lt;CMD&gt;
 &lt;OPTIONS&gt;
 &lt;NEWLINE&gt;
-    <span class="k">-</span> ["&lt;EXPECT_FIRST&gt;", "&lt;WAIT_FIRST&gt;"]
-    <span class="k">-</span> ["&lt;EXPECT_NEXT&gt;", "&lt;WAIT_NEXT&gt;"]
-    <span class="k">-</span> ["&lt;EXPECT_LAST&gt;", "&lt;WAIT_LAST&gt;"]
+    <span class="k">-</span> [&quot;&lt;EXPECT_FIRST&gt;&quot;, &quot;&lt;WAIT_FIRST&gt;&quot;]
+    <span class="k">-</span> [&quot;&lt;EXPECT_NEXT&gt;&quot;, &quot;&lt;WAIT_NEXT&gt;&quot;]
+    <span class="k">-</span> [&quot;&lt;EXPECT_LAST&gt;&quot;, &quot;&lt;WAIT_LAST&gt;&quot;]
 ```
 </pre></div>
 </div>
@@ -461,7 +466,7 @@ md</label><div class="sd-tab-content docutils">
 Let’s look at the following example:</p>
 <div class="asciinema" id="asciinema-2">
 </div>
-<script src="_static/asciinema-player.min.js"></script><script>
+<script src=_static/asciinema-player.min.js></script><script>
 AsciinemaPlayer.create('_recs/02_usage-asciinema-2.rec', document.getElementById('asciinema-2'), {"rows": 20, "cols": 80, "idletimelimit": 5, "autoplay": false, "preload": false, "loop": false, "startat": 0, "speed": 1.0, "theme": "asciinema", "poster": null, "fit": "width", "fontsize": "small"});
 </script><p>It is possible to wait on <code class="docutils literal notranslate"><span class="pre">:</span></code> at the end of the prompt.
 But waiting for <code class="docutils literal notranslate"><span class="pre">):</span></code> will raise a <em>timeout</em> error.
@@ -475,27 +480,27 @@ The pair `\x1b[` is called the _Control Sequence Introducer_. -->
 <p><code class="docutils literal notranslate"><span class="pre">\x1b[0m</span></code> tells the terminal to go back to the <em>default</em> output mode, which is then followed by a <em>white</em> colored <code class="docutils literal notranslate"><span class="pre">:</span></code> in the output.
 So if we wanted to wait for the red-colored option, the directive would look like this:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="982d0c30-f7a5-4915-a629-144a1df20340" name="9cdf45ee-de87-4928-a6ae-25c3edb0e2f0" type="radio"/>
-<label class="sd-tab-label" data-sync-id="reST" for="982d0c30-f7a5-4915-a629-144a1df20340">
+<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="reST" for="sd-tab-item-10">
 reST</label><div class="sd-tab-content docutils">
 <div class="highlight-reST notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">record_scripted_cli_interaction</span><span class="p">::</span> python -m sphinx_cli_recorder.testing.tiny_prompt
 
-    <span class="m">-</span> ["\x1b[31m(y)\x1b[0m:", "y"]
+    <span class="m">-</span> [&quot;\x1b[31m(y)\x1b[0m:&quot;, &quot;y&quot;]
 </pre></div>
 </div>
 </div>
-<input id="eb8f583b-f753-4a38-86b0-dadb773c5b55" name="9cdf45ee-de87-4928-a6ae-25c3edb0e2f0" type="radio"/>
-<label class="sd-tab-label" data-sync-id="md" for="eb8f583b-f753-4a38-86b0-dadb773c5b55">
+<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" data-sync-id="md" for="sd-tab-item-11">
 md</label><div class="sd-tab-content docutils">
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{record_scripted_cli_interaction} python -m sphinx_cli_recorder.testing.tiny_prompt
 
-    <span class="k">-</span> ["\x1b[31m(y)\x1b[0m:", "y"]
+    <span class="k">-</span> [&quot;\x1b[31m(y)\x1b[0m:&quot;, &quot;y&quot;]
 ```
 </pre></div>
 </div>
 </div>
 </div>
-<p>The main options to tune will probably be the <span class="xref myst">timeout</span> value.
+<p>The main options to tune will probably be the <a class="reference internal" href="05_configuration.html#timeout"><span class="std std-ref">timeout</span></a> value.
 There are <em>many more</em> options to configure the behavior of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-directives" title="(in Sphinx v6.0.0)"><span class="xref myst">directive</span></a>. Please refer to <a class="reference internal" href="05_configuration.html#configuration"><span class="std std-ref">Configuration</span></a> for an extensive list with visual examples.</p>
 </section>
 </section>
@@ -514,10 +519,10 @@ There are <em>many more</em> options to configure the behavior of the <a class="
                 </div>
                 <div class="title">Limitations</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="01_installation.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -540,7 +545,7 @@ There are <em>many more</em> options to configure the behavior of the <a class="
           </div>
           <div class="right-details">
             <div class="icons">
-              <a class="muted-link " href="https://github.com/kai-tub/sphinx-cli-recorder" aria-label="GitHub">
+              <a class="muted-link " href="https://github.com/kai-tub/sphinx_cli_recorder/" aria-label="GitHub">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
                 </svg>
@@ -563,7 +568,7 @@ There are <em>many more</em> options to configure the behavior of the <a class="
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -599,7 +604,6 @@ There are <em>many more</em> options to configure the behavior of the <a class="
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/tabs.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
