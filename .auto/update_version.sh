@@ -18,6 +18,11 @@ echo "$ARG_0"
 bumpType=$(echo "$ARG_0" | jq -r '.bump')
 echo "bump type: $bumpType"
 
+# Until https://github.com/carstencodes/pdm-bump/pull/2 is merged
+if [[ "$bumpType" = "patch" ]]; then
+    bumpType="micro"
+fi
+
 
 if [[ -z "$(command -v pdm)" ]]; then
     error "requires PDM to bump version!"
