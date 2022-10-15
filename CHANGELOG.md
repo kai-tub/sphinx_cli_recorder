@@ -1,3 +1,18 @@
+# v0.1.6 (Sat Oct 15 2022)
+
+#### 🐛 Bug Fix
+
+- Add pdm plugin to main not publish [#9](https://github.com/kai-tub/sphinx_cli_recorder/pull/9) ([@kai-tub](https://github.com/kai-tub))
+- Correctly setup just in yaml [#8](https://github.com/kai-tub/sphinx_cli_recorder/pull/8) ([@kai-tub](https://github.com/kai-tub))
+- Re-add patch to micro converter [#7](https://github.com/kai-tub/sphinx_cli_recorder/pull/7) ([@kai-tub](https://github.com/kai-tub))
+- Pdm-update-source [#6](https://github.com/kai-tub/sphinx_cli_recorder/pull/6) ([@kai-tub](https://github.com/kai-tub))
+
+#### Authors: 1
+
+- Kai Norman Clasen ([@kai-tub](https://github.com/kai-tub))
+
+---
+
 # v0.1.6 (Sun Oct 16 2022)
 
 #### 🐛 Bug Fix

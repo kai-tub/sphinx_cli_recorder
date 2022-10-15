@@ -1,6 +1,6 @@
 [project]
 name = "sphinx-cli-recorder"
-version = "0.1.5"
+version = "0.1.6"
 description = "A Sphinx extension that runs/automates recordings of CLI applications, without requiring any external services."
 authors = [
     {name = "Kai Norman Clasen", email= "k.clasen@protonmail.com"},
