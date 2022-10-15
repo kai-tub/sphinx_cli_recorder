@@ -19,12 +19,12 @@ bumpType=$(echo "$ARG_0" | jq -r '.bump')
 echo "bump type: $bumpType"
 
 
-if [[ -z "$(command -v poetry)" ]]; then
-    error "requires poetry to bump version!"
+if [[ -z "$(command -v pdm)" ]]; then
+    error "requires PDM to bump version!"
 fi
 
 # bump version
-poetry version "$bumpType"
+pdm bump "$bumpType"
 
 
 # Files will be commited via `auto` tool

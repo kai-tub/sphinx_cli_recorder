@@ -1,1 +1,1 @@
-"""Test package for sphinx_cli_recorder."""
+"""Test package for sphinx-cli-recorder."""
