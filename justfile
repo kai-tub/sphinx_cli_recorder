@@ -10,7 +10,7 @@ install_python_deps:
     pdm install
 
 install_node_deps:
-    {{env-cmd}} nodeenv --python-virtualenv --force
+    {{env-cmd}} nodeenv .nodeenv --force
     {{env-cmd}} npm install
 
 copy-assets: install_node_deps

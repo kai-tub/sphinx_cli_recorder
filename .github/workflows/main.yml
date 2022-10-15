@@ -23,8 +23,8 @@ jobs:
         uses: pdm-project/setup-pdm@main
         with:
           python-version: "3.8"
+      - uses: extractions/setup-just@v1
       - name: Install dependencies
-        uses: extractions/setup-just@v1
         run: |
           pdm run just install
           pdm run build-docs

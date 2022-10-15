@@ -15,9 +15,10 @@ jobs:
         uses: pdm-project/setup-pdm@main
         with:
           python-version: 3.8
+      - uses: extractions/setup-just@v1
       - name: Install dependencies
         run: |
-          pdm sync --dev --group docs
+          just install
           pdm plugin add pdm-bump
           pdm run build-docs
       - name: Publish
