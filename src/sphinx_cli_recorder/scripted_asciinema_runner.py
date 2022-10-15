@@ -44,7 +44,7 @@ async def scripted_asciinema_runner(
             await scripted_cmd_interaction(proc, expects, sends, sleep_time)
         elif expects is None and sends is not None:
             await timed_cmd_interaction(proc, sends, sleep_time)
-        await asyncio.sleep(sleep_time.after_command)
+        await asyncio.sleep(sleep_time.before_close)
         # wait for last command to exit
         await proc.expect(pexpect.EOF, timeout=sleep_time.timeout, async_=True)
         shutil.copy2(tmpfile.name, output_fp)

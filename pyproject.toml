@@ -1,65 +1,119 @@
-[tool.poetry]
+[project]
 name = "sphinx-cli-recorder"
 version = "0.1.5"
 description = "A Sphinx extension that runs/automates recordings of CLI applications, without requiring any external services."
-authors = ["Kai Norman Clasen <k.clasen@protonmail.com>"]
-license = "GNU General Public License v3"
+authors = [
+    {name = "Kai Norman Clasen", email= "k.clasen@protonmail.com"},
+]
+license = {text = "GNU General Public License v3"}
 readme = "README.md"
+#- Uses the < syntax instead of <= because conda-forge does not work correctly with <=
+# deps-start
+requires-python = ">=3.8, <3.12"
+dependencies = [
+    "asciinema>=2.2.0",
+    "Sphinx>=4.4",
+    "pexpect>=4.8",
+    "unsync>=1.4",
+    "asyncer>=0.0.1",
+    "pydantic>=1.9.0",
+    "PyYAML>=6.0",
+    "yamale>=4.0.3",
+]
+# deps-end
+
+[project.urls]
 homepage = "https://github.com/kai-tub/sphinx_cli_recorder/"
 repository = "https://github.com/kai-tub/sphinx_cli_recorder/"
-documentation = "https://github.com/kai-tub.github.io/sphinx_cli_recorder"
-
-include = [
-    "LICENSE",
-    # overwrite inherited exclude from .gitignore!
-    "sphinx_cli_recorder/asciinema-player.css",
-    "sphinx_cli_recorder/asciinema-player.min.js",
-]
-
-[tool.poetry.dependencies]
-# dependencies-start
-python = "^3.8"
-asciinema = "^2.2.0"
-Sphinx = "^4.4.0"
-pexpect = "^4.8.0"
-unsync = "^1.4.0"
-asyncer = "^0.0.1"
-pydantic = "^1.9.0"
-PyYAML = "^6.0"
-yamale = "^4.0.3"
-# dependencies-end
-
-[tool.poetry.dev-dependencies]
-autodoc-pydantic = "^1.6.1"
-rich = "^11.2.0"
-jupyter = "^1.0.0"
-livereload = "^2.6.3"
-nodeenv = "^1.6.0"
-pytest = "^7.0.1"
-icecream = "^2.1.2"
-pytest-asyncio = "^0.18.1"
-furo = "^2022.3.4"
-myst-parser = {extras = ["linkify"], version = "^0.17.0"}
-sphinx-external-toc = "^0.2.4"
-sphinx-inline-tabs = "^2022.1.2-beta.11"
-sphinxcontrib-mermaid = "^0.7.1"
-sphinx-design = "^0.0.13"
-rich-cli = "^1.5.1"
-sphinx-comments = "^0.0.3"
-pre-commit = "^2.17.0"
-isort = "^5.10.1"
-black = "^22.3.0"
-mypy = "^0.942"
-types-PyYAML = "^6.0.5"
-types-docutils = "^0.18.0"
-sphinx-autodoc-typehints = "^1.18.1"
+documentation = "https://kai-tub.github.io/sphinx_cli_recorder"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool.pdm.build]
+includes = [
+    "LICENSE",
+    "src"
+    # Maybe not necessary anymore with PDM?
+    # overwrite inherited exclude from .gitignore!
+    # "src/sphinx_cli_recorder/asciinema-player.css",
+    # "src/sphinx_cli_recorder/asciinema-player.min.js",
+]
+package-dir = "src"
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"
 
+[tool.pdm.dev-dependencies]
+docs = [
+    "myst-nb>=0.16",
+    "Sphinx>=4.5",
+    "sphinx-autobuild",
+    "sphinx-external-toc",
+    "sphinx-inline-tabs",
+    "sphinx-design",
+    "linkify-it-py",
+    "furo",
+    "autodoc-pydantic>=1.6",
+    "nodeenv>=1.6",
+    "myst-parser[linkify]>=0.17",
+    "sphinxcontrib-mermaid",
+    "rich>=11.2",
+    "icecream>=2",
+    "pytest-asyncio>=0.18.1",
+    "rich-cli",
+    "sphinx-comments",
+    "sphinx-autodoc-typehints",
+]
+
+test = [
+    "pytest",
+    "pre-commit",
+    "jupyter",
+    "notebook",
+    "types-PyYAML>=6.0.5",
+    "types-docutils>=0.18.0",
+]
+lint = [
+    "black[jupyter]",
+    "isort",
+    "nbstripout",
+    "mypy",
+]
+[tool.mypy]
+exclude = ["tests"]
+# common plugins:
+# plugins = "numpy.typing.mypy_plugin"
+
 [tool.isort]
 profile = "black"
+
+[tool.pdm.scripts]
+check-pre-commit = "pre-commit run --all-files"
+check-types = "mypy src"
+
+lint.composite = [
+    "check-pre-commit",
+    "check-types",
+]
+lint.help = "Will check if all files are formatted with black & isort"
+
+build-docs.cmd = "sphinx-build docs docs/_build/"
+build-docs.help = "Build Sphinx documentation"
+serve-sphinx-docs.cmd = "sphinx-autobuild docs docs/_build --open-browser"
+serve-sphinx-docs.help = "Serve the Sphinx documentation with sphinx-autobuild"
+
+tests = "pytest tests/"
+# If coverage is desired:
+# tests = "coverage run --parallel --source sphinx_cli_recorder -m pytest tests"
+# coverage_report.composite = [
+#     "coverage combine",
+#     "coverage report --fail-under 95",
+# ]
+# coverage_html_report = "coverage html"
+# coverage_html.composite = [
+#     "tests",
+#     "coverage_html_report"
+# ]
+# coverage_html.help = "Run the coverage with pytest and produce the html"

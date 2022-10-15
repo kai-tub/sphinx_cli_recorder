@@ -141,7 +141,7 @@ The time-based approach may be incredibly frustrating if the execution time diff
 Another issue is that the wait time between sending the lines might become relatively long if many _sends_ are required, resulting in lengthy documentation build times.
 
 <!-- TODO: Add timeout links -->
-The main options to tune will probably be the [between-command]() and [timeout]() values.
+The main options to tune will probably be the [between-commands](between-commands) and [timeout](timeout) values.
 There are _many more_ options to configure the behavior of the [directive](sphinx:rst-directives). Please refer to [](Configuration) for an extensive list with visual examples.
 
 You made it until the end of the timed command runner documentation! 🥳
@@ -282,5 +282,5 @@ So if we wanted to wait for the red-colored option, the directive would look lik
 ::::
 :::::
 
-The main options to tune will probably be the [timeout]() value.
+The main options to tune will probably be the [timeout](timeout) value.
 There are _many more_ options to configure the behavior of the [directive](sphinx:rst-directives). Please refer to [](Configuration) for an extensive list with visual examples.

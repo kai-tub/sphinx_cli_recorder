@@ -1,20 +1,6 @@
 (Configuration)=
 # Configuration
 
-:::{warning}
-In the dropdown menus, the last few columns are cut-off.
-The issue seems to be due to a CSS conflict regarding the dropdown's alignment/width/margin properties.
-If the `border` CSS is disabled in the `class=asciinema-terminal`, the issue is _fixed_, in that the end of span/line is visible, but now there is no border...
-
-Frontend development in Sphinx makes me cry 😭
-:::
-
-```{admonition} TODO
-:class: admonition-todo
-
-Finalize the examples
-```
-
 ## Recorder Configuration
 ### Columns
 ```{eval-rst}
@@ -219,3 +205,33 @@ Define the style of the background and color palette of the terminal.
 :rows: 67
 :::
 ::::
+
+## Scripted Interaction Configuration
+
+(between-characters)=
+### Between Characters
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.scripted_cmds.SleepTimes.between_character
+
+```
+
+(between-commands)=
+### Between Commands
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.scripted_cmds.SleepTimes.between_commands
+
+```
+
+(before-close)=
+### Before Close
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.scripted_cmds.SleepTimes.before_close
+
+```
+
+(timeout)=
+### Timeout
+```{eval-rst}
+.. autopydantic_field:: sphinx_cli_recorder.scripted_cmds.SleepTimes.timeout
+
+```

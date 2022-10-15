@@ -3,9 +3,24 @@ tmp.*
 node_modules
 links
 tweet.txt
-sphinx_cli_recorder/asciinema-player.css
-sphinx_cli_recorder/asciinema-player.min.js
+asciinema-player.css
+asciinema-player.min.js
 
+.pdm.toml
+# hide this for now
+*.bak
+.gitattributes
+.last_checked
+.gitconfig
+*.bak
+*.log
+*~
+~*
+_tmp*
+tmp*
+tags
+node_modules/
+*.parquet
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -17,6 +32,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+env/
 build/
 develop-eggs/
 dist/
@@ -78,7 +94,8 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+docs/_build/*
+!docs/_build/.nojekyll
 
 # PyBuilder
 .pybuilder/

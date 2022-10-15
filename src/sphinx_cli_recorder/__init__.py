@@ -40,6 +40,7 @@ logger = logging.getLogger(__name__)
 
 JS_RESOURCE = "asciinema-player.min.js"
 CSS_RESOURCE = "asciinema-player.css"
+CSS_CUSTOM_RESOURCE = "custom-asciinema-rules.css"
 
 
 class SphinxCliRecorderEnvType(BuildEnvironment):
@@ -303,7 +304,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         html=(visit_asciinema_node, depart_asciinema_node),
     )
     copy_local_resources = partial(
-        copy_resources, resources=[JS_RESOURCE, CSS_RESOURCE]
+        copy_resources, resources=[JS_RESOURCE, CSS_RESOURCE, CSS_CUSTOM_RESOURCE]
     )
     player_settings = SphinxAutoAsciinemaSettingNames().player_settings
     sleep_times_settings = SphinxAutoAsciinemaSettingNames().sleep_times_settings
@@ -316,6 +317,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.connect("env-merge-info", merge_cmds)
     app.connect("env-purge-doc", purge_commands)
     app.add_css_file(CSS_RESOURCE)
+    app.add_css_file(CSS_CUSTOM_RESOURCE)
     app.add_directive("record_cli_cmd", RecordCliCmdDirective)
     app.add_directive(
         "record_scripted_cli_interaction", RecordScriptedCliInteractionDirective

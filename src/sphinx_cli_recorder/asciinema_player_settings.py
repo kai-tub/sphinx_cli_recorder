@@ -4,12 +4,24 @@ from enum import Enum
 from textwrap import dedent, fill, wrap
 from typing import Counter, Optional, Union
 
-from pydantic import BaseModel, Field, PositiveFloat, PositiveInt, conint, validator
+from pydantic import (
+    BaseModel,
+    ConstrainedInt,
+    Field,
+    PositiveFloat,
+    PositiveInt,
+    validator,
+)
 
 
 def _list_enum_values_as_bullets(enum_cls):
     """List themes as bullet points with quotes around string values."""
     return "\n".join(f'- "{v.value}"' for v in enum_cls)
+
+
+class StrictPositiveInt(ConstrainedInt):
+    ge: int = 0
+    strict: bool = True
 
 
 class AsciinemaTheme(str, Enum):
@@ -101,7 +113,7 @@ class AsciinemaPlayerSettings(AsciinemaRecorderSettings):
         """,
     )
     # First try to coerce to Integer than Str
-    startat: Union[conint(ge=0, strict=True), str] = Field(
+    startat: Union[StrictPositiveInt, str] = Field(
         default=0,
         description="""\
             Start playback at a given time.
