@@ -90,12 +90,12 @@ exclude = ["tests"]
 profile = "black"
 
 [tool.pdm.scripts]
-pre-commit = "pre-commit run --all-files"
-check_types = "mypy sphinx_cli_recorder"
+check-pre-commit = "pre-commit run --all-files"
+check-types = "mypy sphinx_cli_recorder"
 
 lint.composite = [
-    "pre-commit",
-    "check_types",
+    "check-pre-commit",
+    "check-types",
 ]
 lint.help = "Will check if all files are formatted with black & isort"
 
